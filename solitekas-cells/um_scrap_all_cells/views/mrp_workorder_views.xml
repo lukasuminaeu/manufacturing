@@ -1,0 +1,37 @@
+<odoo>
+
+    <record id="mrp_workorder_view_form_tablet_menu_umina" model="ir.ui.view">
+        <field name="name">mrp.workorder.view.form.tablet.menu.umina</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet_menu"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='row workorder_menu']//div[@class='col-6']" position="after">
+                <div class="col-6">
+                    <field name="product_tracking" invisible="1" />
+                    <field name="finished_lot_id" invisible="1" />
+                    <field name="product_id" invisible="1" />
+                    <!-- <button 
+                        confirm="Ar tikrai norite panaudoti 'Scrap all' funkciją?" 
+                        name="button_scrap_multiple" type="object" class="btn-primary btn-block btn btn-lg" string="Scrap all"
+                        attrs="{'invisible': [
+                            '&amp;', 
+                            ('product_tracking', '!=', 'serial'),
+                            ('finished_lot_id', '=', False)
+                        ]}"
+                    /> -->
+                    <button 
+                        confirm="Ar tikrai norite panaudoti 'Scrap all' funkciją?" 
+                        name="button_scrap_multiple" type="object" class="btn-primary btn-block btn btn-lg" string="Scrap all"
+                        attrs="{'invisible': [
+                            '&amp;', 
+                            ('finished_lot_id', '=', False),
+                            ('product_tracking', 'in', ('serial',)),
+                        ]}"
+                    />
+
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

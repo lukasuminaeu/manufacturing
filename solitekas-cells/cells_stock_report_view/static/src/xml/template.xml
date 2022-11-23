@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="StockReportView.buttons">
+        <div class="btn-group mr4" role="group">
+            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Work Center <span class="caret" />
+            </button>
+            <div class="dropdown-menu o_cohort_measures_list">
+                <t t-foreach="resources" t-as="resource">
+                    <button t-if="resource"
+                        type="button"
+                        class="dropdown-item o_select_work_center"
+                        t-att-data-id="resource.id">
+                        <t t-esc="resource.name"/>
+                    </button>
+                </t>
+            </div>
+        </div>
+        <div class="btn-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="component">Demand</span>
+                </div>
+                <input type="text" class="form-control js_days_demand" value="5" min="1" style="width:60px;" id="input-component" aria-describedby="component" title="Days"/>
+                <div class="input-group-append">
+                    <span class="input-group-text">days</span>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="srv_template">
+        <div class="o_srv_resource">
+            <t t-set="state" t-value="widget.state"/>
+            <t t-set="components" t-value="widget.component_ids"/>
+            <t t-set="resource_name" t-value="widget.resource_name"/>
+            <t t-set="resource_id" t-value="widget.resource_id"/>
+            <t t-if="components.length > 0">
+                <t t-call="srv_resource_template"/>
+            </t>
+            <t t-else="">
+                <div class="ml-4 my-2 o_text_muted">
+                    <p class="o_image_empty_folder"/>
+                    <h3 class="text-center">No data to display.</h3>
+                    <t t-if="!state || state.length == 0"><h4 class="text-center">You will get here stock analysis about the products related to planned work orders.</h4></t>
+                </div>
+            </t>
+        </div>
+    </t>
+
+    <t t-name="srv_resource_template">
+        <div class="ml-4 my-2">
+            <h2>Work Center: <span class="ml-2 o_resource_id o_text_muted" t-att-resource-id="resource_id" t-esc="resource_name"/></h2>
+        </div>
+        <div class="mx-4">
+            <t class="table-responsive text-nowrap mr0 ml0" >
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th class="text-left" scope="col"><span>Component Code</span></th>
+                            <th class="text-left" scope="col"><span>Component Description</span></th>
+                            <th class="text-left" scope="col"><span>Location</span></th>
+                            <th class="text-left" scope="col"><span>On Hand</span></th>
+                            <th class="text-center" scope="col"><span>Min</span></th>
+                            <th class="text-center" scope="col"><span>Max</span></th>
+                            <th class="text-left" scope="col"><span>Demand</span></th>
+                            <th class="text-left" scope="col"><span>Action</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="components" t-as="component">
+                            <tr t-att-data-id="component.id">
+                                <th scope="row"><span t-esc="component.default_code"/></th>
+                                <th scope="row"><span t-esc="component.name"/></th>
+                                <th scope="row"><span t-esc="component.location"/></th>
+                                <th scope="row"><span t-esc="component.qty_available"/></th>
+                                <t t-if="component.rules" t-foreach="component.rules" t-as="rule">
+                                    <th class="text-center">
+                                        <span t-if="rule" t-esc="rule.product_min_qty"/>
+                                        <span t-else=""/>
+                                    </th>
+                                    <th class="text-center">
+                                        <span t-if="rule" t-esc="rule.product_max_qty"/>
+                                        <span t-else=""/>
+                                    </th>
+                                </t>
+                                <th><span t-esc="component.qty_reserved"/></th>
+                                <th scope="row">
+                                    <t t-if="!component.action_needed"/>
+                                    <t t-else="">
+                                        <t t-if="component.action_needed[0].action === 'in'">
+                                            <a title="In"><i class="fa fa-sign-in fa-rotate-180 fa-lg" style="color:red;"/><span class="ml-2" t-esc="component.action_needed[0].qty"/></a>
+                                        </t>
+                                        <t t-else="">
+                                            <a title="Out"><i class="fa fa-sign-out fa-lg" style="color:green;"/><span class="ml-2" t-esc="component.action_needed[0].qty"/></a>
+                                        </t>
+                                    </t>
+                                </th>
+                            </tr>
+                        </t>
+                    </tbody>
+            </table>
+            </t>
+        </div>
+    </t>
+
+</templates>

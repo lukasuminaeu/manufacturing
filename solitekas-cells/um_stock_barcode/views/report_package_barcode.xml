@@ -1,0 +1,29 @@
+<odoo>
+    <template id="report_package_barcode_delivery" inherit_id="stock.report_package_barcode">
+        <xpath expr="//tbody" position="inside">
+            <t t-if="not o.quant_ids">
+                <tr t-foreach="o.move_line_ids" t-as="ml">
+                    <td>
+                       <span  t-field="ml.product_id.name"/>
+                    </td>
+                    <td class="text-right">
+                        <t t-if="ml.product_uom_qty > 0.0">
+                            <span t-field="ml.product_uom_qty"/>
+                        </t>
+                        <t t-if="ml.product_uom_qty == 0.0">
+                            <span t-field="ml.qty_done"/>
+                        </t>
+                    </td>
+                    <td groups="uom.group_uom">
+                        <span t-field="ml.product_uom_id.name"/>
+                    </td>
+                    <td class="text-right" t-if="has_serial_number">
+                        <t t-if="ml.lot_id"><span t-field="ml.lot_id.name"/></t>
+                    </td>
+                </tr>
+            </t>
+
+        </xpath>
+    </template>
+
+</odoo>

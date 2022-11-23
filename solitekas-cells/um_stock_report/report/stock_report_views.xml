@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- <record id="action_report_packing_list" model="ir.actions.report">
+            <field name="name">Packing List</field>
+            <field name="model">stock.picking</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">um_stock_report.report_packinglist</field>
+            <field name="report_file">um_stock_report.report_packinglist</field>
+            <field name="print_report_name">'Packing List - %s - %s' % (object.partner_id.name or '', object.name)</field>
+            <field name="binding_model_id" ref="stock.model_stock_picking"/>
+            <field name="binding_type">report</field>
+        </record> -->
+
+        <record id="action_report_solitek_cells_package" model="ir.actions.report">
+            <field name="name">Solitek Cells Package</field>
+            <field name="model">stock.quant.package</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">um_stock_report.solitek_cells_package_barcodes</field>
+            <field name="report_file">um_stock_report.solitek_cells_package_barcodes</field>
+            <field name="binding_model_id" ref="stock.model_stock_quant_package"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="solitek_cells_package_barcodes">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="o">
+                    <t>
+                        <div class="page">
+                            <div class="oe_structure"/>
+                            <table class="table table-condensed" style="border-bottom: 0px solid white !important;">
+                                <tr>
+                                    <th>
+                                    <h1 t-field="o.name" class="mt0 float-left"/>
+                                    </th>
+                                    <th name="td_pk_barcode" style="text-align: center">
+                                        <div t-field="o.name" t-options="{'widget': 'barcode', 'width': 600, 'height': 100, 'img_style': 'width:300px;height:50px;'}"/>
+                                        <p t-field="o.name"/>
+                                    </th>
+                                </tr>
+                            </table>
+                            <div class="row mt32 mb32">
+                                <div t-if="o.package_type_id" class="o_packaging_type col-auto">
+                                    <strong>Package Type:</strong>
+                                    <p t-field="o.package_type_id.name"/>
+                                </div>
+                            </div>
+                            <table class="table table-sm" style="border-bottom: 0px solid white !important;">
+                                <t t-set="has_serial_number" t-value="o.quant_ids.mapped('lot_id')" />
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th name="th_quantity" class="text-right">Quantity</th>
+                                        <th name="th_uom" groups="uom.group_uom"/>
+                                        <th name="th_serial" class="text-right" t-if="has_serial_number">Lot/Serial Number</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.quant_ids" t-as="l">
+                                        <td>
+                                        <span  t-field="l.product_id.name"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="l.quantity"/>
+                                        </td>
+                                        <td groups="uom.group_uom">
+                                            <span t-field="l.product_id.uom_id.name"/>
+                                        </td>
+                                        <td class="text-right" t-if="has_serial_number">
+                                            <t t-if="l.lot_id"><span t-field="l.lot_id.name"/></t>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

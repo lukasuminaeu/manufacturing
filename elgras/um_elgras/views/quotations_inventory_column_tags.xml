@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="inherit_quotations_tree_tag_column" model="ir.ui.view">
+        <field name="name">inherit.quotations.tree.tag.column</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='amount_total']" position="after">
+            <field widget="many2many_tags" optional="show" name="tag_ids"/>
+          </xpath>
+        </field>
+    </record>
+
+    <record id="inherit_inventory_tree_tag_column" model="ir.ui.view">
+        <field name="name">inherit.inventory.tree.tag.column</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree[1]/field[@name='name']" position="after">
+                <field widget="many2many_tags" optional="show" name="tag_ids_related"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

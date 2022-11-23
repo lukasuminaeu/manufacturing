@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- Top menu item -->
+
+        <record id="crm_config_project_management_settings_action" model="ir.actions.server">
+            <field name="name">Project Management</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="state">code</field>
+            <field name="code">action = env.get('crm.lead').open_project_management_pipeline()</field>
+        </record>
+
+        <record id="crm_lead_all_leads_pipeline" model="ir.actions.server">
+            <field name="name">Leads</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="state">code</field>
+            <field name="code">action = env.get('crm.lead').open_leads_pipeline()</field>
+        </record>
+
+        <record id="crm_sales_pipeline" model="ir.actions.server">
+            <field name="name">Leads</field>
+            <field name="model_id" ref="model_crm_lead"/>
+            <field name="state">code</field>
+            <field name="code">action = env.get('crm.lead').open_sales_pipeline()</field>
+        </record>
+
+        <menuitem id="crm.crm_menu_root"
+              name="CRM"
+              web_icon="crm,static/description/icon.png"
+              groups="sales_team.group_sale_salesman,sales_team.group_sale_manager"
+              action="sales_team.crm_team_action_pipeline"
+              sequence="6"/>
+
+              <!-- action="sales_team.crm_team_salesteams_pipelines_act" -->
+
+            <menuitem
+                id="crm_menu_project_management"
+                name="Project Management"
+                parent="crm.crm_menu_root"
+                sequence="2"
+                groups="sales_team.group_sale_manager,sales_team.group_sale_salesman"/>
+
+                <menuitem id="crm_config_settings_menu"
+                    name="Project Management"
+                    parent="crm_menu_project_management"
+                    action="crm_config_project_management_settings_action"
+                    groups="sales_team.group_sale_salesman,sales_team.group_sale_manager"
+                    sequence="1"/>
+
+            <menuitem id="crm.crm_menu_leads"
+                name="Leads"
+                parent="crm.crm_menu_root"
+                action="crm_lead_all_leads_pipeline"
+                groups="sales_team.group_sale_salesman,sales_team.group_sale_manager"
+                sequence="5"/>
+
+            <menuitem
+                id="crm.menu_crm_opportunities"
+                action="crm_sales_pipeline"
+                name="Sales pipeline"
+                parent="crm.crm_menu_sales"
+                sequence="1"/>
+
+
+</odoo>

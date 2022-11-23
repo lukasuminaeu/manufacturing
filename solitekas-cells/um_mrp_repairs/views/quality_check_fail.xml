@@ -1,0 +1,48 @@
+<odoo>
+
+        <record id="quality_check_fail_message" model="ir.ui.view">
+            <field name="name">umina.custom.quality.check</field>
+            <field name="model">quality.check.wizard</field>
+            <field name="inherit_id" ref="quality_control.quality_check_wizard_form_failure"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='failure_message']" position="after">
+                    <div class="row workorder_menu">
+                        <div class="col-12">
+                            <button name="button_scrap" type="object" string="Scrap All" class="btn btn-primary btn-block" style="font-size:64px; horizontal-align:middle;" icon="fa-trash-o" confirm="Are you sure you want to scrap everything?"/>
+                        </div>
+                        <div class="col-12">
+                            <button name="button_repair" type="object" string="Repair request" class="btn btn-warning btn-block" style="font-size:64px; horizontal-align:middle;" icon="fa-wrench"/>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="mrp_workorder_do_fail_context" model="ir.ui.view">
+            <field name="name">umina.mrp.workorder.do.fail.context</field>
+            <field name="model">mrp.workorder</field>
+            <field name="inherit_id" ref="quality_mrp_workorder.mrp_workorder_view_form_tablet_inherit_quality"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='do_fail']" position="attributes">
+                    <attribute name="context">{'default_workorder_id': active_id, 'production_id':production_id, 'lot_id': finished_lot_id}</attribute>
+                </xpath>
+            </field>
+        </record>
+   
+        <record id="mrp_production_repairs" model="ir.ui.view">
+            <field name="name">umina.mrp.production.repairs</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='miscellaneous']" position="after">
+                    <page string="Repairs" name="repairs">
+                        <field name="repaired_ids"/>
+                    </page>
+                </xpath>
+                <xpath expr="//button[@name='action_assign']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('state', 'in', ('draft', 'done', 'cancel'))]}</attribute>
+                </xpath>
+            </field>
+        </record>
+        
+</odoo>

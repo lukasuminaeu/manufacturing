@@ -1,0 +1,28 @@
+<odoo>
+    <record id="view_production_month_calendar" model="ir.ui.view">
+        <field name="name">mrp.production.month.calendar</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.view_production_calendar"/>
+        <field name="arch" type="xml">
+            <xpath expr="//calendar" position="attributes">
+                <attribute name="mode">month</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mrp_bom_form_um_view" model="ir.ui.view">
+            <field name="name">mrp.bom.form.um</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='picking_type_id']/.." position="after">
+                    <group string="Product Class">
+                        <field name="product_class_a"/>
+                        <field name="product_class_b"/>
+                        <field name="product_class_c"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+</odoo>

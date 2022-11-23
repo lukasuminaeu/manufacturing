@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_packinglist_document">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)" />
+                <t t-set="partner" t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"/>
+                <t t-set="sale" t-value="o.sale_id"/>
+
+                <div class="page">
+                    <div class="row">
+                        <div class="col-4">
+                            .
+                        </div>
+                        <div class="col-4" style="text-align: center;">
+                            <h1>Packing List</h1>
+                            <h2>
+                                <span t-field="o.name"/>
+                            </h2>
+                        </div>
+                        <div class="col-4" style="text-align: right;">
+                            <strong>Date Order:</strong><p t-field="sale.date_order" t-options='{"widget": "date"}'/>
+                            <strong>Due Date:</strong><p t-field="sale.invoice_ids[0].invoice_date_due" t-options='{"widget": "date"}'/>
+                        </div>
+                    </div>
+                    <div class="row mt-3"></div>
+                    <div class="row">
+                        <div class="col-4" name="div_vendor_address">
+                            <div>
+                                <span><strong>Vendor:</strong></span>
+                            </div>
+                            <div t-field="o.company_id.partner_id.self"
+                                t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                            <p t-if="partner.sudo().vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="o.company_id.partner_id.sudo().vat"/></p>
+                        </div>
+                        <div class="col-4" name="div_customer_address">
+                            <div>
+                                <span><strong>Customer:</strong></span>
+                            </div>
+                            <div t-field="sale.partner_id.self"
+                                t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                            <p t-if="partner.sudo().vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="sale.partner_id.sudo().vat"/></p>
+                        </div>
+                        <div class="col-4" name="div_shipping_address">
+                            <div>
+                                <span><strong>Shipping Address:</strong></span>
+                            </div>
+                            <div t-field="partner.self"
+                                t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                            <p t-if="partner.sudo().vat"><t t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>: <span t-field="partner.sudo().vat"/></p>
+                        </div>
+                    </div>
+                    <div class="row mt-3"></div>
+                    <div class="row mt32 mb32">
+                        <div class="col-4">
+                            <strong>Order:</strong><p t-field="o.origin"/>
+                        </div>
+                        <div class="col-4">
+                            <strong>Customer Order:</strong><p t-field="o.origin"/>
+                        </div>
+                    </div>
+                    <div class="row mt-3"></div>
+
+                    <table class="table table-sm o_main_table">
+                        <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                        <thead style="display: table-row-group">
+                            <tr>
+                                <th name="th_nr" class="text-left">Nr</th>
+                                <th name="th_code" class="text-left">Code</th>
+                                <th name="th_description" class="text-left">Description</th>
+                                <th name="th_quantity" class="text-right">Quantity</th>
+                                <th name="th_priceunit" class="text-right">Unit Price</th>
+                                <th name="th_discount" t-if="display_discount" class="text-right" groups="product.group_discount_per_so_line">
+                                    <span>Disc.%</span>
+                                </th>
+                                <th name="th_subtotal" class="text-right">
+                                    <span groups="account.group_show_line_subtotals_tax_excluded">Amount</span>
+                                    <span groups="account.group_show_line_subtotals_tax_included">Total Price</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+
+                            <t t-set="current_subtotal" t-value="0"/>
+                            <t t-set="nr" t-value="0"/>
+
+                            <t t-foreach="sale.order_line" t-as="line">
+
+                                <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
+                                <t t-set="nr" t-value="nr + 1"/>
+
+                                <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
+                                    <t t-if="not line.display_type">
+                                        <td name="td_nr"><span t-esc="nr"/></td>
+                                        <td name="td_code"><span t-field="line.product_id.default_code"/></td>
+                                        <td name="td_name"><span t-field="line.name"/></td>
+                                        <td name="td_quantity" class="text-right">
+                                            <span t-field="line.product_uom_qty"/>
+                                            <span t-field="line.product_uom"/>
+                                        </td>
+                                        <td name="td_priceunit" class="text-right">
+                                            <span t-field="line.price_unit"/>
+                                        </td>
+                                        <td t-if="display_discount" class="text-right" groups="product.group_discount_per_so_line">
+                                            <span t-field="line.discount"/>
+                                        </td>
+                                        <td name="td_subtotal" class="text-right o_price_total">
+                                            <span t-field="line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                            <span t-field="line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
+                                        </td>
+                                    </t>
+                                    <t t-if="line.display_type == 'line_section'">
+                                        <td name="td_section_line" colspan="99">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <t t-set="current_section" t-value="line"/>
+                                        <t t-set="current_subtotal" t-value="0"/>
+                                    </t>
+                                    <t t-if="line.display_type == 'line_note'">
+                                        <td name="td_note_line" colspan="99">
+                                            <span t-field="line.name"/>
+                                        </td>
+                                    </t>
+                                </tr>
+
+                                <t t-if="current_section and (line_last or sale.order_line[line_index+1].display_type == 'line_section')">
+                                    <tr class="is-subtotal text-right">
+                                        <td name="td_section_subtotal" colspan="99">
+                                            <strong class="mr16">Subtotal</strong>
+                                            <span
+                                                t-esc="current_subtotal"
+                                                t-options='{"widget": "monetary", "display_currency": sale.pricelist_id.currency_id}'
+                                            />
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <div class="clearfix" name="total_summary">
+                        <div id="total" class="row" name="total">
+                            <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
+                                <table class="table table-sm">
+                                    <tr class="border-black o_subtotal">
+                                        <td>Netto weight</td>
+
+                                        <td class="text-right">
+
+                                        </td>
+                                    </tr>
+                                    <tr class="border-black o_subtotal">
+                                        <td>Brutto weight</td>
+
+                                        <td class="text-right">
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <strong>Additional Packing Info:</strong>
+                    </div>
+                    <table class="table table-sm o_main_table">
+                        <t t-foreach="o.get_lot_info()" t-as="lot_info">
+                            <tr>
+                                <td><span t-esc="lot_info"/></td>
+                            </tr>
+                        </t>
+                    </table>
+
+
+
+                </div>
+            </t>
+         </t>
+    </template>
+
+
+    <template id="report_packinglist">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="um_stock_report.report_packinglist_document" t-lang="o.partner_id.lang"/>
+        </t>
+    </template>
+</odoo>

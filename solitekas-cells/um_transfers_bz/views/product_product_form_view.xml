@@ -1,0 +1,12 @@
+<odoo> 
+    <record id="product_product_bz" model="ir.ui.view">
+        <field name="name">umina.product.product.buffer.zone</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='property_stock_inventory']" position="after">
+                <field name='buffer_zone_id' options="{'no_create':True}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

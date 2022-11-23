@@ -1,0 +1,154 @@
+<odoo>
+    <data noupdate="1">
+        <record id="priekinis_gg" model="product.product">
+            <field name="name">Priekinis stiklas GG 60 celių moduliui ARC 1770x1049, 2mm</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="galinis_gg" model="product.product">
+            <field name="name">Galinis juodas GG 60 celių moduliui ARC 1770x1049, 2mm</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="priekinis_stiklas_1" model="product.product">
+            <field name="name">Plėvelė stiklas moduliui 1</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="priekinis_stiklas_2" model="product.product">
+            <field name="name">Plėvelė stiklas moduliui 2</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="tongwei_m6" model="product.product">
+            <field name="name">Tongwei M6 celės</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="litavimo_juosta_siaura" model="product.product">
+            <field name="name">Litavimo juosta siaura 0,32 mm</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="litavimo_skystis" model="product.product">
+            <field name="name">Litavimo skystis</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="litavimo_juosta_plati" model="product.product">
+            <field name="name">Litavimo juosta plati 5.00x0.40 (JUODA) arba (sidabrinė)</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="split_box_minus" model="product.product">
+            <field name="name">[SPLIT JBOX - ] Jungties dėžutė stiklas stiklas moduliui (-)</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="split_box_m" model="product.product">
+            <field name="name">[SPLIT JBOX M] Jungties dezute stiklas stiklas moduliui (vidurinis)</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="split_box_plius" model="product.product">
+            <field name="name">[SPLIT JBOX +] Jungties dėžutė stiklas stiklas moduliui (+)</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="coveme_label" model="product.product">
+            <field name="name">Coveme label 30mmx25m</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="silikono_hermetikas_juodas" model="product.product">
+            <field name="name">Silikono hermetikas Juodas</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="silikono_klijai_juodi" model="product.product">
+            <field name="name">Silikono klijai Juodi</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="lipni_pet_juosta" model="product.product">
+            <field name="name">Lipni PET juosta atspari karščiui</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="dvipuse_lipni_juosta" model="product.product">
+            <field name="name">Dvipusio lipnumo juosta 25 mm juoda</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="juodas_aliuminio_remas_ilgas" model="product.product">
+            <field name="name">Juodas aliuminio rėmas ilgas 1782</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="juodas_aliuminio_remas_trumpas" model="product.product">
+            <field name="name">Juodas aliuminio rėmas trumpas 1061mm</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="mediniai_padeklai" model="product.product">
+            <field name="name">Mediniai padėklai 60cel GG FRAMED moduliui</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="plastikinis_intarpas" model="product.product">
+            <field name="name">Plastikinis intarpas</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="plastikinis_kampas_gg" model="product.product">
+            <field name="name">Plastikinis kampas reminiam GG 28 mm</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="kartoninis_dangtis_glass" model="product.product">
+            <field name="name">Kartoninis dangtis Glass Framed modulimas</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="kartono_kampas" model="product.product">
+            <field name="name">Kartono kampas 1113 mm</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="kartoniniai_kampai_stnd_gf" model="product.product">
+            <field name="name">Kartoniniai dugnai STND/GF paletėms</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+        <record id="kampukai" model="product.product">
+            <field name="name">Kampukai</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">none</field>
+            <field name="route_ids" eval="[(6,0,[ref('purchase_stock.route_warehouse0_buy'), ref('um_mrp_data.push_to_vbz')])]"/>
+        </record>
+    </data>
+</odoo>

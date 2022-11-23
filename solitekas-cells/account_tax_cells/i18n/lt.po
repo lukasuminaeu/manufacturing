@@ -1,0 +1,37 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* account_tax_cells
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e-20190905\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-17 14:09+0000\n"
+"PO-Revision-Date: 2020-01-17 14:09+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_tax_cells
+#: model:ir.model,name:account_tax_cells.model_account_tax
+msgid "Tax"
+msgstr ""
+
+#. module: account_tax_cells
+#: model:ir.model.fields,field_description:account_tax_cells.field_account_tax__tax_paragraph
+msgid "Tax Article"
+msgstr "Mokesčių nuoroda"
+
+#. module: account_tax_cells
+#: model:account.tax,tax_paragraph:account_tax_cells.tax_41
+msgid "The VAT tax of 0% is charged for the goods according t the 1 part of 41 paragraph of VAT law"
+msgstr "Prekės apmokestinamos taikant 0% PVM tarifą pagal PVM įst. 41 str. 1 dalį"
+
+#. module: account_tax_cells
+#: model:account.tax,tax_paragraph:account_tax_cells.tax_49
+msgid "The VAT tax of 0% is charged for the goods according t the 1 part of 49 paragraph of VAT law (Reverse charge)"
+msgstr "Prekės apmokestinamos taikant 0% PVM tarifą pagal PVM įst. 49 str. 1 dalį (Atvirkštinis apmokestinimas)"
+

@@ -1,0 +1,13 @@
+<odoo>
+
+    <record id="change_date_button" model="ir.ui.view">
+        <field name="name">mrp.production.change.date</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_assign']" position="after">
+                <button name="change_date_planned" type="object" class="btn btn-secondary" string="Change date"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

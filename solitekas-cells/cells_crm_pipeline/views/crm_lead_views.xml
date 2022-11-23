@@ -1,0 +1,92 @@
+<odoo>
+    <!--Inherit crm.lead Kanban-->
+    <record id="view_crm_lead_kanban_pipeline" model="ir.ui.view">
+        <field name="name">crm.lead.kanban.pipeline.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_lead_kanban"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//kanban/field[@name='activity_state']" position="after">
+                    <field name="hidden_stage" invisible="1"/>
+                    <field name="type" invisible="1"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="view_crm_lead_add_tags_cells_form" model="ir.ui.view">
+            <field name="name">crm.lead.cells.tags.inherited</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tag_ids']" position="after">
+                    <field name="delivery_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                    <field name="installation_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                    <field name="supplier_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                </xpath>
+                <xpath expr="//group[@name='lead_priority']/field[@name='tag_ids']" position="after">
+                    <field name="delivery_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                    <field name="installation_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                    <field name="supplier_tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                </xpath>
+
+                <xpath expr="//label[@for='probability']" position="replace">
+                </xpath>
+                <xpath expr="//field[@name='probability']" position="after">
+                    <field name="cell_probability" widget="float" class="oe_inline"/>
+                </xpath>
+                <xpath expr="//field[@name='probability']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+
+                <xpath expr="//header/field[@name='stage_id']" position="replace">
+                    <field name="stage_id" widget="statusbar"
+                        options="{'clickable': '1', 'fold_field': 'fold'}"
+                        domain="['|', ('team_id', '=', team_id), ('team_id', '=', False)]"
+                        attrs="{'invisible': [('active', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+    <record id="view_cells_crm_case_opportunities_filter_form" model="ir.ui.view">
+            <field name="name">crm.lead.search.opportunity.cells</field>
+            <field name="model">crm.lead</field>
+            <field name="priority">15</field>
+            <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+            <field name="arch" type="xml">
+                <search string="Search Opportunities">
+                    <field name="delivery_tag_ids" string="Delivery Tags"/>
+                    <field name="installation_tag_ids" string="Installation Tags"/>
+                    <field name="supplier_tag_ids" string="Supplier Tags"/>
+                </search>
+            </field>
+        </record>
+
+
+    <record id="view_cells_crm_case_stages_filter" model="ir.ui.view">
+            <field name="name">crm.stage.form</field>
+            <field name="model">crm.stage</field>
+            <field name="priority">15</field>
+            <field name="inherit_id" ref="crm.crm_stage_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='team_id']" position="replace">
+                    <field name="team_id" widget="many2many_tags" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                    <field name="cell_probability"/>
+                </xpath>
+            </field>
+        </record>
+
+    <record id="view_cells_crm_case_stages_tree" model="ir.ui.view">
+            <field name="name">crm.stage.tree</field>
+            <field name="model">crm.stage</field>
+            <field name="priority">15</field>
+            <field name="inherit_id" ref="crm.crm_stage_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='team_id']" position="replace">
+                    <field name="team_id" widget="many2many_tags"/>
+                    <field name="cell_probability"/>
+                </xpath>
+            </field>
+        </record>
+</odoo>

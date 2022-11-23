@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+        <!-- Normally, operation types (as well as warehouses, locations etc.) are noupdate='1' data
+        which is why we first need to find external identifier records and make them updateable again-->
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module','=','stock'),('name','=','route_warehouse0_mto')]"/>
+            </function>
+            <value eval="{'noupdate': False}"/>
+        </function>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module','=','mrp'),('name','=','route_warehouse0_manufacture')]"/>
+            </function>
+            <value eval="{'noupdate': False}"/>
+        </function>
+
+        <record id="stock.route_warehouse0_mto" model='stock.location.route'>
+            <field name="active">True</field>
+        </record>
+
+        <record id="mrp.route_warehouse0_manufacture" model='stock.location.route'>
+            <field name="active">True</field>
+        </record>
+        
+        <record id="push_to_vbz" model='stock.location.route'>
+            <field name="active">True</field>
+            <field name="name">Automatinis perstūmimas į VBZ</field>
+        </record>
+
+        <record id="push_to_packing_zone" model='stock.location.route'>
+            <field name="active">True</field>
+            <field name="name">Automatinis perstūmimas į pakavimo zoną</field>
+        </record>
+    </data>
+</odoo>

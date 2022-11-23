@@ -1,0 +1,17 @@
+<odoo>
+    <record id="is_final_product_form" model="ir.ui.view">
+        <field name="name">umina.product.is.final</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='categ_id']" position="after">
+                <field name='is_final_product'/>
+            </xpath>
+
+            <xpath expr="//group[@name='stock_property']" position="attributes">
+                <attribute name="groups">base.group_user</attribute>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

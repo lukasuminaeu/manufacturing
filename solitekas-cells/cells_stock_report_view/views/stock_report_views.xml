@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- <record id="stock_report_view_search_view" model="ir.ui.view">
+            <field name="name">stock.report.view.search</field>
+            <field name="model">stock.report.view</field>
+            <field name="arch" type="xml">
+              <search>
+                    <filter string="Work Center" name="work_centers" domain="[('resource_id', '!=', False)]"/>
+              </search>
+            </field>
+        </record> -->
+
+        <record id="stock_report_view_action" model="ir.actions.client">
+            <field name="name">Stock Analysis</field>
+            <field name="tag">stock_report_view_action</field>
+        </record>
+
+        <menuitem id="stock_report_view_menuitem"
+            name="Stock Analysis"
+            parent="stock.menu_warehouse_report"
+            action="stock_report_view_action"/>
+        
+</odoo>

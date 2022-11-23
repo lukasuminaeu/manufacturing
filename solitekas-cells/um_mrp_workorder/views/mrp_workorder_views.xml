@@ -1,0 +1,84 @@
+<odoo>
+    <record id="mrp_workorder_tablet_view_form_inherit_print" model="ir.ui.view">
+        <field name="name">mrp.workorder.view.form.inherit.print</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet_menu"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('workorder_menu')]" position="inside">
+                <div class="col-6">
+                    <button name="print_workorder_label" type="object" class="btn btn-primary btn-block" string="Print Label"/>
+                </div>
+
+                <xpath expr="//field[@name='additional']" position="after">
+                    <field name="hide_continue_consumption" invisible="1"/>
+                </xpath>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="mrp_workcenter_view_inherit" model="ir.ui.view">
+        <field name="name">mrp.workcenter.form.inherit</field>
+        <field name="model">mrp.workcenter</field>
+        <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="before">
+                <field name="report_id"/>
+            </field>
+
+            <xpath expr="//sheet//group[1]//group[1]"  position="inside">
+                <field name="hide_automatic_validation" />
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <record id="um_mrp_workorder.mrp_workorder_view_form_tablet" model="ir.ui.view">
+        <field name="name">um_mrp_workorder.mrp_workorder_view_form</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
+        <field name="arch" type="xml">
+            <!-- Button for auto validating all steps in workorder -->
+            <xpath expr="//div[@class='o_actions']" position="inside">
+                <field name="component_intermediate_product" invisible="1" />
+                <field name="hide_automatic_validation" invisible="1" />
+                <button class="btn-primary" 
+                    name="automatic_workorder_validation" 
+                    type="object" 
+                    string="Automatic validation" 
+                    attrs="{'invisible': [
+                        '|',
+                        ('hide_automatic_validation', '=', True),
+                        '|',
+                        ('product_tracking', '!=', 'serial'),
+                        '&#38;',
+                        ('product_tracking', '=', 'serial'),
+                        ('component_intermediate_product', '=', True),
+                    ]}"
+                    barcode_trigger="automatic_validation"
+                />
+            </xpath>
+
+            <!-- <xpath expr="//field[@name='finished_lot_id']/../.." position="attributes"> -->
+            <xpath expr="//field[@name='finished_lot_id']" position="attributes">
+                <attribute name="attrs">
+                    {
+                        'invisible': [('component_intermediate_product', '=', True), ('use_lot_for_finished_product', '=', True)],
+                        'readonly': [('use_lot_for_finished_product', '=', True)],
+                    }
+                </attribute>
+
+                <!-- <attribute name="attrs">
+                    {
+                        'invisible': [('component_intermediate_product', '=', True)],
+                        'readonly': 1,
+                    }
+                </attribute> -->
+            </xpath>
+
+        </field>
+    </record>
+
+
+</odoo>

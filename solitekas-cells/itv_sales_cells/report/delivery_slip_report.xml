@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="report.paperformat" id="paperformat_report_deliver_slip_solitek_cells">
+        <field name="name">Solitek Cells (Report Sale)</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">15</field>
+        <field name="margin_bottom">28</field>
+        <field name="margin_right">7</field>
+        <field name="margin_left">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">10</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <template id="report_delivery_document_inherit" inherit_id="stock.report_delivery_document" priority="20">
+
+        <xpath expr="//t/t[3]" position="replace"/>
+        <xpath expr="//div[div[@name='div_sched_date']]" position="inside">
+            <div t-if="o.origin" class="col-auto">
+                <strong>Delivery conditions: </strong>
+                <p>EXW</p>
+            </div>
+        </xpath>
+        <xpath expr="//div[@class='page']/h2" position="replace">
+            <div class="row" style="padding-top:75px;">
+                <div class="col-8"/>
+                <div class="col-4">
+                    <div t-if="o.state" name="div_sched_date" class="text-right">
+                        <strong>Date:</strong>
+                        <p t-if="o.state == 'done'" t-field="o.date_done" t-options='{"widget": "date"}'/>
+                        <p t-if="o.state != 'done'" t-field="o.scheduled_date" t-options='{"widget": "date"}'/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>
+                        <span t-field="o.name"/><br/>
+                        <t t-if="invoice_id"><span>No. <span t-field="invoice_id.invoice_origin"/></span></t>
+                    </h2>
+                </div>
+            </div>
+            <div class="row mt32 mb32">
+                <div class="col-4">
+                    <span><strong>Sender: </strong></span>
+                    <span t-field="o.company_id.partner_id" t-options='{"widget": "contact", "fields": ["name", "address"], "no_marker": true}'/>
+
+                </div>
+                <div class="col-4">
+                    <span><strong>Receiver: </strong></span>
+                    <t t-if="o.partner_id.parent_id">
+                        <span t-field="o.partner_id.parent_id" t-options='{"widget": "contact", "fields": ["name", "address"], "no_marker": True}' />
+                    </t>
+                    <t t-else="">
+                        <span t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["name", "address"], "no_marker": True}' />
+                    </t>
+                </div>
+                <div class="col-4">
+                    <strong>Shipping Address:</strong>
+                    <div t-esc="partner" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//table[@name='stock_move_table']/thead/tr" position="replace">
+            <tr>
+                <th><strong>Pos</strong></th>
+                <th><strong>Code</strong></th>
+                <th><strong>Description</strong></th>
+                <th><strong>Quantity</strong></th>
+                <th class="text-right"><strong>Netto W, (kg)</strong></th>
+                <th class="text-right"><strong>Brutto W, (kg)</strong></th>
+            </tr>
+        </xpath>
+        <xpath expr="//table[@name='stock_move_table']/tbody/tr" position="replace">
+            <tr t-foreach="lines" t-as="move">
+                <t t-set="product_uom" t-value="move[0].product_uom"/>
+                <td/>
+                <td>
+                    <span t-field="move.product_id.default_code"/>
+                </td>
+                <td>
+                    <span t-field="move.product_id.name"/>
+                    <p t-if="o.picking_type_code == 'outgoing'">
+                        <span t-field="move.product_id.sudo().description_pickingout"/>
+                    </p>
+                    <p t-if="o.picking_type_code == 'incoming'">
+                        <span t-field="move.product_id.sudo().description_pickingin"/>
+                    </p>
+                </td>
+                <td class="text-center">
+                    <span t-esc="'{:.0f}'.format(move.product_uom_qty)"/>
+<!--                    <span t-field="move.product_uom"/>-->
+                </td>
+                <td class="text-right">
+                    <span t-esc="move.product_id.weight_netto * move.product_uom_qty"/>
+                </td>
+                <td class="text-right">
+                    <span t-esc="move.product_id.weight * move.product_uom_qty"/>
+                </td>
+            </tr>
+            <tr class="border-black o_total">
+                <td/>
+                <td/>
+                <td name="td_amount_total_label" class="text-right"><strong>Total</strong></td>
+                <td class="text-center">
+                    <t t-esc="'{:.0f}'.format((sum(l.product_uom_qty for l in o.move_lines.filtered(lambda x: x.product_uom_qty))))"/>
+                </td>
+                <td class="text-right">
+                    <t t-esc="'{:.2f}'.format((sum((l.product_id.weight_netto * l.product_uom_qty) for l in o.move_lines.filtered(lambda x: x.product_uom_qty))))"/>
+                </td>
+                <td class="text-right">
+                    <t t-esc="'{:.2f}'.format((sum((l.product_id.weight * l.product_uom_qty) for l in o.move_lines.filtered(lambda x: x.product_uom_qty))))"/>
+                </td>
+            </tr>
+        </xpath>
+        <xpath expr="//table[@name='stock_move_table']" position="after">
+            <div class="row mt32 mb32">
+                <div class="col-4 text-right">
+                    <span>Total: </span>
+                </div>
+                <div class="col-4">
+                    <span>Netto weight</span><br/>
+                    <span>Brutto weight</span><br/>
+                    <span>Difference between netto and brutto</span><br/>
+                </div>
+                <div class="col-2 text-right">
+                    <span t-esc="'{:.2f}'.format(sum((l.product_id.weight_netto * l.product_uom_qty) for l in o.move_lines.filtered(lambda x: x.product_uom_qty)))"/><br/>
+                    <span t-esc="'{:.2f}'.format(sum((l.product_id.weight * l.product_uom_qty) for l in o.move_lines.filtered(lambda x: x.product_uom_qty)))"/><br/>
+                    <span t-esc="'{:.2f}'.format(
+                        sum((l.product_id.weight * l.product_uom_qty) for l in o.move_lines.filtered(lambda x: x.product_uom_qty)) -
+                        sum((l.product_id.weight_netto * l.product_uom_qty) for l in o.move_lines.filtered(lambda x: x.product_uom_qty))
+                    )"/><br/>
+                </div>
+                <div class="col-2 text-left">
+                    <span>kg</span><br/>
+                    <span>kg</span><br/>
+                    <span>kg</span><br/>
+                </div>
+            </div>
+
+            <div class="row mb32">
+                <div class="col-5">
+                    <span>Consignors stamp and signature: </span>
+                </div>
+                <div class="col-7 border-bottom"/>
+            </div>
+            <div class="row mt32 mb32">
+                <div class="col-5">
+                    <span>Consignors stamp and signature: </span>
+                </div>
+                <div class="col-7 border-bottom"/>
+            </div>
+        </xpath>
+    </template>
+
+    <report
+        string="Delivery Slip"
+        id="stock.action_report_delivery"
+        model="stock.picking"
+        report_type="qweb-pdf"
+        paperformat="paperformat_report_deliver_slip_solitek_cells"
+        name="stock.report_deliveryslip"
+        file="stock.report_deliveryslip"
+        print_report_name="'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)"
+    />
+</odoo>

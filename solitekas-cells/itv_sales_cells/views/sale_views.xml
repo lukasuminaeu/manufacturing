@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+
+            <xpath expr="//button[@name='action_cancel']" position="replace">
+                <button name="%(sale_order_cancel_action)d" states="draft,sent,sale" type="action" string="Cancel" context="{'default_order_id': active_id}"/>
+            </xpath>
+
+            <xpath expr="//field[@name='client_order_ref']" position="after">
+                <field name="cancel_reason" readonly="1"/>
+            </xpath>
+
+            <xpath expr="//form/sheet/group/group[2]/div" position="replace"/>
+            <xpath expr="//form/sheet/group/group[2]/div" position="replace"/>
+            <xpath expr="//form/sheet/group/group/field[@name='date_order']" position="replace"/>
+            <xpath expr="//form/sheet/group/group/field[@name='date_order']" position="replace">
+                <field name="commitment_date" string="Commitment Date"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_sale_order_calendar_inherit" model="ir.ui.view">
+        <field name="name">sale.order.calendar</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sale_order_calendar"/>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+
+            <xpath expr="//calendar" position="replace">
+                <calendar string="Leads Generation" date_start="commitment_date" color="user_id">
+                    <field name="name"/>
+                </calendar>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

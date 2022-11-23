@@ -1,0 +1,52 @@
+<odoo>
+    <record id="tablet_add_repairing" model="ir.ui.view">
+        <field name="name">umina.tablet.repair.adjusted</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='do_finish']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_open_manufacturing_order']" position="attributes">
+                <attribute name="string">Done &amp; Next</attribute>
+                <attribute name="attrs">{'invisible': ['|', '|', ('is_user_working', '=', False), ('is_last_step', '!=', True), ('is_last_unfinished_wo', '=', False)]}</attribute>
+            </xpath>
+
+            <xpath expr="//button[@name='action_first_skipped_step']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <button name="action_first_skipped_step" type="object" string="Finish steps" attrs="{'invisible': ['|', '|', '|', ('is_user_working', '=', False), ('is_last_step', '!=', True), ('state', '!=', 'progress'), ('skipped_check_ids', '=', [])]}" class="btn-primary" barcode_trigger="finish"/>
+
+
+            <xpath expr="//field[@name='id']" position="replace">
+                <button name="action_work_order_kanban" type="object" string="" icon="fa-arrow-left" class="btn-secondary o_workorder_icon_btn"/>
+            </xpath>
+
+
+            <xpath expr="//button[@name='action_continue'][hasclass('btn-secondary')][1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> 
+            <xpath expr="//button[@name='action_continue'][hasclass('btn-secondary')][last()]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> 
+
+            <xpath expr="//button[@name='action_next'][hasclass('btn-secondary')][1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> 
+            <xpath expr="//button[@name='action_next'][hasclass('btn-secondary')][last()]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> 
+
+            <!-- Hide these buttons on 'pass/fail' step. Because ater clicking pass and then going to previous 
+            again, somehow 'next' button starterd appearing. -->
+            <xpath expr="//button[@name='action_next'][hasclass('btn-primary')][1]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('test_type', '=', 'passfail'), '|', ('is_user_working', '=', False),'|', ('is_last_step', '=', True), '&amp;', '|', ('quality_state', '=', 'none'), ('test_type', '!=', 'passfail'), ('test_type', '!=', 'instructions')]}</attribute>
+            </xpath> 
+            <xpath expr="//button[@name='action_next'][hasclass('btn-primary')][2]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('test_type', '=', 'passfail'), '|', '|', '|', ('is_user_working', '=', False), ('is_last_step', '=', True), ('test_type', 'not in', ['register_consumed_materials', 'register_byproducts', 'picture']), ('component_qty_to_do', '&lt;', 0)]}</attribute>
+            </xpath> 
+
+        </field>
+    </record>
+</odoo>

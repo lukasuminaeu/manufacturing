@@ -1,0 +1,118 @@
+<odoo>
+    <data>
+        <!--            TODO: is this correct warehouse -->
+        <!--            stock.warehouse0-->
+        <!--            stock.stock_warehouse_shop0-->
+        <record id="operation_type_buferine_zona" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">Papildyti buferinę zoną</field>
+            <field name="sequence_code">BZ</field>
+            <field name="barcode">STC-BZ</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">internal</field>
+            <field name="show_operations" eval="1"/>
+            <field name="use_create_lots" eval="1"/>
+            <field name="use_existing_lots" eval="1"/>
+            <field name="show_entire_packs" eval="0"/>
+            <field name="default_location_src_id" ref="stock_location_sandelis"/>
+            <field name="default_location_dest_id" ref="work_location_2"/>
+        </record>
+
+
+        <!-- <record id="operation_type_buferine_zona" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">Papildyti buferinę zoną</field>
+            <field name="sequence_code">BZ</field>
+            <field name="barcode">STC-BZ</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">internal</field>
+            <field name="show_operations" eval="1"/>
+            <field name="use_create_lots" eval="1"/>
+            <field name="use_existing_lots" eval="1"/>
+            <field name="show_entire_packs" eval="0"/>
+            <field name="default_location_src_id" ref="stock_location_sandelis"/>
+            <field name="default_location_dest_id" ref="stock_location_partner_production_gamyba"/>
+        </record> -->
+
+        <record id="operation_type_auto_pervezimas" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">Automatinis perstūmimas iš fizinės BZ į VBZ</field>
+            <field name="sequence_code">VBZ</field>
+            <field name="barcode">STC-VBZ</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">internal</field>
+            <field name="show_operations" eval="1"/>
+            <field name="use_create_lots" eval="1"/>
+            <field name="use_existing_lots" eval="1"/>
+            <field name="show_entire_packs" eval="0"/>
+            <field name="default_location_src_id" ref="work_location_2"/>
+            <field name="default_location_dest_id" ref="stock_location_partner_production_gamyba"/>
+        </record>
+
+        <!-- <record id="cells_operation_packing" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name"></field>
+            <field name="sequence_code">VBZ</field>
+            <field name="barcode">STC-VBZ</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">mrp_operation</field>
+            <field name="use_existing_lots" eval="0"/>
+            <field name="default_location_src_id" ref="stock_location_sandelis"/>
+            <field name="default_location_dest_id" ref="stock_location_sandelis"/>
+        </record> -->
+
+        <record id="cells_operation_packing" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">Pakavimas</field>
+            <field name="sequence_code">PACKING</field>
+            <field name="barcode">STC-PACKING</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">internal</field>
+            <field name="show_operations" eval="1"/>
+            <field name="use_existing_lots" eval="1"/>
+            <field name="default_location_src_id" ref="stock_location_sandelis"/>
+            <field name="default_location_dest_id" ref="stock_location_sandelis"/>
+        </record>
+
+        <record id="operation_type_auto_pervezimas_virtual" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">Automatinis pervežimas į virtualią buferinę zoną</field>
+            <field name="sequence">0</field> 
+            <field name="sequence_code">VBZ</field>
+            <field name="barcode">STC-VBZ</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">mrp_operation</field>
+            <field name="use_existing_lots" eval="0"/>
+            <field name="default_location_src_id" ref="work_location_2"/>
+            <field name="default_location_dest_id" ref="stock_location_sandelis"/>
+        </record>
+
+        <record id="operation_type_auto_pervezimas_packing_zone" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">Automatinis pervežimas į pakavimo zoną</field>
+            <field name="sequence">0</field> 
+            <field name="sequence_code">PPZ</field>
+            <field name="barcode">STC-PPZ</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">mrp_operation</field>
+            <field name="use_existing_lots" eval="1"/>
+            <!-- WH/Stock/Gamyba/Sandelis -> WH/Packing Zone -->
+            <field name="default_location_src_id" ref="work_location_2"/>
+            <field name="default_location_dest_id" ref="stock.location_pack_zone"/>
+        </record>
+
+        <record id="operation_type_grazinimas_is_vbf" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">Grąžinimas iš VBZ</field>
+            <field name="sequence">0</field> 
+            <field name="sequence_code">GVBZ</field>
+            <field name="barcode">STC-GVBZ</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">internal</field>
+            <field name="use_existing_lots" eval="1"/>
+            <field name="default_location_src_id" ref="work_location_2"/>
+            <field name="default_location_dest_id" ref="stock_location_sandelis"/>
+        </record>
+
+    </data>
+</odoo>

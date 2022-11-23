@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_dpd_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.dpd</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="90"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="DPD" id="dpd" string="DPD" data-key="base">
+                    <h2>DPD Management</h2>
+                    <div class="row mt16 o_settings_container" id="dpd_setting">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Pickup time from</span>
+                                <div class="text-muted content-group mt16">
+                                    <field name="pickup_time_from" class="text-center oe_inline"/>
+                                    <span>(HH:mm)</span>
+                                </div>
+                                <span class="o_form_label">Pickup time to</span>
+                                <div class="text-muted content-group mt16">
+                                    <field name="pickup_time_to" class="text-center oe_inline"/>
+                                    <span>(HH:mm)</span>
+                                </div>
+                                <span groups="base.group_no_one" class="o_form_label">Production
+                                    <field name="is_production" class="text-center oe_inline"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="dpd_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'base', 'bin_size': False}</field>
+    </record>
+
+    <menuitem id="dpd_config_settings_menu"
+              name="DPD Settings"
+              parent="stock.menu_stock_config_settings"
+              sequence="0"
+              action="dpd_config_settings_action"
+              groups="base.group_system"/>
+</odoo>

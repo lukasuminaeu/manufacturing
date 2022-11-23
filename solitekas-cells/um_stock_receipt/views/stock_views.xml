@@ -1,0 +1,93 @@
+<odoo>
+    <record id="view_picking_split_package_form" model="ir.ui.view">
+        <field name="name">stock.picking.split.package.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='move_ids_without_package']/tree/button[@name='action_show_details']" position="attributes">
+                <attribute name="attrs">{}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_put_in_pack']" position="after">
+                <button class="oe_highlight" name="action_generate_picking_packings" type="object" string="Generate Packing Report"/>
+            </xpath>
+            <xpath expr="//field[@name='owner_id']/../.." position="after">
+                <group>
+                    <field name="fifo_or_select" attrs="{'invisible':[('state','in',['draft','cancel','done'])]}"/>
+                    <label for="select_package_id" string="Use Package" attrs="{'invisible':[('fifo_or_select','!=','select')]}"/>
+                    <div class="oe_row" attrs="{'invisible':[('fifo_or_select','!=','select')]}">
+                        <field name="select_package_id" style="width:20%%"/>
+                        <!-- <button name="remove_selected_package" type="object" class="btn btn-secondary" icon="fa-backward" string="Reverse" style="width:15%%"/> -->
+                        <!-- <button name="remove_selected_packages" type="object" class="btn btn-secondary" icon="fa-fast-backward" string="Clear All" style="width:15%%"/> -->
+                    </div>
+                </group>
+                <field name="select_packages_ids">
+                    <tree editable="bottom" create="0">
+                        <field name="package_id" readonly="1" force_save="1"/>
+                        <field name="product_id" readonly="1" force_save="1"/>
+                        <field name="quant_used"/>
+                        <field name="quant_inside"/>
+                    </tree>
+                </field>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_stock_move_operations_receipt_split" model="ir.ui.view">
+        <field name="name">stock.move.operations.inherit.receipt.split.form</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_stock_move_operations"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='next_serial']" position="before">
+                <!-- <field name="receipt_label" widget="switch_one2many_boolean" options="{'one2many_field': 'move_line_nosuggest_ids'}"/> -->
+                <!-- <field name="receipt_line_qty" attrs="{'invisible': [('receipt_label', '=', True)]}"/> -->
+                <field name="receipt_line_qty" />
+                <label for="qty_per_package"/>
+                <div class="o_row">
+                    <span><field name="qty_per_package"/></span>
+                    <button name="action_generate_receipt_lines" type="object" class="btn-link" title="Generate Lines">
+                    <!-- <button name="action_generate_receipt_lines" type="object" class="btn-link" title="Generate Lines" attrs="{'invisible': [('receipt_label', '=', True)]}"> -->
+                        <span>Generate Lines</span>
+                    </button>
+                    <button name="action_clear_lines_show_details" type="object" class="btn-link" title="Clear Lines" attrs="{'invisible': [('qty_per_package', '=', 0)]}">
+                        <span>Clear All</span>
+                    </button>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='product_uom_category_id']" position="after">
+                <field name="qty_exceeded" invisible="1"/>
+                <div class="alert alert-danger" role="alert" colspan="2" attrs="{'invisible': [('qty_exceeded', '=', False)]}">
+                    Quantity done exceeds demand
+                </div>
+            </xpath>
+
+            <xpath expr="//field[@name='qty_per_package']" position="after">
+                <button string="Print labels" type="object" name="action_open_label_layout" />
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_stock_move_line_operations_receipt_split" model="ir.ui.view">
+        <field name="name">stock.move.line.operations.inherit.receipt.split.form</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_operation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lot_id']" position="attributes">
+                <attribute name="widget">many2one_fastcreate</attribute>
+                <attribute name="attrs">{'required': [('fastcreate', '=', True)]}</attribute>
+                <attribute name="options">{'fastcreate': 'fastcreate', 'next_field': 'qty_done'}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='result_package_id']" position="after">
+                <field name="fastcreate" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='location_dest_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!-- Removing widget, because by clicking "enter" it was breaking line and that is not desired functionality -->
+            <xpath expr="//field[@name='lot_name']" position="attributes">
+                <attribute name="widget">None</attribute>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

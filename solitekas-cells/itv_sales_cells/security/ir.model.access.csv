@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_itv_sale_cells_sale_cancel_reason_manager,itv_sale_cells.sale.cancel.reason.manager,model_sale_cancel_reason,sales_team.group_sale_manager,1,1,1,1
+access_itv_sale_cells_sale_cancel_reason_salesman,itv_sale_cells.sale.cancel.reason.salesman,model_sale_cancel_reason,sales_team.group_sale_salesman,1,0,0,0
+access_itv_sale_cells_sale_cancel_reason_user,itv_sale_cells.sale.cancel.reason.user,model_sale_cancel_reason,base.group_user,1,0,0,0

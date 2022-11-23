@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="inherit_stocks_location" model="ir.ui.view">
+            <field name="name">dpd.stock.location.form.enable.button</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='usage']" position="after">
+                    <field name="is_dpd_buttons_enabled" string="DPD buttons ON"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

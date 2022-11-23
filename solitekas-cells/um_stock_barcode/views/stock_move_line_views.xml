@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="um_stock_barcode.stock_move_line_product_selector" model="ir.ui.view">
+        <field name="name">um_stock_barcode.stock.product.selector</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock_barcode.stock_move_line_product_selector"/>
+        <field name="arch" type="xml">
+            <field name="location_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
+            </field>
+
+            <field name="location_dest_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_open': True}</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>

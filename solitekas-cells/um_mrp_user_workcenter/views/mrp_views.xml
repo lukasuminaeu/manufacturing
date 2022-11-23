@@ -1,0 +1,112 @@
+<odoo>
+
+    <record id="mrp_workorder_view_form_tablet" model="ir.ui.view">
+        <field name="name">mrp.workorder.view.form.inherit.user.tablet.new</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_workorder_actions')]" position="after">
+                <div class="workorder_bar_center o_workorder_bar_content">
+                    <div attrs="{'invisible': [('product_tracking', '=', 'none')]}">
+                        <field name="user_workcenter_id" options="{'no_open': True}" readonly="1"/>
+                    </div>
+                    <button name="refresh_tablet_view" type="object" string="" icon="fa-refresh" class="btn-secondary o_workorder_icon_btn"/>
+
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='finished_lot_id']" position="after">
+                <field name="use_lot_for_finished_product" invisible="1"/>
+            </xpath>
+            <!-- <xpath expr="//field[@name='finished_lot_id']/../.." position="attributes">
+                <attribute name="attrs">{'invisible': [('use_lot_for_finished_product', '=', True)]}</attribute>
+            </xpath> -->
+            <xpath expr="//div[hasclass('o_workorder_lot')]/../.." position="after">
+                <field name="component_stock_quant_domain" invisible="0" readonly="1">
+                    <tree>
+                        <field name="location_id"/>
+                        <field name="product_id" />
+                        <field name="lot_name" />
+                        <field name="produced_class" />
+                        <!-- <field name="available_quantity"/> -->
+                        <field name="quantity"/>
+
+                        <!-- <field name="name"/>
+                        <field name="produced_class"/>
+                        <field name="product_id"/>
+                        <field name="create_date"/>
+                        <field name="product_qty" string="WH Stock"/>
+                        <field name="stc_vbz_qty" string="VBZ Stock"/> -->
+                    </tree>
+                </field>
+
+                <field name="repaired_mo_domain" attrs="{'invisible': [('is_first_step', '=', False)]}" readonly="1">
+                    <tree>
+                        <field name="lot_producing_id"/>
+                    </tree>
+                </field>
+            </xpath>
+
+            <xpath expr="//field[hasclass('o_lot_number')]" position="before">
+                <field name="component_lot_id_domain" invisible="1" />
+            </xpath>
+
+            <xpath expr="//field[hasclass('o_lot_number')]" position="attributes">
+                <attribute name="domain">[('id','in', component_lot_id_domain)]</attribute>
+                <attribute name="options">{'no_quick_create':True,'no_create_edit':True,'no_open': True}</attribute>
+            </xpath>
+
+            <!-- #Inserting this here below, to hide control panel, because couldnt find a way
+            to hide it when form was opened by ir.actions.act_url -->
+            <form position="inside">
+                <script>
+                    $(document).ready(function(){
+                    $(".o_control_panel").hide();
+                    });
+                </script>
+            </form>
+        </field>
+    </record>
+    
+    <record id="mrp_workcenter_view_inherit" model="ir.ui.view">
+        <field name="name">mrp.workcenter.form.inherit</field>
+        <field name="model">mrp.workcenter</field>
+        <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="before">
+                <field name="custom_location_id"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- This is standard window action with the only change in domain:  -->
+    <!-- we only want user to see the final product -->
+    <record id="mrp.mrp_production_action" model="ir.actions.act_window">
+        <field name="name">Manufacturing Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.production</field>
+        <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+        <field name="view_id" eval="False"/>
+        <field name="search_view_id" ref="mrp.view_mrp_production_filter"/>
+        <field name="context">{'search_default_todo': True, 'default_company_id': allowed_company_ids[0]}</field>
+        <field name="domain">[('picking_type_id.active', '=', True), ('is_final_product','=',True)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            No manufacturing order found. Let's create one.
+            </p><p>
+            Consume <a name="%(product.product_template_action)d" type='action' tabindex="-1">components</a> and build finished products using <a name="%(mrp.mrp_bom_form_action)d" type='action' tabindex="-1">bills of materials</a>
+            </p>
+        </field>
+    </record>
+
+    <record id="mrp_bom_form_um_view" model="ir.ui.view">
+        <field name="name">mrp.bom.form.um</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='bom_line_ids']/tree/field[@name='operation_id']" position="after">
+                <field name="use_lot_for_finished_product"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

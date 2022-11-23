@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+
+
+    <!-- HERE I WILL DEFINE WINDOW ACTION FOR EVERY USER WORKCENTER SEPARETELY, BECAUSE AFTER RELOAD OF PAGE, WE COULDNT
+    MANAGE TO PUT DOMAIN THAT WOULD WORK. SO THIS WILL SOLVE THIS PROBLEM. -->
+
+    <!-- Priekinio stiklo/plėvelės -->
+    <record model="ir.actions.act_window" id="um_mrp_workorder_action_tablet_pr_stiklo_plevele">
+        <field name="name">Work Orders pr_stiklo_plevele</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('um_mrp_user_workcenter.workcenter_line_kanban_test11')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/>
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/> -->
+        <field name="target">fullscreen</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('workcenter_id', '=', ref('um_mrp_data.pr_stiklo_plevele_workcenter')),
+          ('workcenter_id.alternative_workcenter_ids', '=', ref('um_mrp_data.pr_stiklo_plevele_workcenter')),
+        ]"></field>
+        <field name="context">{}</field>
+        <!-- <field name="context">{'search_default_workcenter_id': active_id}</field> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+    </record>
+
+    <!-- Priekinio stiklo/plėvelės -->
+    <record model="ir.actions.act_window" id="um_mrp_workorder_action_tablet_pr_stiklo_plevele">
+        <field name="name">Work Orders pr_stiklo_plevele</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('um_mrp_user_workcenter.workcenter_line_kanban_test11')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/>
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/> -->
+        <field name="target">fullscreen</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('workcenter_id', '=', ref('um_mrp_data.pr_stiklo_plevele_workcenter')),
+          ('workcenter_id.alternative_workcenter_ids', '=', ref('um_mrp_data.pr_stiklo_plevele_workcenter')),
+        ]"></field>
+        <field name="context">{}</field>
+        <!-- <field name="context">{'search_default_workcenter_id': active_id}</field> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+    </record>
+
+    <!-- Stringer 1 -->
+    <record model="ir.actions.act_window" id="um_mrp_workorder_action_tablet_stringer">
+        <field name="name">Work Orders Stringer 1</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('um_mrp_user_workcenter.workcenter_line_kanban_test11')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/>
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/> -->
+        <field name="target">fullscreen</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('workcenter_id', '=', ref('um_mrp_data.stringer_workcenter')),
+          ('workcenter_id.alternative_workcenter_ids', '=', ref('um_mrp_data.stringer_workcenter')),
+        ]"></field>
+        <field name="context">{}</field>
+        <!-- <field name="context">{'search_default_workcenter_id': active_id}</field> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+    </record>
+
+    <!-- Stringer 2 -->
+    <record model="ir.actions.act_window" id="um_mrp_workorder_action_tablet_stringer_alternative">
+        <field name="name">Work Orders Stringer 2</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('um_mrp_user_workcenter.workcenter_line_kanban_test11')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/>
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/> -->
+        <field name="target">fullscreen</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('workcenter_id', '=', ref('um_mrp_data.stringer_alternative_workcenter')),
+          ('workcenter_id.alternative_workcenter_ids', '=', ref('um_mrp_data.stringer_alternative_workcenter')),
+        ]"></field>
+        <field name="context">{}</field>
+        <!-- <field name="context">{'search_default_workcenter_id': active_id}</field> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+    </record>
+
+    <!-- Surinkimas 1 -->
+    <record model="ir.actions.act_window" id="um_mrp_workorder_action_tablet_surinkimas">
+        <field name="name">Work Orders Surinkimas 1</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('um_mrp_user_workcenter.workcenter_line_kanban_test11')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/>
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/> -->
+        <field name="target">fullscreen</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('workcenter_id', '=', ref('um_mrp_data.surinkimas_workcenter')),
+          ('workcenter_id.alternative_workcenter_ids', '=', ref('um_mrp_data.surinkimas_workcenter')),
+        ]"></field>
+        <field name="context">{}</field>
+        <!-- <field name="context">{'search_default_workcenter_id': active_id}</field> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+    </record>
+
+    <!-- Surinkimas 2 -->
+    <record model="ir.actions.act_window" id="um_mrp_workorder_action_tablet_surinkimas_alternative">
+        <field name="name">Work Orders Surinkimas 2</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('um_mrp_user_workcenter.workcenter_line_kanban_test11')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/>
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/> -->
+        <field name="target">fullscreen</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('workcenter_id', '=', ref('um_mrp_data.surinkimas_alternative_workcenter')),
+          ('workcenter_id.alternative_workcenter_ids', '=', ref('um_mrp_data.surinkimas_alternative_workcenter')),
+
+        ]"></field>
+        <field name="context">{}</field>
+        <!-- <field name="context">{'search_default_workcenter_id': active_id}</field> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+    </record>
+
+    <!-- Galinio stiklo/plėvelės uždėjimas -->
+    <record model="ir.actions.act_window" id="um_mrp_workorder_action_tablet_galinio_st_plev">
+        <field name="name">Work Orders Galinio stiklo/plėvelės uždėjimas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('um_mrp_user_workcenter.workcenter_line_kanban_test11')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/>
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/> -->
+        <field name="target">fullscreen</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('workcenter_id', '=', ref('um_mrp_data.galinio_st_plev_workcenter')),
+          ('workcenter_id.alternative_workcenter_ids', '=', ref('um_mrp_data.galinio_st_plev_workcenter')),
+
+        ]"></field>
+        <field name="context">{}</field>
+        <!-- <field name="context">{'search_default_workcenter_id': active_id}</field> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+    </record>
+
+    <!-- EL -->
+    <record model="ir.actions.act_window" id="um_mrp_workorder_action_tablet_el">
+        <field name="name">Work Orders EL</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('um_mrp_user_workcenter.workcenter_line_kanban_test11')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/>
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/> -->
+        <field name="target">fullscreen</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('workcenter_id', '=', ref('um_mrp_data.el_workcenter')),
+          ('workcenter_id.alternative_workcenter_ids', '=', ref('um_mrp_data.el_workcenter')),
+        ]"></field>
+        <field name="context">{}</field>
+        <!-- <field name="context">{'search_default_workcenter_id': active_id}</field> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+    </record>
+
+    <!-- Laminavimas -->
+    <record model="ir.actions.act_window" id="um_mrp_workorder_action_tablet_laminavimas">
+        <field name="name">Work Orders Laminavimas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('um_mrp_user_workcenter.workcenter_line_kanban_test11')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/>
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/> -->
+        <field name="target">fullscreen</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('workcenter_id', '=', ref('um_mrp_data.laminavimas_workcenter')),
+          ('workcenter_id.alternative_workcenter_ids', '=', ref('um_mrp_data.laminavimas_workcenter')),
+        ]"></field>
+        <field name="context">{}</field>
+        <!-- <field name="context">{'search_default_workcenter_id': active_id}</field> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+    </record>
+
+    <!-- Laminavimas 2 -->
+    <record model="ir.actions.act_window" id="um_mrp_workorder_action_tablet_laminavimas_2">
+        <field name="name">Work Orders Laminavimas 2</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('um_mrp_user_workcenter.workcenter_line_kanban_test11')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/>
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/> -->
+        <field name="target">fullscreen</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('workcenter_id', '=', ref('um_mrp_data.laminavimas_2_workcenter')),
+          ('workcenter_id.alternative_workcenter_ids', '=', ref('um_mrp_data.laminavimas_2_workcenter')),
+        ]"></field>
+        <field name="context">{}</field>
+        <!-- <field name="context">{'search_default_workcenter_id': active_id}</field> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+    </record>
+
+    <!-- Vizualinė Patikra -->
+    <record model="ir.actions.act_window" id="um_mrp_workorder_action_tablet_vizualine_patikra">
+        <field name="name">Work Orders Vizualinė Patikra</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('um_mrp_user_workcenter.workcenter_line_kanban_test11')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/>
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/> -->
+        <field name="target">fullscreen</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('workcenter_id', '=', ref('um_mrp_data.vizualine_patikra_workcenter')),
+          ('workcenter_id.alternative_workcenter_ids', '=', ref('um_mrp_data.vizualine_patikra_workcenter')),
+        ]"></field>
+        <field name="context">{}</field>
+        <!-- <field name="context">{'search_default_workcenter_id': active_id}</field> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+    </record>
+
+    <!-- Backend -->
+    <record model="ir.actions.act_window" id="um_mrp_workorder_action_tablet_backend">
+        <field name="name">Work Orders Backend</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('um_mrp_user_workcenter.workcenter_line_kanban_test11')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/>
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/> -->
+        <field name="target">fullscreen</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('workcenter_id', '=', ref('um_mrp_data.backend_workcenter')),
+          ('workcenter_id.alternative_workcenter_ids', '=', ref('um_mrp_data.backend_workcenter')),
+        ]"></field>
+        <field name="context">{}</field>
+        <!-- <field name="context">{'search_default_workcenter_id': active_id}</field> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+    </record>
+
+    <!-- Backend 2 -->
+    <record model="ir.actions.act_window" id="um_mrp_workorder_action_tablet_backend2">
+        <field name="name">Work Orders Backend 2</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('um_mrp_user_workcenter.workcenter_line_kanban_test11')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/>
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/> -->
+        <field name="target">fullscreen</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('workcenter_id', '=', ref('um_mrp_data.backend2_workcenter')),
+          ('workcenter_id.alternative_workcenter_ids', '=', ref('um_mrp_data.backend2_workcenter')),
+        ]"></field>
+        <field name="context">{}</field>
+        <!-- <field name="context">{'search_default_workcenter_id': active_id}</field> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+    </record>
+
+    <!-- Flasher -->
+    <record model="ir.actions.act_window" id="um_mrp_workorder_action_tablet_flasher">
+        <field name="name">Work Orders Flasher</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('um_mrp_user_workcenter.workcenter_line_kanban_test11')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/>
+        <!-- <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('mrp.workcenter_line_kanban')}),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrp.mrp_production_workorder_tree_editable_view')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrp_workorder.mrp_workorder_view_form_tablet')})]"/> -->
+        <field name="target">fullscreen</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('workcenter_id', '=', ref('um_mrp_data.flasher_workcenter')),
+          ('workcenter_id.alternative_workcenter_ids', '=', ref('um_mrp_data.flasher_workcenter')),
+        ]"></field>
+        <field name="context">{}</field>
+        <!-- <field name="context">{'search_default_workcenter_id': active_id}</field> -->
+        <field name="help" type="html">
+          <p class="o_view_nocontent_workorder">
+            No work orders to do!
+          </p><p>
+            Work orders are operations to do as part of a manufacturing order.
+            Operations are defined in the bill of materials or added in the manufacturing order directly.
+          </p><p>
+            Use the table work center control panel to register operations in the shop floor directly.
+            The tablet provides worksheets for your workers and allow them to scrap products, track time,
+            launch a maintenance request, perform quality tests, etc.
+          </p>
+        </field>
+    </record>
+
+</odoo>

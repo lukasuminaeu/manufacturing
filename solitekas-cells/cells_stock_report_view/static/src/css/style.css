@@ -1,0 +1,13 @@
+
+.o_image_empty_folder {
+    height: 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-image: url('/web/static/src/img/empty_folder.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.o_text_muted {
+    color: #808080;
+}

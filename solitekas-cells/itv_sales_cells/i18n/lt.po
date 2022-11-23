@@ -1,0 +1,571 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* itv_sales_cells
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-17 13:37+0000\n"
+"PO-Revision-Date: 2022-03-17 13:37+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "<b>Payment Term: </b>"
+msgstr "<b>Apmokėjimo terminai: </b>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid "<span id=\"informations\"><strong>Pro-Forma # </strong></span>"
+msgstr ""
+"<span id=\"informations\"><strong>Išankstinė sąskaita-"
+"faktūra</strong></span>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid ""
+"<span style=\"font-size:1rem;\" id=\"informations\"><strong>Customer: "
+"</strong></span>"
+msgstr ""
+"<span style=\"font-size:1rem;\" id=\"informations\"><strong>Klientas: "
+"</strong></span>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid ""
+"<span style=\"font-size:1rem;\" id=\"informations\"><strong>Shipping "
+"Address: </strong></span>"
+msgstr ""
+"<span style=\"font-size:1rem;\" id=\"informations\"><strong>Pristatymo "
+"adresas: </strong></span>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid ""
+"<span style=\"font-size:1rem;\" id=\"informations\"><strong>Shipping "
+"Address:</strong></span>"
+msgstr ""
+"<span style=\"font-size:1rem;\" id=\"informations\"><strong>Pristatymo "
+"adresas:</strong></span>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid ""
+"<span style=\"font-size:1rem;\" id=\"informations\"><strong>Vendor: "
+"</strong></span>"
+msgstr ""
+"<span style=\"font-size:1rem;\" id=\"informations\"><strong>Tiekėjas: "
+"</strong></span>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "<span><strong>Receiver: </strong></span>"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "<span><strong>Sender: </strong></span>"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "<span>Consignors stamp and signature: </span>"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "<span>Customer:</span>"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid ""
+"<span>Netto weight</span><br/>\n"
+"                    <span>Brutto weight</span><br/>\n"
+"                    <span>Difference between netto and brutto</span><br/>"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid ""
+"<span>Offer is valid for 30 days. Default Terms &amp; Conditions. The "
+"payment is considered to be done when the funds reach SoliTek bank account. "
+"</span><br/>"
+msgstr ""
+"<span>Pasiūlymas galioja 30 dienų. Numatytos sąlygos: Mokėjimas laikomas "
+"atliktu, kai lėšos pasiekia „SoliTek“ banko sąskaitą.</span><br/>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid ""
+"<span>Offer is valid for 30 days. Default Terms &amp; Conditions. The payment is considered to be done when the funds reach SoliTek bank account.</span>\n"
+"                <br/>"
+msgstr ""
+"<span>Pasiūlymas galioja 30 dienų. Numatytos sąlygos: Mokėjimas laikomas "
+"atliktu, kai lėšos pasiekia „SoliTek“ banko sąskaitą.</span><br/>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "<span>Total: </span>"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "<span>Vendor:</span>"
+msgstr "​<span>Tiekėjas:</span>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid ""
+"<span>kg</span><br/>\n"
+"                    <span>kg</span><br/>\n"
+"                    <span>kg</span><br/>"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "<strong>Brutto W, (kg)</strong>"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "<strong>Code</strong>"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "<strong>Date:</strong>"
+msgstr "<strong>Data:</strong>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "<strong>Delivery conditions: </strong>"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "<strong>Description</strong>"
+msgstr "<strong>Aprašymas</strong>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "<strong>Netto W, (kg)</strong>"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid "<strong>Order # </strong>"
+msgstr "<strong>Užsakymas </strong>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid "<strong>Payment Term: </strong>"
+msgstr "<strong>Apmokėjimo terminai: </strong>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "<strong>Pos</strong>"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "<strong>Quantity</strong>"
+msgstr "<strong>Kiekis</strong>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid "<strong>Quotation # </strong>"
+msgstr "<strong>Komercinis pasiūlymas</strong>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "<strong>Shipping Address:</strong>"
+msgstr "<strong>Pristatymo adresas:</strong>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "<strong>Total</strong>"
+msgstr "<strong>Suma</strong>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid "Account No:"
+msgstr "Ats. sąskaita:"
+
+#. module: itv_sales_cells
+#: model:ir.model,name:itv_sales_cells.model_report_account_report_invoice_with_payments
+msgid "Account report with payment lines"
+msgstr "Sąskaitos ataskaita su mokėjimo įrašais"
+
+#. module: itv_sales_cells
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_cancel_reason__active
+msgid "Active"
+msgstr "Aktyvus"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.sale_cancel_reason_view_search
+msgid "Archived"
+msgstr "Archyvuotas"
+
+#. module: itv_sales_cells
+#: model:ir.model.fields,field_description:itv_sales_cells.field_account_bank_statement_line__back_lift
+#: model:ir.model.fields,field_description:itv_sales_cells.field_account_move__back_lift
+#: model:ir.model.fields,field_description:itv_sales_cells.field_account_payment__back_lift
+msgid "Back Lift"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "Back Lift:"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model:ir.model,name:itv_sales_cells.model_res_bank
+msgid "Bank"
+msgstr "Bankas"
+
+#. module: itv_sales_cells
+#: model:ir.model,name:itv_sales_cells.model_res_partner_bank
+msgid "Bank Accounts"
+msgstr "Banko sąskaitos"
+
+#. module: itv_sales_cells
+#: model:ir.model.fields,field_description:itv_sales_cells.field_account_setup_bank_manual_config__bank_code_nr
+#: model:ir.model.fields,field_description:itv_sales_cells.field_res_bank__bank_code_nr
+#: model:ir.model.fields,field_description:itv_sales_cells.field_res_partner_bank__bank_code_nr
+msgid "Bank code"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid "Bank code:"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid "Bank:"
+msgstr "Bankas:"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.sale_order_cancel_view_form_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.view_order_form_inherit
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#. module: itv_sales_cells
+#: model:ir.actions.act_window,name:itv_sales_cells.sale_order_cancel_action
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_order__cancel_reason
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_order_cancel__cancel_reason_id
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.sale_order_cancel_view_form_cells
+msgid "Cancel Reason"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model:ir.model.constraint,message:itv_sales_cells.constraint_sale_cancel_reason_name_uniq
+msgid "Cancel Reason already exists !"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model:ir.actions.act_window,name:itv_sales_cells.sale_cancel_reason_action
+#: model:ir.ui.menu,name:itv_sales_cells.menu_sale_cancel_reason
+msgid "Cancel Reasons"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "Cancelled Invoice"
+msgstr "Atšaukta sąskaita-faktūra"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.sale_cancel_reason_view_form
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.sale_cancel_reason_view_tree
+msgid "Channel"
+msgstr "Kanalas"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid "Code"
+msgstr "Kodas"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.view_order_form_inherit
+msgid "Commitment Date"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid "Company Code:"
+msgstr "Įmonės Kodas:"
+
+#. module: itv_sales_cells
+#: model:ir.model.fields,field_description:itv_sales_cells.field_crm_team__country_ids
+msgid "Countries"
+msgstr "Valstybės"
+
+#. module: itv_sales_cells
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_cancel_reason__create_uid
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_order_cancel__create_uid
+msgid "Created by"
+msgstr "Sukūrė"
+
+#. module: itv_sales_cells
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_cancel_reason__create_date
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_order_cancel__create_date
+msgid "Created on"
+msgstr "Sukurta"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "Credit Note"
+msgstr "Kreditinė sąskaita"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "Date Order:"
+msgstr "Sąskaitos data:"
+
+#. module: itv_sales_cells
+#: model_terms:ir.actions.act_window,help:itv_sales_cells.sale_cancel_reason_action
+msgid "Define a new cancel reason"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_order__commitment_date
+msgid "Delivery Date"
+msgstr "Pristatymo data"
+
+#. module: itv_sales_cells
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_cancel_reason__name
+msgid "Description"
+msgstr "Aprašymas"
+
+#. module: itv_sales_cells
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_cancel_reason__display_name
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_order_cancel__display_name
+msgid "Display Name"
+msgstr "Rodomas pavadinimas"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "Draft Invoice"
+msgstr "Sąskaitos juodraštis"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "Due date:"
+msgstr "Numatyta data:"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "EXW"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model:ir.model,name:itv_sales_cells.model_mail_compose_message
+msgid "Email composition wizard"
+msgstr "El. laiško kūrimo vedlys"
+
+#. module: itv_sales_cells
+#: model:ir.model,name:itv_sales_cells.model_sale_cancel_reason
+msgid "Get Sale Cancel Reason"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_cancel_reason__id
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_order_cancel__id
+msgid "ID"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.sale_cancel_reason_view_search
+msgid "Include archived"
+msgstr "Įtraukti archyvuotus"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "Invoice"
+msgstr "PVM Sąskaita-faktūra"
+
+#. module: itv_sales_cells
+#: model:ir.model,name:itv_sales_cells.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_cancel_reason____last_update
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_order_cancel____last_update
+msgid "Last Modified on"
+msgstr "Paskutinį kartą keista"
+
+#. module: itv_sales_cells
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_cancel_reason__write_uid
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_order_cancel__write_uid
+msgid "Last Updated by"
+msgstr "Paskutinį kartą atnaujino"
+
+#. module: itv_sales_cells
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_cancel_reason__write_date
+#: model:ir.model.fields,field_description:itv_sales_cells.field_sale_order_cancel__write_date
+msgid "Last Updated on"
+msgstr "Paskutinį kartą atnaujinta"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.view_sale_order_calendar_inherit
+msgid "Leads Generation"
+msgstr "Iniciatyvų generavimas"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.external_layout_solitek_cells
+msgid "Logo"
+msgstr "Logotipas"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid "Mobile:"
+msgstr "Mobilus tel.:"
+
+#. module: itv_sales_cells
+#: model:base.automation,name:itv_sales_cells.automation_rule_on_create_record
+#: model:ir.actions.server,name:itv_sales_cells.automation_rule_on_create_record_ir_actions_server
+msgid "Move leads to quotations"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model:ir.model.fields.selection,name:itv_sales_cells.selection__account_move__back_lift__no
+msgid "No"
+msgstr "Ne"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_delivery_document_inherit
+msgid "No."
+msgstr ""
+
+#. module: itv_sales_cells
+#: model:sale.cancel.reason,name:itv_sales_cells.cancel_reason_2
+msgid "Not enough stock"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "Nr"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "Nr."
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.external_layout_solitek_cells
+msgid ""
+"Page:\n"
+"                    <span class=\"page\"/>\n"
+"                    of\n"
+"                    <span class=\"topage\"/>"
+msgstr ""
+"Puslapis:\n"
+"                    <span class=\"page\"/>\n"
+"                    iš\n"
+"                    <span class=\"topage\"/>"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid "Phone:"
+msgstr "Telefonas:"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "Sale Order:"
+msgstr "Užsakymo Nr.:"
+
+#. module: itv_sales_cells
+#: model:ir.model,name:itv_sales_cells.model_sale_order
+msgid "Sales Order"
+msgstr "Pardavimo užsakymas"
+
+#. module: itv_sales_cells
+#: model:ir.model,name:itv_sales_cells.model_crm_team
+msgid "Sales Team"
+msgstr "Pardavimų komanda"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.sale_cancel_reason_view_search
+msgid "Search Reasons"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.sale_order_cancel_view_form_cells
+msgid "Submit"
+msgstr "Pateikti"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid "Swift code:"
+msgstr "Swift kodas:"
+
+#. module: itv_sales_cells
+#: model:ir.model.fields,help:itv_sales_cells.field_sale_order__commitment_date
+msgid ""
+"This is the delivery date promised to the customer. If set, the delivery "
+"order will be scheduled based on this date rather than product lead times."
+msgstr ""
+"Tai yra klientui pažadėta pristatymo data. Jei nustatyta, pristatymo "
+"užsakymas bus suplanuotas pagal šią datą, o ne pagal produkto pristatymo "
+"laiką."
+
+#. module: itv_sales_cells
+#: model:sale.cancel.reason,name:itv_sales_cells.cancel_reason_1
+msgid "Too expensive"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.actions.act_window,help:itv_sales_cells.sale_cancel_reason_action
+msgid "Use cancel reasons to explain why an Quotation/Order is canceled."
+msgstr ""
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_saleorder_document_inherit
+msgid "VAT Number:"
+msgstr "PVM Kodas:"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "Vendor Bill"
+msgstr "Tiekėjo sąskaita"
+
+#. module: itv_sales_cells
+#: model_terms:ir.ui.view,arch_db:itv_sales_cells.report_invoice_document_inherit
+msgid "Vendor Credit Note"
+msgstr "Tiekėjo kreditinė sąskaita"
+
+#. module: itv_sales_cells
+#: model:ir.model,name:itv_sales_cells.model_sale_order_cancel
+msgid "Wizard Get Cancel Reason"
+msgstr ""
+
+#. module: itv_sales_cells
+#: model:ir.model.fields.selection,name:itv_sales_cells.selection__account_move__back_lift__yes
+msgid "Yes"
+msgstr "Taip"
+
+#. module: itv_sales_cells
+#: model:ir.model,name:itv_sales_cells.model_report_stock_report_deliveryslip
+msgid "report.stock.report_deliveryslip"
+msgstr ""

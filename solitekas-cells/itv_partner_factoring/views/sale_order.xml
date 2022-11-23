@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+
+
+        <!-- primary|extension Inherited .:Tree:. view for "model" -->
+        <record id="view_sale_order_form_inherited_factoring" model="ir.ui.view">
+            <field name="name">sale.order.form inherited factoring</field>
+            <field name="model">sale.order</field>
+            <!-- Please veryfiy, that the following inherited view really sticks to the naming convention. -->
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="type">form</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="is_factoringable" invisible="1"/>
+                    <field name="factoring_id" attrs="{ 'invisible': [('is_factoringable','=',False)]}"/>
+
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+    </data>
+</odoo>

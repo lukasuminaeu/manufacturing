@@ -1,0 +1,19 @@
+<odoo>
+    <data noupdate="1">
+
+        <record id="operation_type_pallet_scrap" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">Palečių nurašymas</field>
+            <field name="sequence_code">PLSCRAP</field>
+            <field name="barcode">PL_SCRAP</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">internal</field>
+            <field name="show_operations" eval="1"/>
+            <field name="use_existing_lots" eval="1"/>
+            <field name="show_entire_packs" eval="0"/>
+            <field name="default_location_src_id" ref="um_mrp_data.stock_location_sandelis"/>
+            <field name="default_location_dest_id" ref="stock_location_pallet_scrap"/>
+        </record>
+    
+    </data>
+</odoo>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_add_fields" inherit_id="account.report_invoice_document">
+        <xpath expr="//address[@t-field='o.partner_id']" position="after">
+            <span>company code:</span>
+            <span t-field="o.partner_id.company_code"/>
+            <br/>
+            <span>Order reference:</span>
+            <span t-field="o.extension_refer_extension_platform_order_number"/>
+        </xpath>
+        <!--Kiekis-->
+        <xpath expr="//span[@t-field='line.quantity']" position="replace">
+            <t t-if="o.move_type == 'out_refund'">
+                -
+                <span t-field="line.quantity"/>
+            </t>
+            <t t-else="">
+                <span t-field="line.quantity"/>
+
+            </t>
+        </xpath>
+        <!--Vieneto kaina-->
+        <xpath expr="//span[@t-field='line.price_unit']" position="replace">
+            <t t-if="o.move_type == 'out_refund'">
+                -
+                <span class="text-nowrap" t-field="line.price_unit"/>
+
+            </t>
+            <t t-else="">
+                <span class="text-nowrap" t-field="line.price_unit"/>
+
+
+            </t>
+        </xpath>
+        <!--Suma-->
+        <xpath expr="//span[@t-field='line.price_subtotal']" position="replace">
+            <t t-if="o.move_type == 'out_refund'">
+                -
+                <span class="text-nowrap" t-field="line.price_subtotal"
+                      groups="account.group_show_line_subtotals_tax_excluded"/>
+
+            </t>
+            <t t-else="">
+                <span class="text-nowrap" t-field="line.price_subtotal"
+                      groups="account.group_show_line_subtotals_tax_excluded"/>
+
+
+            </t>
+        </xpath>
+
+
+    </template>
+
+    <template id="report_invoice_document_tax_totals_add_fields_final" inherit_id="account.document_tax_totals">
+        <!--Suma be mokesčių-->
+        <xpath expr="//span[@t-att-class='oe_subtotal_footer_separator']" position="replace">
+            <t t-if="docs">
+                <t t-if="docs[0]._name == 'account.move'">
+                    <t t-if="o.move_type == 'out_refund'">
+                        -
+                        <span
+                                t-att-class="oe_subtotal_footer_separator"
+                                t-esc="subtotal['formatted_amount']"
+                        />
+                    </t>
+                    <t t-else="">
+                        <span
+                                t-att-class="oe_subtotal_footer_separator"
+                                t-esc="subtotal['formatted_amount']"
+                        />
+
+                    </t>
+
+                </t>
+            </t>
+
+
+        </xpath>
+        <!--        Suma final-->
+        <xpath expr="//tr[@class='border-black o_total']" position="replace">
+            <t t-if="docs">
+                <t t-if="docs[0]._name == 'account.move'">
+                    <t t-if="o.move_type == 'out_refund'">
+                        <tr class="border-black o_total">
+                            <td>
+                                <strong>Total</strong>
+                            </td>
+                            <td class="text-right">
+                                -
+                                <span t-esc="tax_totals['formatted_amount_total']"/>
+                            </td>
+                        </tr>
+                    </t>
+                    <t t-else="">
+                        <tr class="border-black o_total">
+                            <td>
+                                <strong>Total</strong>
+                            </td>
+                            <td class="text-right">
+                                <span t-esc="tax_totals['formatted_amount_total']"/>
+                            </td>
+                        </tr>
+
+                    </t>
+                </t>
+            </t>
+        </xpath>
+    </template>
+
+    <!--OSS 19.0% -->
+    <template id="report_invoice_document_tax_group_totals_add_fields_final" inherit_id="account.tax_groups_totals">
+        <xpath expr="//t[@t-else='']" position="replace">
+            <t t-if="docs">
+                <t t-if="docs[0]._name == 'account.move'">
+
+                    <t t-if="o.move_type == 'out_refund'">
+                        <td>
+                            <span class="text-nowrap" t-esc="amount_by_group['tax_group_name']"/>
+                        </td>
+                        <td class="text-right o_price_total">
+                            -
+                            <span class="text-nowrap" t-esc="amount_by_group['formatted_tax_group_amount']"/>
+                        </td>
+                    </t>
+                    <t t-else="">
+                        <td>
+                            <span class="text-nowrap" t-esc="amount_by_group['tax_group_name']"/>
+                        </td>
+                        <td class="text-right o_price_total">
+                            <span class="text-nowrap" t-esc="amount_by_group['formatted_tax_group_amount']"/>
+                        </td>
+                    </t>
+                </t>
+            </t>
+        </xpath>
+    </template>
+
+
+</odoo>

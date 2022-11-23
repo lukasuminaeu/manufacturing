@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Invoices Tab  CRM #4.21-->
+    <record id="account_move_crm_inherit" model="ir.ui.view">
+        <field name="name">account.move.crm.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="CMR" name="crm" >
+                    <field name="move_line_ids">
+                        <tree  >
+                            <field name="dpd_status"/>
+                            <field name="manifest" widget="pdf_viewer"/>
+                        </tree>
+                    </field>
+
+                    <group>
+                        <field name="crm_file_upload" string="Prisegtas failas:" widget="pdf_viewer"/>
+                    </group>
+
+                </page>
+            </notebook>
+
+
+        </field>
+    </record>
+
+</odoo>

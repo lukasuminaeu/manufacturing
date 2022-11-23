@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="um_retry_function_wrapper.list">
+      <field name="name">um_retry_function_wrapper list</field>
+      <field name="model">um_retry_function_wrapper.um_retry_function_wrapper</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="um_retry_function_wrapper.action_window">
+      <field name="name">um_retry_function_wrapper window</field>
+      <field name="res_model">um_retry_function_wrapper.um_retry_function_wrapper</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="um_retry_function_wrapper.action_server">
+      <field name="name">um_retry_function_wrapper server</field>
+      <field name="model_id" ref="model_um_retry_function_wrapper_um_retry_function_wrapper"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="um_retry_function_wrapper" id="um_retry_function_wrapper.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="um_retry_function_wrapper.menu_1" parent="um_retry_function_wrapper.menu_root"/>
+    <menuitem name="Menu 2" id="um_retry_function_wrapper.menu_2" parent="um_retry_function_wrapper.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="um_retry_function_wrapper.menu_1_list" parent="um_retry_function_wrapper.menu_1"
+              action="um_retry_function_wrapper.action_window"/>
+    <menuitem name="Server to list" id="um_retry_function_wrapper" parent="um_retry_function_wrapper.menu_2"
+              action="um_retry_function_wrapper.action_server"/>
+-->
+  </data>
+</odoo>

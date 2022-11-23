@@ -1,0 +1,120 @@
+<odoo>
+    <data>
+        <!-- Final EL WORKCENTER -->
+        <!-- <record id="final_el_workcenter" model="mrp.workcenter">
+            <field name="name">Final EL</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_27"/>
+            <field name="code">Final EL</field>
+        </record> -->
+        <!-- Flasher WORKCENTER -->
+        <record id="flasher_workcenter" model="mrp.workcenter">
+            <field name="name">Flasher</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_26"/>
+            <field name="code">Flasher</field>
+        </record>
+        <!-- HiPoT WORKCENTER -->
+        <!-- <record id="hipot_workcenter" model="mrp.workcenter">
+            <field name="name">HiPoT</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_25"/>
+            <field name="code">HiPoT</field>
+        </record> -->
+
+        <!-- Backend2 WORKCENTER -->
+        <record id="backend2_workcenter" model="mrp.workcenter">
+            <field name="name">Backend2</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_28"/>
+            <field name="code">Backend2</field>
+        </record>
+
+        <!-- Backend WORKCENTER -->
+        <record id="backend_workcenter" model="mrp.workcenter">
+            <field name="name">Backend</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_24"/>
+            <field name="code">Backend</field>
+        </record>
+
+
+        <!-- Vizualinė Patikra WORKCENTER -->
+        <record id="vizualine_patikra_workcenter" model="mrp.workcenter">
+            <field name="name">Vizualinė Patikra</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_23"/>
+            <field name="code">Vizualinė Patikra</field>
+        </record>
+        <!-- Laminavimas WORKCENTER -->
+        <record id="laminavimas_workcenter" model="mrp.workcenter">
+            <field name="name">Laminavimas 1</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_21"/>
+            <field name="code">Laminavimas 1</field>
+        </record>
+        <!-- Laminavimas 2 WORKCENTER -->
+        <record id="laminavimas_2_workcenter" model="mrp.workcenter">
+            <field name="name">Laminavimas 2</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_21_a"/>
+            <field name="code">Laminavimas 2</field>
+        </record>
+
+        <record id="laminavimas_workcenter" model="mrp.workcenter">
+            <field name="alternative_workcenter_ids" eval="[(6,0,[ref('laminavimas_2_workcenter')])]"/>
+        </record>
+        <record id="laminavimas_2_workcenter" model="mrp.workcenter">
+            <field name="alternative_workcenter_ids" eval="[(6,0,[ref('laminavimas_workcenter')])]"/>
+        </record>
+        
+        <!-- EL WORKCENTER -->
+        <record id="el_workcenter" model="mrp.workcenter">
+            <field name="name">EL</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_20"/>
+            <field name="code">EL</field>
+        </record>
+        <!-- Galinio stiklo/plėvelės WORKCENTER -->
+        <record id="galinio_st_plev_workcenter" model="mrp.workcenter">
+            <field name="name">Galinio stiklo/plėvelės uždėjimas</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_19"/>
+            <field name="code">Galinio stiklo/plėvelės uždėjimas</field>
+        </record>
+        <!-- Surinkimas 2 WORKCENTER -->
+        <record id="surinkimas_alternative_workcenter" model="mrp.workcenter">
+            <field name="name">Surinkimas 2</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_18"/>
+            <field name="code">Surinkimas 2</field>
+        </record>
+        <!-- Surinkimas 1 WORKCENTER -->
+        <record id="surinkimas_workcenter" model="mrp.workcenter">
+            <field name="name">Surinkimas 1</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_17"/>
+            <field name="code">Surinkimas 1</field>
+        </record>
+
+        <record id="surinkimas_alternative_workcenter" model="mrp.workcenter">
+            <field name="alternative_workcenter_ids" eval="[(6,0,[ref('surinkimas_workcenter')])]"/>
+        </record>
+        <record id="surinkimas_workcenter" model="mrp.workcenter">
+            <field name="alternative_workcenter_ids" eval="[(6,0,[ref('surinkimas_alternative_workcenter')])]"/>
+        </record>
+
+        <!-- Stringer 2 WORKCENTER -->
+        <record id="stringer_alternative_workcenter" model="mrp.workcenter">
+            <field name="name">Stringer 2</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_16"/>
+            <field name="code">Stringer 2</field>
+        </record>
+        <!-- Stringer 1 WORKCENTER -->
+        <record id="stringer_workcenter" model="mrp.workcenter">
+            <field name="name">Stringer 1</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_15"/>
+            <field name="code">Stringer 1</field>
+        </record>
+        <record id="stringer_alternative_workcenter" model="mrp.workcenter">
+            <field name="alternative_workcenter_ids" eval="[(6,0,[ref('stringer_workcenter')])]"/>
+        </record>
+        <record id="stringer_workcenter" model="mrp.workcenter">
+            <field name="alternative_workcenter_ids" eval="[(6,0,[ref('stringer_alternative_workcenter')])]"/>
+        </record>
+        <!-- Priekinio stiklo/plėvelės WORKCENTER -->
+        <record id="pr_stiklo_plevele_workcenter" model="mrp.workcenter">
+            <field name="name">Priekinio stiklo/plėvelės uždėjimas</field>
+            <field name="custom_location_id" ref="um_mrp_data.work_location_14"/>
+            <field name="code">Priekinio stiklo/plėvelės uždėjimas</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="FieldMany2oneFastCreate" t-extend="FieldMany2One">
+        <t t-jquery="button.o_external_button " t-operation="after">
+
+        </t>
+    </t>
+
+</templates>

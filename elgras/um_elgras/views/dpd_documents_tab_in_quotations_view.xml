@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Notebook Tab in Sale.Order (Quotations)-->
+    <record id="inherit_sale_order_add_notebook_files" model="ir.ui.view">
+        <field name="name">sale.order.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Siuntų Statusai">
+                    <field name="move_line_ids">
+                        <tree>
+                            <field name="result_package_id"/>
+                            <field name="dpd_status"/>
+
+                            <field name="package_number"/>
+                            <field name="parcel_number"/>
+                            <field name="manifest" widget="binary"/>
+                            <field name="delivery_slip" widget="binary"/>
+                        </tree>
+                        <form >
+                            <group>
+                                <group>
+                                    <field name="dpd_status"/>
+                                    <field name="parcel_number"/>
+                                    <field name="manifest" widget="binary"/>
+                                    <field name="delivery_slip" widget="binary"/>
+                                </group>
+                                <group>
+                                    <field name="product_id"/>
+                                    <field name="package_id"/>
+                                    <field name="result_package_id"/>
+<!--                                    <field name="dpd_state"/>-->
+                                </group>
+
+                            </group>
+
+                        </form>
+                    </field>
+                    <button name="update_dpd_package_status" type="object" string="Atnaujinti Statusus"/>
+                    <!-- <button name="debug_set_package" type="object" string="set_package" icon="fa-bug" help="This is DEBUG button for setting Parcel Number"/> -->
+                </page>
+
+            </notebook>
+
+        </field>
+    </record>
+
+</odoo>

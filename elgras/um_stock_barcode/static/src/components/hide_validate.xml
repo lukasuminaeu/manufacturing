@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template_hide_validate" xml:space="preserve">
+
+    <t t-inherit="stock_barcode.MainComponent" t-inherit-mode="extension" owl="1">
+        <xpath expr="//button[hasclass('o_validate_page')]" position="replace">
+
+            <!-- Show Change buttons only on pick operations -->
+            <t t-if="state.isSequencePICK and state.isDPDTag">
+            <!-- HIDE VALIDATE BUTTON-->
+                <t t-if="state.isPackageCreated and state.isManifestGenerated and state.isGenerateLabels and state.isCourierCalled"
+                   owl="1">
+              <button t-if="env.model.displayValidateButton" t-on-click="validate"
+                      class="btn text-uppercase o_validate_page"
+                      t-att-disabled="!env.model.canBeValidate"
+                      t-attf-class="{{highlightValidateButton ? 'btn-success' : 'btn-secondary'}}">
+                    <i class="fa fa-check mr-1"/> Validate
+                </button>
+              </t>
+                <t t-if="!state.isPackageCreated or !state.isManifestGenerated or !state.isGenerateLabels or !state.isCourierCalled"
+                   owl="1">
+                <button t-if="env.model.displayValidateButton"
+                        class="btn text-uppercase o_validate_page"
+                        t-attf-class="btn-warning">
+                    <i class="fa fa-times mr-1"/> Reikia veiksmų su DPD
+                </button>
+              </t>
+            </t>
+            <!--            Original button for other than PICK sequences -->
+            <t t-if="!state.isSequencePICK or !state.isDPDTag">
+              <button t-if="env.model.displayValidateButton" t-on-click="validate"
+                      class="btn text-uppercase o_validate_page"
+                      t-att-disabled="!env.model.canBeValidate"
+                      t-attf-class="{{highlightValidateButton ? 'btn-success' : 'btn-secondary'}}">
+                    <i class="fa fa-check mr-1"/> Validate
+                </button>
+            </t>
+
+        </xpath>
+    </t>
+
+</templates>

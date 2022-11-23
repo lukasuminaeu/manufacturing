@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.base.setup</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='integration']" position="inside">
+                <div class="col-12 col-lg-6 o_setting_box">
+                    <div class="o_setting_left_pane">
+                        <field name="login_google_recaptcha"/>
+                    </div>
+                    <div class="o_setting_right_pane" id="web_google_recaptcha_settings">
+                        <label for="login_google_recaptcha"/>
+                        <div class="text-muted">
+                            Using Google Recaptcha for Login
+                        </div>
+                        <div attrs="{'invisible': [('login_google_recaptcha', '=', False)]}">
+                            <div class="content-group mt16">
+                                <label for="google_recaptcha_site_key" class="o_light_label"/>
+                                <field name="google_recaptcha_site_key"/>
+                                <label for="google_recaptcha_secret_key" class="o_light_label"/>
+                                <field name="google_recaptcha_secret_key"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

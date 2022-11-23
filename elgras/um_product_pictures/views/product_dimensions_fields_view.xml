@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="inherit_product_dimensions_fields" model="ir.ui.view">
+        <field name="name">product.template.fields.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <!--           Fields in Notebook->Notebook-Sales  -->
+            <xpath expr="//group//field[@name='description']" position="after">
+                <group string="Product data">
+                    <field name="product_materials"/>
+                    <field name="product_weight"/>
+                    <field name="product_length"/>
+                    <field name="product_width"/>
+                    <field name="product_height"/>
+                    <field name="product_depth"/>
+                    <field name="product_other_dimensions"/>
+                    <field name="product_description" string="Product description"/>
+                </group>
+
+
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

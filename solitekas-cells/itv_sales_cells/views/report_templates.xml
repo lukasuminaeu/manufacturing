@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- <template id="external_layout_background_inherit" inherit_id="web.external_layout_background">
+        <xpath expr="//div[@class='float-left company_address']" position="replace"/>
+        <xpath expr="//div[@class='footer o_background_footer']" position="replace"/>
+    </template> -->
+
+    <template id="external_layout_standard" inherit_id="web.external_layout_standard">
+        <!-- <xpath expr="//img[@t-if='company.logo']" position="attributes">
+            <attribute name="style">max-height: 60px;</attribute>
+        </xpath> -->
+        <!-- <xpath expr="//div[@class='pt-5']" position="attributes">
+            <attribute name="style">padding-top: 0rem !important;</attribute>
+        </xpath> -->
+        <xpath expr="//div[@class='row']/div[@name='company_address']" position="replace" />
+    </template>
+
+
+    <template id="external_layout_solitek_cells">
+        <div class="header">
+            <div class="o_background_header">
+            <div class="float-right">
+                <h3 class="mt0 text-right" t-field="company.report_header"/>
+            </div>
+            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-left" alt="Logo"/>
+            <div class="clearfix mb8"/>
+            </div>
+        </div>
+
+        <div class="article o_report_layout_background" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-call="web.address_layout"/>
+            <t t-raw="0"/>
+        </div>
+
+        <div class="footer o_background_footer">
+            <div class="text-center">
+                <div t-field="company.report_footer"/>
+                <div t-if="report_type == 'pdf'" class="text-muted">
+                    Page:
+                    <span class="page"/>
+                    of
+                    <span class="topage"/>
+                </div>
+            </div>
+        </div>
+    </template>
+
+
+
+</odoo>

@@ -1,0 +1,19 @@
+<odoo>
+
+    <record id="um_mrp_mps.mrp_workorder_view_form_tablet" model="ir.ui.view">
+        <field name="name">um_mrp_mps.mrp.workorder.view.form.inherit.user.tablet.new</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <div invisible="1">
+                    <button string="A" class="oe_highlight" type="object" name="set_class_a" barcode_trigger="set_class_a" data-hotkey="a" style="height:100px; width:32%%; font-size:64px; horizontal-align:middle;"/>
+                    <button string="B" class="oe_highlight" type="object" name="set_class_b" barcode_trigger="set_class_b" data-hotkey="b" style="height:100px; width:33%%; font-size:64px; horizontal-align:middle;"/>
+                    <button string="C" class="oe_highlight" type="object" name="set_class_c" barcode_trigger="set_class_c" data-hotkey="c" style="height:100px; width:33%%; font-size:64px; horizontal-align:middle;"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    
+
+</odoo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">erase_data_button.res.config.settings.view.form.inherit.mrp</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="35"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+
+                <xpath expr="//div[@name='process_operations_setting_container']" position="after">
+                    <div class="col-lg-6 col-12 o_setting_box" id="mrp_lock" title="Makes confirmed manufacturing orders locked rather than unlocked by default. This only applies to new manufacturing orders, not previously created ones.">
+                        <div class="o_setting_left_pane">
+                            <field name="group_unlocked_by_default"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="group_unlocked_by_default"/>
+                            <div class="text-muted">
+                                Allow manufacturing users to modify quantities to consume, without the need for prior approval
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+
+                <!-- <div class="col-lg-6 col-12 o_setting_box" id="mrp_lock" title="Makes confirmed manufacturing orders locked rather than unlocked by default. This only applies to new manufacturing orders, not previously created ones.">
+                    <div class="o_setting_left_pane">
+                        <field name="group_unlocked_by_default"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="group_unlocked_by_default"/>
+                        <div class="text-muted">
+                            Allow manufacturing users to modify quantities to consume, without the need for prior approval
+                        </div>
+                    </div>
+                </div> -->
+                    
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

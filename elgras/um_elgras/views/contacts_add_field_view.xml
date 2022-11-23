@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Field in Contracts-->
+    <record id="inherit_res_partner_company_code_field1" model="ir.ui.view">
+        <field name="name">inherit.res.partner.company.code.field</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="company_code" string="Company Code"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

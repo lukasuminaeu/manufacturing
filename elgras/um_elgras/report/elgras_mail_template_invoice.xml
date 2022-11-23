@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <!-- Mail template are declared in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <!--    Set 1 to template to override changes TODO: change in prod to 0-->
+    <data noupdate="0">
+        <!--Email template -->
+        <record id="elgras_email_template_edi_invoice" model="mail.template">
+            <field name="name">Elgras Invoice: Send by email</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="email_from">{{ (object.invoice_user_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="subject">Invoice for order [{{ object.sales_order.origin or 'n/a' }}] {{ object.extension_refer_platform }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Dear
+                        <t t-if="object.partner_id.parent_id">
+                            <t t-out="object.partner_id.name or ''">Brandon Freeman</t>
+
+                        </t>
+                        <t t-else="">
+                            <t t-out="object.partner_id.name or ''">Brandon Freeman</t>,
+                        </t>
+                        <br/>
+                        <br/>
+                        Here is your
+                        <t t-if="object.name">
+                            invoice [
+                            <strong t-out="object.name or ''">INV/2021/05/0005</strong>]
+                        </t> for order
+                        [<strong t-out="object.sales_order.origin or 'S00048'"/>]
+                        (<strong t-out="object.extension_refer_platform or 'užsakymo nr iš platformos'"/>)
+                        <br/>
+                        <br/>
+                        Do not hesitate to contact us if you have any questions.
+                        <br/>
+                        <br/>
+                        Have a beautiful day!
+                        <br/>
+                        <br/>
+                        Elgras
+                    </p>
+                </div>
+            </field>
+            <field name="report_template" ref="account.account_invoices"/>
+            <field name="report_name">Invoice_{{ (object.name or '').replace('/','_') }}{{ object.state == 'draft' and
+                '_draft' or '' }}
+            </field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+
+    </data>
+</odoo>

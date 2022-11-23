@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+<!--        pipeline categories-->
+        <record id="crm_pipelines_project" model="crm.cells.pipeline">
+            <field name="name">Project</field>
+        </record>
+
+        <record id="crm_pipelines_lead" model="crm.cells.pipeline">
+            <field name="name">Lead</field>
+        </record>
+
+        <record id="crm_pipelines_sale" model="crm.cells.pipeline">
+            <field name="name">Sale</field>
+        </record>
+
+<!--        delivery scope tags-->
+        <record id="delivery_scope_modules" model="delivery.scope.tags">
+            <field name="name">Modules</field>
+            <field name="color" eval="1"/>
+        </record>
+
+        <record id="delivery_scope_modules_resold_products" model="delivery.scope.tags">
+            <field name="name">Modules + resold products</field>
+            <field name="color" eval="2"/>
+        </record>
+
+        <record id="delivery_scope_full_project" model="delivery.scope.tags">
+            <field name="name">Full project</field>
+            <field name="color" eval="3"/>
+        </record>
+
+<!--        installation type tags-->
+        <record id="installation_type_facade" model="installation.type.tags" forcecreate="True">
+            <field name="name">Facade</field>
+            <field name="color" eval="1"/>
+        </record>
+
+        <record id="installation_type_pitched_roof" model="installation.type.tags" forcecreate="True">
+            <field name="name">Pitched roof</field>
+            <field name="color" eval="2"/>
+        </record>
+
+        <record id="installation_type_flat_roof" model="installation.type.tags" forcecreate="True">
+            <field name="name">Flat roof</field>
+            <field name="color" eval="3"/>
+        </record>
+
+        <record id="installation_type_balconies" model="installation.type.tags" forcecreate="True">
+            <field name="name">Balconies</field>
+            <field name="color" eval="4"/>
+        </record>
+
+        <record id="installation_type_carports" model="installation.type.tags" forcecreate="True">
+            <field name="name">Carports</field>
+            <field name="color" eval="5"/>
+        </record>
+
+        <record id="installation_type_other" model="installation.type.tags" forcecreate="True">
+            <field name="name">Other</field>
+            <field name="color" eval="6"/>
+        </record>
+
+<!--        supplier tags-->
+        <record id="supplier_tags_solitek" model="supplier.tags" forcecreate="True">
+            <field name="name">Solitek</field>
+            <field name="color" eval="1"/>
+        </record>
+
+        <record id="supplier_tags_intelligent_solar" model="supplier.tags" forcecreate="True">
+            <field name="name">Intelligent solar</field>
+            <field name="color" eval="2"/>
+        </record>
+
+        <record id="supplier_tags_met_solar" model="supplier.tags" forcecreate="True">
+            <field name="name">MET Solar</field>
+            <field name="color" eval="3"/>
+        </record>
+        
+        <!-- Pipeline stages-->
+        <record id="crm_stage_opportunity" model="crm.stage" forcecreate="True">
+            <field name="name">Opportunity</field>
+            <field name="cell_probability">20.00</field>
+        </record>
+
+        <record id="crm_stage_needs_defined" model="crm.stage" forcecreate="True">
+            <field name="name">Needs defined</field>
+            <field name="cell_probability">30.00</field>
+        </record>
+
+        <record id="crm_stage_initial_offer" model="crm.stage" forcecreate="True">
+            <field name="name">Initial offer</field>
+            <field name="cell_probability">30.00</field>
+        </record>
+
+        <record id="crm_stage_delivered_to_engineers" model="crm.stage" forcecreate="True">
+            <field name="name">Delivered to engineers</field>
+            <field name="cell_probability">50.00</field>
+        </record>
+
+        <record id="crm_stage_official_offer" model="crm.stage" forcecreate="True">
+            <field name="name">Official Offer</field>
+            <field name="cell_probability">50.00</field>
+        </record>
+
+        <record id="crm_stage_negotiations" model="crm.stage" forcecreate="True">
+            <field name="name">Negotiations</field>
+            <field name="cell_probability">70.00</field>
+        </record>
+
+        <record id="crm_stage_agreement_sent" model="crm.stage" forcecreate="True">
+            <field name="name">Agreement Sent</field>
+            <field name="cell_probability">90.00</field>
+        </record>
+
+        <record id="crm_stage_won_lost" model="crm.stage" forcecreate="True">
+            <field name="name">Won/Lost</field>
+            <field name="cell_probability">100.00</field>
+        </record>
+
+
+    </data>
+</odoo>

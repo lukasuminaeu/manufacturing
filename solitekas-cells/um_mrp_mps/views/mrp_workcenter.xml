@@ -1,0 +1,96 @@
+<odoo>
+
+    <record id="view_mrp_workorder_class_wizard" model="ir.ui.view">
+        <field name="name">mrp.workorder.class.wizard</field>
+        <field name="model">mrp.workorder</field>
+        <field name="arch" type="xml">
+            <form string="Select product class">
+                <p style="height:100px; width:100%%; font-size:64px; horizontal-align:middle;" class="o_nocontent_help">
+                    Select class
+                </p>
+                <field name="id" invisible="1"/>
+                <footer>
+                    <button string="A" class="oe_highlight" type="object" name="set_class_a" barcode_trigget="set_class_a" data-hotkey="a" style="height:100px; width:32%%; font-size:64px; horizontal-align:middle;"/>
+                    <button string="B" class="oe_highlight" type="object" name="set_class_b" barcode_trigget="set_class_b" data-hotkey="b" style="height:100px; width:33%%; font-size:64px; horizontal-align:middle;"/>
+                    <button string="C" class="oe_highlight" type="object" name="set_class_c" barcode_trigget="set_class_c" data-hotkey="c" style="height:100px; width:33%%; font-size:64px; horizontal-align:middle;"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_select_product_class" model="ir.actions.act_window">
+        <field name="name">Select product class</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_mrp_workorder_class_wizard"/>
+        <field name="target">new</field>
+    </record>
+
+
+
+    <record id="view_work_center_load_unit_graph" model="ir.ui.view">
+        <field name="name">report.workcenter.load.unit.graph</field>
+        <field name="model">mrp.workorder</field>
+        <field name="arch" type="xml">
+            <graph string="Work Center load" sample="1">
+                <field name="production_date" interval="day"/>
+                <field name="workcenter_id"/>
+                <field name="units_produced_percentage" type="measure" string="Capacity Used (%)"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_mrp_workcenter_load_unit_report_graph" model="ir.actions.act_window">
+        <field name="name">Work Center Loads</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.workorder</field>
+        <field name="view_mode">graph</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No data yet!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_mrp_workcenter_load_unit_report_pivot" model="ir.actions.act_window.view">
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="view_work_center_load_unit_graph"/>
+        <field name="act_window_id" ref="action_mrp_workcenter_load_unit_report_graph"/>
+    </record>
+
+    <record id="mrp_workcenter_view_inherit_workorder" model="ir.ui.view">
+        <field name="name">mrp.workcenter.type</field>
+        <field name="model">mrp.workcenter</field>
+        <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='resource_calendar_id']" position="after">
+                <field name="parent_workcenter_id"/>
+                <field name="max_units"/>
+            </xpath>
+            <xpath expr="//button[@name='action_show_operations']" position="after">
+                <button name="%(action_mrp_workcenter_load_unit_report_graph)d" type="action" class="oe_stat_button"
+                        icon="fa-bar-chart"
+                        context="{'search_default_workcenter_id': id, 'search_default_done': True}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="units_produced_percentage" widget="statinfo" nolabel="1"/>
+                            %</span>
+                        <span class="o_stat_text">Capacity Used</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mrp_workcenter_tree_units_view" model="ir.ui.view">
+            <field name="name">mrp.workcenter.tree</field>
+            <field name="model">mrp.workcenter</field>
+        <field name="inherit_id" ref="mrp.mrp_workcenter_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="capacity" position="after">
+                    <field name="max_units"/>
+                    <field name="units_produced_percentage"/>
+                </field>
+            </field>
+    </record>
+
+</odoo>

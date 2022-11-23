@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- USED IN MRP_WORKORDER -->
+    <record id="quality_point_view_class_form" model="ir.ui.view">
+        <field name="name">quality.point.view.class.form</field>
+        <field name="model">quality.point</field>
+        <field name="inherit_id" ref="quality.quality_point_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='test_type_id']" position="after">
+                <field name="determines_class"/>
+            </xpath>
+            <xpath expr="//field[@name='test_report_type']" position="after">
+                <field name="print_automatically" attrs="{'invisible': [('test_type','!=','print_label')]}"/>
+            </xpath>
+
+            <xpath expr="//form//sheet//group//group[1]" position="inside">
+                <field name="sequence" />
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="stock_production_lot_form_class_control" model="ir.ui.view">
+        <field name="name">stock.production.lot.form.class</field>
+        <field name="model">stock.production.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="produced_class"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

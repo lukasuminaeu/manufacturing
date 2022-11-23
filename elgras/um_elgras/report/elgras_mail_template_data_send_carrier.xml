@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    Set 1 to template to override changes TODO: change in prod to 0-->
+    <data noupdate="0">
+        <record id="elgras_send_to_carrier_template" model="mail.template">
+            <field name="name">Elgras Shipping: Send to carrier</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="subject">Transporto užklausa</field>
+            <field name="email_from">{{ (object.user_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to"></field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        <t t-set="doc_name" t-value="'quotation' if object.state in ('draft', 'sent') else 'order'"/>
+                        Laba diena,
+                        <br/>
+                        <br/>
+                        Krovinys<br/>
+                        (parašome ranka)<br/>
+                        <br/>
+                        Paėmimas iš
+                         <t t-out="object.warehouse_id.partner_id.contact_address or 'Sender Address'">Warehouse_id Address</t> <br/>
+                        Pristatymas į
+                        <t t-out="object.partner_invoice_id.contact_address or 'Sender Address'">Sender Address</t> <br/>
+                        <br/>
+                        Kokia būtų kaina?<br/>
+                        <br/>
+                        Elgras<br/>
+                    </p>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

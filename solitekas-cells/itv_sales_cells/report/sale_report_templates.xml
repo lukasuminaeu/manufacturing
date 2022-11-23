@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="report.paperformat" id="paperformat_report_solitek_cells">
+        <field name="name">Solitek Cells (Report Sale)</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">15</field>
+        <field name="margin_bottom">28</field>
+        <field name="margin_right">7</field>
+        <field name="margin_left">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">10</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
+    <!-- <template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document" priority="20"> -->
+        <xpath expr="//t/t[2]" position="replace" />
+        <xpath expr="//t/t[3]" position="replace" />
+        <xpath expr="//t/t[@t-set='address']" position="replace" />
+        
+        <xpath expr="//div[@class='page']/h2" position="replace" />
+        <xpath expr="//div[@class='page']/div[@id='informations']" position="before">
+            <br/>
+            <br/>
+            <div class="row mt32">
+                <div class="col-12 text-center">
+                    <h3 class="mt32">
+                        <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                            <span t-if="doc.state not in ['draft','sent']" id="informations"><strong>Order # </strong></span>
+                            <span t-if="doc.state in ['draft','sent']" id="informations"><strong>Quotation # </strong></span>
+                        </t>
+                        <t t-if="env.context.get('proforma', False) or is_pro_forma">
+                            <span id="informations"><strong>Pro-Forma # </strong></span>
+                        </t>
+                        <br/>
+                        <span t-field="doc.name"/>
+                    </h3>
+                </div>
+            </div>
+            <br/>
+            <div class="row mt32 mb-3" style="font-size:14px;">
+                <div class="col-5">
+                    <span style="font-size:1rem;" id="informations"><strong>Vendor: </strong></span>
+                    <span t-field="doc.company_id.partner_id" t-options='{"widget": "contact", "fields": ["name"], "no_marker": true}'/>
+                    <span t-field="doc.company_id.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": true}'/>
+                    <t t-if="doc.company_id.partner_id.company_code"><span>Company Code: <span t-field="doc.company_id.partner_id.company_code"/></span><br/></t>
+                    <t t-if="doc.company_id.partner_id.vat"><span>VAT Number: <span t-field="doc.company_id.partner_id.vat"/></span><br/></t>
+                    <t t-if="doc.company_id.partner_id.bank_ids.acc_number"><span>Account No: <span t-field="doc.company_id.partner_id.bank_ids.acc_number"/></span><br/></t>
+                    <t t-if="doc.company_id.partner_id.bank_ids.bank_name"><span>Bank: <span t-field="doc.company_id.partner_id.bank_ids.bank_name"/></span><br/></t>
+                    <t t-if="doc.company_id.partner_id.bank_ids.bank_bic"><span>Swift code: <span t-field="doc.company_id.partner_id.bank_ids.bank_bic"/></span><br/></t>
+                    <t t-if="doc.company_id.partner_id.bank_ids.bank_code_nr"><span>Bank code: <span t-field="doc.company_id.partner_id.bank_ids.bank_code_nr"/></span><br/></t>
+
+                </div>
+                <div class="col-4" style="font-size:14px;">
+                    <span style="font-size:1rem;" id="informations"><strong>Customer: </strong></span>
+                    <span t-field="doc.partner_id" t-options='{"widget": "contact", "fields": ["name", "address"], "no_marker": True}' />
+                    <t t-if="doc.partner_id.phone"><span>Phone: <span t-field="doc.partner_id.phone"/></span><br/></t>
+                    <t t-if="doc.partner_id.mobile"><span>Mobile: <span t-field="doc.partner_id.mobile"/></span><br/></t>
+                    <t t-if="doc.partner_id.company_code"><span>Company Code: <span t-field="doc.partner_id.company_code"/></span><br/></t>
+                    <t t-if="doc.partner_id.vat"><span>VAT Number: <span t-field="doc.partner_id.vat"/></span><br/></t>
+                </div>
+                <div class="col-3" style="font-size:14px;">
+                    <span style="font-size:1rem;" id="informations"><strong>Shipping Address:</strong></span>
+                    <t t-if="doc.partner_shipping_id != doc.partner_invoice_id">
+                        <div t-field="doc.partner_shipping_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                        <t t-if="doc.partner_shipping_id.phone"><span>Phone: <span t-field="doc.partner_shipping_id.phone"/></span><br/></t>
+                        <t t-if="doc.partner_shipping_id.mobile"><span>Mobile: <span t-field="doc.partner_shipping_id.mobile"/></span><br/></t>
+                    </t>
+                    <t t-if="doc.partner_shipping_id == doc.partner_invoice_id">
+                        <div t-field="doc.partner_invoice_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                        <t t-if="doc.partner_invoice_id.phone"><span>Phone: <span t-field="doc.partner_invoice_id.phone"/></span><br/></t>
+                        <t t-if="doc.partner_invoice_id.mobile"><span>Mobile: <span t-field="doc.partner_invoice_id.mobile"/></span><br/></t>
+                    </t>
+                </div>
+            </div>
+            <hr/>
+        </xpath>
+       <xpath expr="//th[@name='th_taxes']" position="replace" />
+        <xpath expr="//td[@name='td_taxes']" position="replace" /> 
+        <xpath expr="//table/thead/tr/th[1]" position="before">
+<!--            <th name="th_nr" class="text-left">Nr</th>-->
+            <th name="th_default_code" class="text-left">Code</th>
+        </xpath>
+        <xpath expr="//p[@t-field='doc.note']" position="replace"/>
+        
+        <xpath expr="//table/tbody//td[1]" position="before">
+<!--            <th name="td_nr"> </th>-->
+            <td name="td_default_code"><span t-field="line.product_id.default_code"/></td>
+        </xpath>
+        <xpath expr="//table/tbody//td[2]" position="replace">
+            <td name="td_name"><span t-field="line.name"/></td>
+            <!-- <td name="td_name"><span t-field="line.product_id.name"/></td> -->
+        </xpath>
+        <xpath expr="//p[2]" position="replace"/>
+        <xpath expr="//div[@class='clearfix']" position="after">
+            <!-- <t t-if="doc.payment_term_id" >
+                <div class="row mt32">
+                    <div class="col">
+                        <div id="informations" style="display:inline"><strong>Payment Term: </strong></div><span t-field="doc.payment_term_id.name"/>
+                    </div>
+                </div>
+            </t> -->
+            <hr/>
+            <div class="row">
+                <div class="col" >
+                <!-- <div class="col" style="font-size:smaller;"> -->
+                    <p name="company_comments" >
+                        <span>Offer is valid for 30 days. Default Terms &amp; Conditions. The payment is considered to be done when the funds reach SoliTek bank account. </span><br/>
+<!--                        <span>Company details: </span>-->
+<!--                        <span t-field="doc.company_id.partner_id.name"/>-->
+<!--                        <span t-field="doc.company_id.partner_id.street"/>-->
+<!--                        <span t-field="doc.company_id.partner_id.city"/>-->
+<!--                        <span t-field="doc.company_id.partner_id.zip"/>-->
+<!--                        <span t-field="doc.company_id.partner_id.country_id.name"/>-->
+<!--                        <t t-if="doc.company_id.partner_id.company_code">-->
+<!--                            <span>Company Code: </span>-->
+<!--                            <span t-field="doc.company_id.partner_id.company_code"/>-->
+<!--                        </t>-->
+<!--                        <t t-if="doc.company_id.partner_id.vat">-->
+<!--                            <span>VAT Number: </span>-->
+<!--                            <span t-field="doc.company_id.partner_id.vat"/>-->
+<!--                        </t>-->
+<!--                        <br/>-->
+<!--                        <t t-if="doc.company_id.partner_id.bank_ids">-->
+<!--                            <t t-foreach="doc.company_id.partner_id.bank_ids" t-as="line">-->
+<!--                                <span>Bank: </span><span t-field="line.bank_id.name"/><span> SWIFT Code: </span><span t-field="line.bank_id.bic"/><span> Bank Account No: </span><span t-field="line.acc_number"/><br/>-->
+<!--                            </t>-->
+<!--                        </t>-->
+                        <!-- Check if html field has any value, if so show field -->
+                        <div t-if="doc.note != '&lt;p&gt;&lt;br&gt;&lt;/p&gt;'">
+                            <div style="margin-top: 50px;">
+                                <t t-raw="doc.note"/>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+
+            
+            <div class="row" style="font-size:smaller;">
+                <div class="col">
+                    <p name="factoring" t-if="doc.factoring_id">
+                        <t t-if="doc.factoring_id.factoring_message">
+                            <br/>
+                            <b><span t-field="doc.factoring_id.name"/>:</b>
+                            <br/>
+                            <span t-field="doc.factoring_id.factoring_message"/>
+                        </t>
+                    </p>
+                </div>
+            </div>
+        </xpath>
+        
+    </template>
+
+</odoo>

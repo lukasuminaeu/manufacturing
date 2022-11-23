@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--     Picture Column in Quotations-->
+    <record id="inherit_sale_order_line_pictures" model="ir.ui.view">
+        <field name="name">inherit.sale.order.line.form.view.picture</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <!--		<field name="priority" eval="50" />-->
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']//tree//field[@name='name']" position="after">
+                <field name="picture_url" optional="show" widget="url"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Notebook Tab in Products-->
+    <record id="inherit_product_template_line_pictures_notebook" model="ir.ui.view">
+        <field name="name">product.template.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Nuotraukos" name="nuotraukos">
+                    <field name="pictures_ids" widget="one2many" context="{'show_attribute': True}">
+                        <tree editable="bottom" create="false" delete="false">
+                            <button name="change_avatar" type="object" class="btn-primary" string="Naudoti"
+                                    icon="fa-exchange"/>
+                            <field name="name" string="Pavadinimas"/>
+                            <field name="datas" string="Parsisiųsti" widget="binary"/>
+                            <!--                                To test if field is public-->
+                            <!--                                <field name="public"/>-->
+                            <field name="local_url" string="Nuoroda" widget="url"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+</odoo>

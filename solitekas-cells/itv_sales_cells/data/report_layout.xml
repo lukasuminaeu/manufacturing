@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="report_layout_solitek_cells" model="report.layout">
+            <field name="name">Solitek Cells</field>
+            <field name="view_id" ref="itv_sale_cells.external_layout_solitek_cells"/>
+            <field name="image">/itv_sale_cells/static/img/preview_solitek_cells.png</field>
+            <field name="pdf">/web/static/pdf/preview_background.pdf</field>
+        </record>
+    </data>
+</odoo>

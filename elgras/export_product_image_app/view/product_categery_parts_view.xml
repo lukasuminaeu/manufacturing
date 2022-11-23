@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_category_form_view_parts" model="ir.ui.view">
+            <field name="name">product.category.parts</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='first']" position="after">
+                    <group string="Excel Filtravimas">
+                        <field name="is_component_category"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

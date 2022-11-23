@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_document_inherit" inherit_id="account.report_invoice_document">
+       <xpath expr="//div[hasclass('clearfix')]" position="after">
+            <span name="tax_paragraph" t-if="o.tax_paragraph" t-esc="o.tax_paragraph"/>
+        </xpath>
+    </template>
+</odoo>

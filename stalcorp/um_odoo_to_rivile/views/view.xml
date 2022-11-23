@@ -1,0 +1,100 @@
+<odoo>
+        <!-- <record id="unique_client_code_sequence" model="ir.sequence">
+                <field name="name">Unique Client Code</field>
+                <field name="code">unique.client_code</field>
+                <field name="prefix">ST</field>
+                <field name="padding">5</field>
+        </record> -->
+     <!-- Contacts --> 
+     <record id="res_partner_inherit" model="ir.ui.view">
+            <field name="name">res.partner.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />               
+            <field name="arch" type="xml">   
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='function']" position="before">   
+                   <field name="unique_code" />               
+                </xpath>                             
+            </field>
+    </record> 
+    <!-- Product Template -->
+    <!-- <record id="product_template_inherit" model="ir.ui.view">
+            <field name="name">product.template.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view" />               
+            <field name="arch" type="xml">   
+                <xpath expr="//field[@name='default_code']" position="after">   
+                   <field name="x_studio_riviles_kodas" />               
+                </xpath>                             
+            </field>
+    </record>  -->
+    <!-- Sales Order -->
+    <!-- <record id="sale_order_inherit" model="ir.ui.view">
+            <field name="name">sale.order.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />               
+            <field name="arch" type="xml">   
+                <xpath expr="//form/header" position="inside">   
+                   <button name="sales_odoo_to_rivile" type="object" string="Update Odoo to RIVILE"/>                          
+                   <button name="sales_rivile_to_odoo" type="object" string="Update RIVILE to Odoo"/>                          
+                </xpath>                             
+            </field>
+    </record>  -->
+    <!-- Contacts Odoo to Rivile -->
+     <record id="action_res_partner_odoo_to_rivile" model="ir.actions.server">
+            <field name="name">Contact Odoo to Rivile</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="binding_model_id" ref="model_res_partner"/>
+            <field name="state">code</field>
+            <field name="code">records.contacts_odoo_to_rivile()</field>
+
+    </record> 
+    <!-- Contacts Rivile to Odoo -->
+     <record id="action_res_partner_rivile_to_odoo" model="ir.actions.server">
+            <field name="name">Contact Rivile to Odoo</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="binding_model_id" ref="model_res_partner"/>
+            <field name="state">code</field>
+            <field name="code">records.contacts_rivile_to_odoo()</field>
+
+    </record> 
+    <!-- Product Template Odoo to Rivile -->
+     <!-- <record id="action_res_product_template_odoo_to_rivile" model="ir.actions.server">
+            <field name="name">Product Odoo to Rivile</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_product_template"/>
+            <field name="binding_model_id" ref="model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">records.product_info_odoo_to_rivile()</field>
+    </record>  -->
+    <!-- Product Price Odoo to Rivile -->
+     <!-- <record id="action_res_product_price_odoo_to_rivile" model="ir.actions.server">
+            <field name="name">Product Price Odoo to Rivile</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_product_template"/>
+            <field name="binding_model_id" ref="model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">records.product_price_odoo_to_rivile()</field>
+    </record>  -->
+    <!-- Product Info Rivile to Odoo -->
+     <!-- <record id="action_res_product_info_rivile_to_odoo" model="ir.actions.server">
+            <field name="name">Product Info Rivile to Odoo</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_product_template"/>
+            <field name="binding_model_id" ref="model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">records.product_info_rivile_to_odoo()</field>
+    </record>  -->
+    <!-- Product Price Rivile to Odoo -->
+     <!-- <record id="action_res_product_price_rivile_to_odoo" model="ir.actions.server">
+            <field name="name">Product Price Rivile to Odoo</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_product_template"/>
+            <field name="binding_model_id" ref="model_product_template"/>
+            <field name="state">code</field>
+            <field name="code">records.product_price_rivile_to_odoo()</field>
+    </record>  -->
+
+    
+</odoo>

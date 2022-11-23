@@ -1,0 +1,16 @@
+<odoo>
+    <!--         Stock & Manufacturing Configurations -->
+    <data>
+        <record id="settings_stock_config_1" model="res.config.settings">
+            <!--            Sales -->
+            <field name="group_sale_delivery_address" eval="1"/>
+            <!--Purchase-->
+            <field name="group_stock_packaging" eval="1"/>
+            <!--            #Purchase Agreements-->
+
+        </record>
+        <function model="res.config.settings" name="execute">
+            <value eval="[ref('settings_stock_config_1')]"/>
+        </function>
+    </data>
+</odoo>

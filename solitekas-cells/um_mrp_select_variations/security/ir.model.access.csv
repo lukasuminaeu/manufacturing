@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+um_mrp_select_variations.access_mrp_production_variation_rules,access_mrp_production_variation_rules,um_mrp_select_variations.model_mrp_production_variation_rules,base.group_user,1,1,1,1

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="res_partner_form_factoring_inherited" model="ir.ui.view">
+            <field name="name">res.partner.form inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="type">form</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='sale']" position="inside">
+                    <field name="is_factoring"/>
+                    <field name="factoring_message" attrs="{'invisible': [('is_factoring', '=', False)]}"/>
+                    <field name="factoring_ids" widget="many2many_tags" attrs="{'invisible': [('is_factoring', '=', True)]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

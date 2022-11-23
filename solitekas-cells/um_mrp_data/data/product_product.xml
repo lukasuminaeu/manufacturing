@@ -1,0 +1,194 @@
+<odoo>
+    <data>
+        <!-- DUMMY PRODUCT FOR REPAIR -->
+        <record id="repair_service" model="product.product">
+            <field name="name">Taisymo darbai</field>
+            <field name="detailed_type">consu</field>
+        </record>
+        <!-- C CLASS FINAL PRODUCT -->
+        <record id="c_flasher_bifacial" model="product.product">
+            <field name="name">Solid Framed M6 365W</field>
+            <field name="priority">1</field>
+            <field name="sale_ok">1</field>
+            <field name="purchase_ok">0</field>
+            <field name="route_ids" eval="[(6, 0, [ref('push_to_packing_zone')])]"/>
+            <field name="detailed_type">product</field>
+            <field name="default_code">C</field>
+            <field name="tracking">serial</field>
+        </record>
+        <!-- FINAL PRODUCT -->
+        <!-- <record id="final_bifacial" model="product.product">
+            <field name="name">Solid Framed M6 365W</field>
+            <field name="priority">1</field>
+            <field name="sale_ok">1</field>
+            <field name="purchase_ok">0</field>
+            <field name="detailed_type">product</field>
+            <field name="default_code">After Final EL</field>
+            <field name="is_final_product">1</field>
+            <field name="route_ids" eval="[(6, 0, [ref('stock.route_warehouse0_mto'), ref('mrp.route_warehouse0_manufacture'), ref('push_to_packing_zone')])]"/>
+            <field name="tracking">serial</field>
+            <field name="property_stock_production" ref="um_mrp_data.work_location_27"/>
+            <field name="buffer_zone_id" ref="um_mrp_data.work_location_final_el"/>
+        </record> -->
+        
+
+        <!-- INTERMEDIATE PRODUCTS -->
+            <!-- FLASHER -->
+        <record id="flasher_bifacial" model="product.product">
+            <field name="name">[10] Solid Framed M6 365W</field>
+            <field name="priority">1</field>
+            <field name="sale_ok">1</field>
+            <field name="purchase_ok">0</field>
+            <field name="detailed_type">product</field>
+            <field name="default_code">Flasher</field>
+            <field name="is_final_product">1</field>
+            <field name="route_ids" eval="[(6, 0, [ref('stock.route_warehouse0_mto'), ref('mrp.route_warehouse0_manufacture'), ref('push_to_packing_zone')])]"/>
+            <field name="tracking">serial</field>
+            <field name="property_stock_production" ref="um_mrp_data.work_location_26"/>
+            <field name="buffer_zone_id" ref="um_mrp_data.work_location_flasher"/>
+        </record>
+            <!-- HiPot -->
+        <!-- <record id="hipot_bifacial" model="product.product">
+            <field name="name">[10] Solid Framed M6 365W</field>
+            <field name="priority">1</field>
+            <field name="sale_ok">0</field>
+            <field name="purchase_ok">0</field>
+            <field name="detailed_type">product</field>
+            <field name="default_code">HiPoT</field>
+            <field name="is_final_product">0</field>
+            <field name="route_ids" eval="[(6, 0, [ref('stock.route_warehouse0_mto'), ref('mrp.route_warehouse0_manufacture')])]"/>
+            <field name="tracking">serial</field>
+            <field name="property_stock_production" ref="um_mrp_data.work_location_25"/>
+            <field name="buffer_zone_id" ref="um_mrp_data.work_location_hipot"/>
+        </record> -->
+
+        <!-- Backend2 -->
+        <record id="backend2_bifacial" model="product.product">
+            <field name="name">[9] Solid Framed M6 365W</field>
+            <field name="priority">1</field>
+            <field name="sale_ok">0</field>
+            <field name="purchase_ok">0</field>
+            <field name="detailed_type">product</field>
+            <field name="default_code">Backend2</field>
+            <field name="is_final_product">0</field>
+            <field name="route_ids" eval="[(6, 0, [ref('stock.route_warehouse0_mto'), ref('mrp.route_warehouse0_manufacture')])]"/>
+            <field name="tracking">serial</field>
+            <field name="property_stock_production" ref="um_mrp_data.work_location_28"/>
+            <field name="buffer_zone_id" ref="um_mrp_data.work_location_backend2"/>
+        </record>
+
+        <!-- Backend -->
+        <record id="backend_bifacial" model="product.product">
+            <field name="name">[8] Solid Framed M6 365W</field>
+            <field name="priority">1</field>
+            <field name="sale_ok">0</field>
+            <field name="purchase_ok">0</field>
+            <field name="detailed_type">product</field>
+            <field name="default_code">Backend</field>
+            <field name="is_final_product">0</field>
+            <field name="route_ids" eval="[(6, 0, [ref('stock.route_warehouse0_mto'), ref('mrp.route_warehouse0_manufacture')])]"/>
+            <field name="tracking">serial</field>
+            <field name="property_stock_production" ref="um_mrp_data.work_location_24"/>
+            <field name="buffer_zone_id" ref="um_mrp_data.work_location_backend"/>
+        </record>
+        
+            <!-- Vizualinė Patikra -->
+        <record id="vizualine_patikra_bifacial" model="product.product">
+            <field name="name">[7] Solid Framed M6 365W</field>
+            <field name="priority">1</field>
+            <field name="sale_ok">0</field>
+            <field name="purchase_ok">0</field>
+            <field name="detailed_type">product</field>
+            <field name="default_code">Vizualinė patikra</field>
+            <field name="is_final_product">0</field>
+            <field name="route_ids" eval="[(6, 0, [ref('stock.route_warehouse0_mto'), ref('mrp.route_warehouse0_manufacture')])]"/>
+            <field name="tracking">serial</field>
+            <field name="property_stock_production" ref="um_mrp_data.work_location_23"/>
+            <field name="buffer_zone_id" ref="um_mrp_data.work_location_vizual_patikra"/>
+        </record>
+            <!-- Laminavimas -->
+        <record id="laminavimas_bifacial" model="product.product">
+            <field name="name">[6] Solid Framed M6 365W</field>
+            <field name="priority">1</field>
+            <field name="sale_ok">0</field>
+            <field name="purchase_ok">0</field>
+            <field name="detailed_type">product</field>
+            <field name="default_code">Laminavimas</field>
+            <field name="is_final_product">0</field>
+            <field name="route_ids" eval="[(6, 0, [ref('stock.route_warehouse0_mto'), ref('mrp.route_warehouse0_manufacture')])]"/>
+            <field name="tracking">serial</field>
+            <field name="property_stock_production" ref="um_mrp_data.work_location_21"/>
+            <field name="buffer_zone_id" ref="um_mrp_data.work_location_laminavimas"/>
+        </record>
+            <!-- EL -->
+        <record id="el_bifacial" model="product.product">
+            <field name="name">[5] Solid Framed M6 365W</field>
+            <field name="priority">1</field>
+            <field name="sale_ok">0</field>
+            <field name="purchase_ok">0</field>
+            <field name="detailed_type">product</field>
+            <field name="default_code">EL</field>
+            <field name="is_final_product">0</field>
+            <field name="route_ids" eval="[(6, 0, [ref('stock.route_warehouse0_mto'), ref('mrp.route_warehouse0_manufacture')])]"/>
+            <field name="tracking">serial</field>
+            <field name="property_stock_production" ref="um_mrp_data.work_location_20"/>
+            <field name="buffer_zone_id" ref="um_mrp_data.work_location_el"/>
+        </record>
+            <!-- Galinio stiklo/plėvelės -->
+        <record id="galinio_st_plev_bifacial" model="product.product">
+            <field name="name">[4] Solid Framed M6 365W</field>
+            <field name="priority">1</field>
+            <field name="sale_ok">0</field>
+            <field name="purchase_ok">0</field>
+            <field name="detailed_type">product</field>
+            <field name="default_code">Galinis stiklas/plėvelė</field>
+            <field name="is_final_product">0</field>
+            <field name="route_ids" eval="[(6, 0, [ref('stock.route_warehouse0_mto'), ref('mrp.route_warehouse0_manufacture')])]"/>
+            <field name="tracking">serial</field>
+            <field name="property_stock_production" ref="um_mrp_data.work_location_19"/>
+            <field name="buffer_zone_id" ref="um_mrp_data.work_location_galinio_st_plev"/>
+        </record>
+            <!-- SURINKIMAS -->
+        <record id="surinkimas_bifacial" model="product.product">
+            <field name="name">[3] Solid Framed M6 365W</field>
+            <field name="priority">1</field>
+            <field name="sale_ok">0</field>
+            <field name="purchase_ok">0</field>
+            <field name="detailed_type">product</field>
+            <field name="default_code">Surinkimas</field>
+            <field name="is_final_product">0</field>
+            <field name="route_ids" eval="[(6, 0, [ref('stock.route_warehouse0_mto'), ref('mrp.route_warehouse0_manufacture')])]"/>
+            <field name="tracking">serial</field>
+            <field name="property_stock_production" ref="um_mrp_data.work_location_17"/>
+            <field name="buffer_zone_id" ref="um_mrp_data.work_location_surinkimas1"/>
+        </record>
+            <!-- STRINGER -->
+        <record id="stringer_bifacial" model="product.product">
+            <field name="name">[2] Solid Framed M6 365W</field>
+            <field name="priority">1</field>
+            <field name="sale_ok">0</field>
+            <field name="purchase_ok">0</field>
+            <field name="detailed_type">product</field>
+            <field name="default_code">Stringer</field>
+            <field name="is_final_product">0</field>
+            <field name="route_ids" eval="[(6, 0, [ref('stock.route_warehouse0_mto'), ref('mrp.route_warehouse0_manufacture')])]"/>
+            <field name="tracking">none</field>
+            <field name="property_stock_production" ref="um_mrp_data.work_location_15"/>
+            <field name="buffer_zone_id" ref="um_mrp_data.work_location_stringer1"/>
+        </record>
+            <!-- Priekinis stiklas/plėvelė -->
+        <record id="priekinis_stiklas_bifacial" model="product.product">
+            <field name="name">[1] Solid Framed M6 365W</field>
+            <field name="priority">1</field>
+            <field name="sale_ok">0</field>
+            <field name="purchase_ok">0</field>
+            <field name="detailed_type">product</field>
+            <field name="default_code">Priekinis stiklas/plevėle</field>
+            <field name="is_final_product">0</field>
+            <field name="route_ids" eval="[(6, 0, [ref('stock.route_warehouse0_mto'), ref('mrp.route_warehouse0_manufacture')])]"/>
+            <field name="tracking">none</field>
+            <field name="property_stock_production" ref="um_mrp_data.work_location_14"/>
+            <field name="buffer_zone_id" ref="um_mrp_data.work_location_pr_stiklo_plevele"/>
+        </record>
+    </data>
+</odoo>

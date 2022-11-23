@@ -1,0 +1,161 @@
+<odoo>
+    <data>
+    <!-- For every Pass/Fail Quality Point, we must have -->
+    <!-- a 'Record Consumer Materials' Quality Point with a -->
+    <!-- lower sequence because otherwise user is asked -->
+    <!-- to perform Pass/Fail prior to assigning SN -->
+
+    <!-- Record Consumed Materials -->
+        <!-- EL -->
+        <record id="rcm_at_el" model="quality.point">
+            <field name="title">EL pusgaminio užregistravimas</field>
+            <field name="sequence">0</field>
+            <field name="component_id" eval="ref('um_mrp_data.galinio_st_plev_bifacial')"/>
+            <field name="product_ids" eval="[(6,0,[ref('um_mrp_data.el_bifacial')])]"/>
+            <field name="picking_type_ids" eval="[(6,0,[ref('um_mrp_data.operation_type_auto_pervezimas_virtual')])]"/>
+            <field name="operation_id" model="mrp.routing.workcenter" eval="obj().search([('name','=','EL'),('workcenter_id','=',ref('um_mrp_data.el_workcenter'))], limit=1).id"/>
+            <field name="measure_on">operation</field>
+            <field name="measure_frequency_type">all</field>
+            <field name="test_type_id" eval="ref('mrp_workorder.test_type_register_consumed_materials')"/>
+            <field name="determines_class" eval="0"/>
+            <field name="team_id" eval="ref('quality.quality_alert_team0')"/>
+        </record>
+        <!-- Vizualinė patikra -->
+        <record id="rcm_at_vizualine_patikra" model="quality.point">
+            <field name="title">Vizualinė kokybės patikra pusgaminio užregistravimas</field>
+            <field name="sequence">0</field>
+            <field name="component_id" eval="ref('um_mrp_data.laminavimas_bifacial')"/>
+            <field name="product_ids" eval="[(6,0,[ref('um_mrp_data.vizualine_patikra_bifacial')])]"/>
+            <field name="picking_type_ids" eval="[(6,0,[ref('um_mrp_data.operation_type_auto_pervezimas_virtual')])]"/>
+            <field name="operation_id" model="mrp.routing.workcenter" eval="obj().search([('name','=','Vizualinė Patikra'),('workcenter_id','=',ref('um_mrp_data.vizualine_patikra_workcenter'))], limit=1).id"/>
+            <field name="measure_on">operation</field>
+            <field name="measure_frequency_type">all</field>
+            <field name="test_type_id" eval="ref('mrp_workorder.test_type_register_consumed_materials')"/>
+            <field name="determines_class" eval="1"/>
+            <field name="team_id" eval="ref('quality.quality_alert_team0')"/>
+        </record>
+        <!-- HiPoT -->
+        <!-- <record id="rcm_at_hipot" model="quality.point">
+            <field name="title">HiPoT pusgaminio užregistravimas</field>
+            <field name="sequence">0</field>
+            <field name="component_id" eval="ref('um_mrp_data.backend2_bifacial')"/>
+            <field name="product_ids" eval="[(6,0,[ref('um_mrp_data.hipot_bifacial')])]"/>
+            <field name="picking_type_ids" eval="[(6,0,[ref('um_mrp_data.operation_type_auto_pervezimas_virtual')])]"/>
+            <field name="operation_id" model="mrp.routing.workcenter" eval="obj().search([('name','=','HiPoT'),('workcenter_id','=',ref('um_mrp_data.hipot_workcenter'))], limit=1).id"/>
+            <field name="measure_on">operation</field>
+            <field name="measure_frequency_type">all</field>
+            <field name="test_type_id" eval="ref('mrp_workorder.test_type_register_consumed_materials')"/>
+            <field name="determines_class" eval="1"/>
+            <field name="team_id" eval="ref('quality.quality_alert_team0')"/>
+        </record> -->
+        <!-- Backend2 -->
+        <!-- <record id="rcm_at_hipot" model="quality.point">
+            <field name="title">Backend2 pusgaminio užregistravimas</field>
+            <field name="sequence">0</field>
+            <field name="component_id" eval="ref('um_mrp_data.backend_bifacial')"/>
+            <field name="product_ids" eval="[(6,0,[ref('um_mrp_data.backend2_bifacial')])]"/>
+            <field name="picking_type_ids" eval="[(6,0,[ref('um_mrp_data.operation_type_auto_pervezimas_virtual')])]"/>
+            <field name="operation_id" model="mrp.routing.workcenter" eval="obj().search([('name','=','Backend2'),('workcenter_id','=',ref('um_mrp_data.backend2_workcenter'))], limit=1).id"/>
+            <field name="measure_on">operation</field>
+            <field name="measure_frequency_type">all</field>
+            <field name="test_type_id" eval="ref('mrp_workorder.test_type_register_consumed_materials')"/>
+            <field name="determines_class" eval="1"/>
+            <field name="team_id" eval="ref('quality.quality_alert_team0')"/>
+        </record> -->
+        <!-- Flasher -->
+        <record id="rcm_at_flasher" model="quality.point">
+            <field name="title">Flasher pusgaminio užregistravimas</field>
+            <field name="sequence">0</field>
+            <field name="component_id" eval="ref('um_mrp_data.backend2_bifacial')"/>
+            <field name="product_ids" eval="[(6,0,[ref('um_mrp_data.flasher_bifacial')])]"/>
+            <field name="picking_type_ids" eval="[(6,0,[ref('um_mrp_data.operation_type_auto_pervezimas_virtual')])]"/>
+            <field name="operation_id" model="mrp.routing.workcenter" eval="obj().search([('name','=','Flasher'),('workcenter_id','=',ref('um_mrp_data.flasher_workcenter'))], limit=1).id"/>
+            <field name="measure_on">operation</field>
+            <field name="measure_frequency_type">all</field>
+            <field name="test_type_id" eval="ref('mrp_workorder.test_type_register_consumed_materials')"/>
+            <field name="determines_class" eval="1"/>
+            <field name="team_id" eval="ref('quality.quality_alert_team0')"/>
+        </record>
+        <!-- Final EL -->
+        <!-- <record id="rcm_at_final_el" model="quality.point">
+            <field name="title">Final EL pusgaminio užregistravimas</field>
+            <field name="sequence">0</field>
+            <field name="component_id" eval="ref('um_mrp_data.flasher_bifacial')"/>
+            <field name="product_ids" eval="[(6,0,[ref('um_mrp_data.final_bifacial')])]"/>
+            <field name="picking_type_ids" eval="[(6,0,[ref('um_mrp_data.operation_type_auto_pervezimas_virtual')])]"/>
+            <field name="operation_id" model="mrp.routing.workcenter" eval="obj().search([('name','=','Final EL'),('workcenter_id','=',ref('um_mrp_data.final_el_workcenter'))], limit=1).id"/>
+            <field name="measure_on">operation</field>
+            <field name="measure_frequency_type">all</field>
+            <field name="test_type_id" eval="ref('mrp_workorder.test_type_register_consumed_materials')"/>
+            <field name="determines_class" eval="1"/>
+            <field name="team_id" eval="ref('quality.quality_alert_team0')"/>
+        </record> -->
+
+    <!-- PASS/FAIL -->
+        <!-- EL -->
+        <record id="pass_fail_at_el" model="quality.point">
+            <field name="title">EL kokybės patikra</field>
+            <field name="sequence">100</field>
+            <field name="product_ids" eval="[(6,0,[ref('um_mrp_data.el_bifacial')])]"/>
+            <field name="picking_type_ids" eval="[(6,0,[ref('um_mrp_data.operation_type_auto_pervezimas_virtual')])]"/>
+            <field name="operation_id" model="mrp.routing.workcenter" eval="obj().search([('name','=','EL'),('workcenter_id','=',ref('um_mrp_data.el_workcenter'))], limit=1).id"/>
+            <field name="measure_on">operation</field>
+            <field name="measure_frequency_type">all</field>
+            <field name="test_type_id" eval="ref('quality_control.test_type_passfail')"/>
+            <field name="determines_class" eval="0"/>
+            <field name="team_id" eval="ref('quality.quality_alert_team0')"/>
+        </record>
+        <!-- Vizualinė patikra -->
+        <record id="pass_fail_at_vizualine_patikra" model="quality.point">
+            <field name="title">Vizualinė kokybės patikra</field>
+            <field name="sequence">100</field>
+            <field name="product_ids" eval="[(6,0,[ref('um_mrp_data.vizualine_patikra_bifacial')])]"/>
+            <field name="picking_type_ids" eval="[(6,0,[ref('um_mrp_data.operation_type_auto_pervezimas_virtual')])]"/>
+            <field name="operation_id" model="mrp.routing.workcenter" eval="obj().search([('name','=','Vizualinė Patikra'),('workcenter_id','=',ref('um_mrp_data.vizualine_patikra_workcenter'))], limit=1).id"/>
+            <field name="measure_on">operation</field>
+            <field name="measure_frequency_type">all</field>
+            <field name="test_type_id" eval="ref('quality_control.test_type_passfail')"/>
+            <field name="determines_class" eval="1"/>
+            <field name="team_id" eval="ref('quality.quality_alert_team0')"/>
+        </record>
+        <!-- HiPoT -->
+        <!-- <record id="pass_fail_at_hipot" model="quality.point">
+            <field name="title">HiPoT patikra</field>
+            <field name="sequence">100</field>
+            <field name="product_ids" eval="[(6,0,[ref('um_mrp_data.hipot_bifacial')])]"/>
+            <field name="picking_type_ids" eval="[(6,0,[ref('um_mrp_data.operation_type_auto_pervezimas_virtual')])]"/>
+            <field name="operation_id" model="mrp.routing.workcenter" eval="obj().search([('name','=','HiPoT'),('workcenter_id','=',ref('um_mrp_data.hipot_workcenter'))], limit=1).id"/>
+            <field name="measure_on">operation</field>
+            <field name="measure_frequency_type">all</field>
+            <field name="test_type_id" eval="ref('quality_control.test_type_passfail')"/>
+            <field name="determines_class" eval="1"/>
+            <field name="team_id" eval="ref('quality.quality_alert_team0')"/>
+        </record> -->
+        <!-- Flasher -->
+        <record id="pass_fail_at_flasher" model="quality.point">
+            <field name="title">Flasher patikra</field>
+            <field name="sequence">100</field>
+            <field name="product_ids" eval="[(6,0,[ref('um_mrp_data.flasher_bifacial')])]"/>
+            <field name="picking_type_ids" eval="[(6,0,[ref('um_mrp_data.operation_type_auto_pervezimas_virtual')])]"/>
+            <field name="operation_id" model="mrp.routing.workcenter" eval="obj().search([('name','=','Flasher'),('workcenter_id','=',ref('um_mrp_data.flasher_workcenter'))], limit=1).id"/>
+            <field name="measure_on">operation</field>
+            <field name="measure_frequency_type">all</field>
+            <field name="test_type_id" eval="ref('quality_control.test_type_passfail')"/>
+            <field name="determines_class" eval="1"/>
+            <field name="team_id" eval="ref('quality.quality_alert_team0')"/>
+        </record>
+        <!-- Final EL -->
+        <!-- <record id="pass_fail_at_final_el" model="quality.point">
+            <field name="title">Final EL patikra</field>
+            <field name="sequence">100</field>
+            <field name="product_ids" eval="[(6,0,[ref('um_mrp_data.final_bifacial')])]"/>
+            <field name="picking_type_ids" eval="[(6,0,[ref('um_mrp_data.operation_type_auto_pervezimas_virtual')])]"/>
+            <field name="operation_id" model="mrp.routing.workcenter" eval="obj().search([('name','=','Final EL'),('workcenter_id','=',ref('um_mrp_data.final_el_workcenter'))], limit=1).id"/>
+            <field name="measure_on">operation</field>
+            <field name="measure_frequency_type">all</field>
+            <field name="test_type_id" eval="ref('quality_control.test_type_passfail')"/>
+            <field name="determines_class" eval="1"/>
+            <field name="team_id" eval="ref('quality.quality_alert_team0')"/>
+        </record> -->
+    </data>
+</odoo>

@@ -1,0 +1,68 @@
+<odoo>
+
+    <record id="product_id_domain" model="ir.ui.view">
+        <field name="name">mrp.production.domain</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="attributes">
+                <attribute name="domain">[('is_final_product','=',True)]</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mrp_select_variant_button" model="ir.ui.view">
+        <field name="name">umina.mrp.select.variant</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='miscellaneous']" position="after">
+                <page string="Child Manufacturing Orders" name="child_mos">
+                    <field name="child_production_ids">
+                        <tree default_order="id asc">
+                            <field name="name"/>
+                            <field name="product_id"/>
+                            <field name="create_date"/>
+                            <field name="date_planned_start"/>
+                            <field name="product_qty"/>
+                            <field name="components_availability"/>
+                            <field name="state" invisible="0"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//page[@name='miscellaneous']" position="after">
+                <page string="Variation" name="variation">
+                    <field name="new_variation_domain_ids" invisible="1"/>
+                    <label for="active_variation_rules" string="Variation Rules"/>
+                    <field name="active_variation_rules" nolabel="1">
+                        <tree>
+                            <field name="active_variation_rule" invisible="1"/>
+                            <field name="replace_or_new"/>
+                            <field name="bom_id" invisible="1"/>
+                            <field name="product_id"/>
+                            <field name="mrp_bom_line_id" invisible="1"/>
+                            <field name="component_bom_id"/>
+                            <field name="component_before_id"/>
+                            <field name="component_after_id"/>
+                            <field name="product_qty_before"/>
+                            <field name="product_qty_after"/>
+                        </tree>
+                    </field>
+                    <label for="varying_production_lines" string="Varying Lines"/>
+                    <field name="varying_production_lines" nolabel="1"/>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+            <!-- We want variation-related fields and button to be only visible after the order is confirmed and if the order is not for an intermediate product -->
+                <label for="new_variation_id" string="New Variation" attrs="{'invisible': ['|',('state','!=','confirmed'), ('mrp_production_source_count','>',0)]}"/>
+                <div class="o_row" attrs="{'invisible': ['|',('state','!=','confirmed'), ('mrp_production_source_count','>',0)]}">
+                    <field name="new_variation_id" class="oe_inline"/>
+                    <button name="select_variation" type="object" string="Select Variation" class="btn btn-secondary oe_inline" icon="fa-magic"/>
+                </div>
+                <field name="current_variation_id" attrs="{'invisible': ['|',('state','!=','confirmed'), ('mrp_production_source_count','>',0)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

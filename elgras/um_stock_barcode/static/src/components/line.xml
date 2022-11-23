@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-inherit="stock_barcode.MainComponent" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o_barcode_locations')]" position="inside">
+
+            <p></p>
+
+<!--        <t t-if="!state.isDPDTag"> DPD tag is off</t>-->
+        <span t-if="state.isDPDTag and state.isSequencePICK and state.isOrigin">
+                <!-- Create package-->
+                <div class="dpd-buttons">
+                    <span>
+                    <t t-if="!state.isPackageCreated" owl="1">
+                        <button
+                                name="courier"
+                                t-on-click="callOrm('action_delivery_send_package_to_dpd') "
+                                class="o_line_button o_print_package_slip btn btn-primary ml-2 ml-sm-4">
+                                       Sukurti siuntą
+                        </button>
+                    </t>
+                        <span t-else="">
+                        <button
+                                class="o_line_button o_print_package_slip btn btn-primary ml-2 ml-sm-4 disabled">
+                                Siunta kuriama
+                        </button>
+                    </span>
+                </span>
+
+                    <!-- Generate manifest-->
+                    <span>
+                <t t-if="!state.isManifestGenerated" owl="1">
+                    <button
+                            name="courier"
+                            t-on-click="callOrm('action_delivery_generate_manifest') "
+                            class="o_line_button o_print_package_slip btn btn-primary ml-2 ml-sm-4">
+                                   Generuoti Manifestą
+                    </button>
+                </t>
+                        <span t-else="">
+                    <button
+                            t-on-click="callOrmDownload('action_download_attachment_manifest') "
+                            class="o_line_button o_print_package_slip btn btn-info ml-2 ml-sm-4">
+                            PARSISIŲSTI MANIFESTĄ
+                    </button>
+                </span>
+            </span>
+
+                    <!--           Generate label buttons-->
+                    <span>
+                <t t-if="!state.isGenerateLabels" owl="1">
+                    <button
+                            t-on-click="callOrm('action_delivery_download_delivery_slip')"
+                            class="o_line_button o_print_package_slip btn btn-primary ml-2 ml-sm-4">
+                                   Generuoti Lipdukus
+                    </button>
+                </t>
+                        <span t-else="">
+                    <button
+                            t-on-click="callOrmDownload('action_download_attachment_slip')"
+                            class="o_line_button o_print_package_slip btn btn-info ml-2 ml-sm-4">
+                            PARSISIŲSTI LIPDUKUS
+                    </button>
+                </span>
+            </span>
+
+                    <!--          Send to courier buttons-->
+                    <span>
+                <t t-if="!state.isCourierCalled" owl="1">
+                    <button
+                            t-on-click="callOrm('action_call_courier')"
+                            class="o_line_button o_print_package_slip btn btn-primary ml-2 ml-sm-4">
+                                   KVIESTI KURJERĮ
+                    </button>
+                </t>
+                        <span t-else="">
+                    <button
+                            class="o_line_button o_print_package_slip btn btn-primary ml-2 ml-sm-4 disabled">
+                            KURJERIS IŠKVIESTAS
+                    </button>
+                </span>
+            </span>
+
+                </div>
+        </span>
+        <span t-if="!state.isDPDTag and state.isSequencePICK and state.isOrigin">
+            <!--Send TO Carrier BUTTON-->
+            <div class="carrier-buttons">
+                <button
+                    t-on-click="callOrmWizard('action_send_carrier')"
+                    class="o_line_button o_print_package_slip btn btn-primary ml-2 ml-sm-4">
+                    SEND TO CARRIER
+                </button>
+            </div>
+        </span>
+
+
+        </xpath>
+
+    </t>
+
+</templates>

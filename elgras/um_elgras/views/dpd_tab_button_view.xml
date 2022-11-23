@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- DPD Button in (WH/PICK)  4.9 (internal)-->
+    <record id="stock_picking_view_form_inherit_deliver_dpd" model="ir.ui.view">
+        <field name="name">stock.picking.button.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='has_packages']" position="before">
+                <div groups="base.group_no_one">
+                    <field name="is_dpd_tag" string="Is DPD TAG enabled" invisible="1"/>
+                    <field name="enable_dpd_button" invisible="1"/>
+                    <field name="is_send_package_to_dpd"/>
+                    <field name="is_manifest_generated_from_dpd"/>
+                    <field name="is_label_generated_from_dpd" />
+                    <field name="is_courier_called_dpd" />
+                </div>
+
+
+                <header>
+                    <button
+                            name="action_send_confirmation_warehouse"
+                            type="object" class="btn-primary" text="Send Email"
+                            attrs="{ 'invisible': ['|',
+                            ('state', '!=', 'done'),
+                             ('picking_type_code', '!=', 'outgoing'),
+                             ]}"
+                    />
+                </header>
+
+                <!--                SHOW WHEN DPD TAG IS SET TO SALE ORDER-->
+                <span attrs="{'invisible' : [('is_dpd_tag', '==', False)]}">
+                    <header>
+                        <p>-------------</p>
+                        <!-- Send package buttons -->
+                        <button
+                                name="action_delivery_send_package_to_dpd"
+                                type="object" class="btn-primary" text="Sukurti siuntą"
+                                attrs="{ 'invisible': ['|','|','|',
+                            ('state', '!=', 'done'),
+                             ('picking_type_code', '!=', 'internal'),
+                             ('enable_dpd_button', '==', False),
+                             ('is_send_package_to_dpd', '==', True)
+                             ]}"
+                                confirm="Ar tikrai norite siųsti siuntą į DPD?"
+                        />
+                        <button
+                                name="empty"
+                                class="btn-primary disabled" text="Sukuriama siunta"
+                                attrs="{ 'invisible': ['|','|','|',
+                            ('state', '!=', 'done'),
+                            ('picking_type_code', '!=', 'internal'),
+                            ('enable_dpd_button', '==', False),
+                            ('is_send_package_to_dpd', '==', False)
+                             ]}"
+                        />
+
+                        <!-- Generate Manifest buttons -->
+                        <button name="action_delivery_generate_manifest"
+                                type="object" class="btn-primary" text="GENERUOTI MANIFESTĄ"
+                                attrs="{ 'invisible': ['|','|','|',
+                            ('state', '!=', 'done'),
+                            ('picking_type_code', '!=', 'internal'),
+                            ('enable_dpd_button', '==', False),
+                            ('is_manifest_generated_from_dpd', '==', True)
+                            ]}"
+                        />
+
+                        <button name="action_download_attachment_manifest"
+                                type="object"
+                                class="btn-info" text="PARSISIŲSTI MANIFESTĄ"
+                                attrs="{ 'invisible': ['|','|','|',
+                            ('state', '!=', 'done'),
+                            ('picking_type_code', '!=', 'internal'),
+                            ('enable_dpd_button', '==', False),
+                            ('is_manifest_generated_from_dpd', '==', False)
+                             ]}"
+                        />
+                        <!-- Generate Delivery slip buttons -->
+                        <button name="action_delivery_download_delivery_slip"
+                                type="object" class="btn-primary" text="GENERUOTI LIPDUKUS"
+                                attrs="{ 'invisible': ['|','|','|',
+                            ('state', '!=', 'done'),
+                            ('picking_type_code', '!=', 'internal'),
+                            ('enable_dpd_button', '==', False),
+                            ('is_label_generated_from_dpd', '==', True)
+
+                            ]}"
+                        />
+                        <button name="action_download_attachment_slip"
+                                type="object" class="btn-info" text="PARSISIŲSTI LIPDUKUS"
+                                attrs="{ 'invisible': ['|','|','|',
+                            ('state', '!=', 'done'),
+                            ('picking_type_code', '!=', 'internal'),
+                            ('enable_dpd_button', '==', False),
+                            ('is_label_generated_from_dpd', '==', False)
+
+                            ]}"
+                        />
+
+                        <!--Show Carrier when DPD is not here-->
+                        <!-- Call courier button -->
+                        <button name="action_call_courier"
+                                type="object" class="btn-primary" text="KVIESTI KURJERĮ"
+                                attrs="{ 'invisible': ['|','|','|',
+                            ('state', '!=', 'done'),
+                            ('picking_type_code', '!=', 'internal'),
+                            ('enable_dpd_button', '==', False),
+                            ('is_courier_called_dpd', '==', True)
+
+                            ]}"
+                        />
+                        <button name="empty"
+                                type="object" class="btn-info" text="KURJERIS IŠKVIESTAS"
+                                attrs="{ 'invisible': ['|','|','|',
+                            ('state', '!=', 'done'),
+                            ('picking_type_code', '!=', 'internal'),
+                            ('enable_dpd_button', '==', False),
+                            ('is_courier_called_dpd', '==', False)
+
+                            ]}"
+                        />
+
+
+                    </header>
+                </span>
+                <!--                    Hide when DPD tag is not set-->
+                <span attrs="{'invisible' : [('is_dpd_tag', '==', True)]}">
+                    <header>
+                        <!-- WHEN DPD IS NOT USED-->
+                        <button name="action_send_carrier" type="object" string="SEND TO CARRIER"
+                                class="btn-primary"
+                                attrs="{ 'invisible': ['|','|', ('state', '!=', 'done'), ('picking_type_code', '!=', 'internal'), ('enable_dpd_button', '==', False) ]}"/>
+                    </header>
+                </span>
+            </xpath>
+        </field>
+    </record>
+</odoo>

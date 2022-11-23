@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--   Popup field in  WH/OUT -->
+    <record id="stock_move_lines_form_inherit_dpd_fields" model="ir.ui.view">
+        <field name="name">stock.move.line.form.dpd.inherit</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_move_line_form"/>
+        <field name="priority" eval="8"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='result_package_id']"
+                   position="after">
+                <field name="parcel_number"/>
+                <field name="package_number"/>
+                <!-- Test start Manifest and delivery slip not necessary here   -->
+                <field name="manifest"/>
+                <field name="delivery_slip"/>
+                <!-- Test end   -->
+                <field name="dpd_status"/>
+                <field name="dpd_tour"/>
+                <field name="dpd_coordinates"/>
+                <field name="dpd_delivery_estimate"/>
+                <field name="dpd_depot"/>
+                <field name="dpd_country_code"/>
+                <field name="dpd_country_name"/>
+                <field name="dpd_city"/>
+
+            </xpath>
+        </field>
+    </record>
+</odoo>

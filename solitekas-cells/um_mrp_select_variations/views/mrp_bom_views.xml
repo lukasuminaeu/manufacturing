@@ -1,0 +1,41 @@
+<odoo>
+    <record id="mrp_bom_form_um_view_variant_selection" model="ir.ui.view">
+        <field name="name">mrp.bom.form.um.variant.selection</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='miscellaneous']" position="after">
+                <page string='Variation rules' attrs="{'invisible': [('is_final_product','=',False)]}">
+                    <field name="variation_rules_ids">
+                        <tree editable="bottom" decoration-success="active_variation_rule==False" decoration-warning="active_variation_rule==True" create="0" delete="0">
+                            <field name="active_variation_rule" invisible="1"/>
+                            <field name="replace_or_new" invisible="1"/>
+                            <field name="bom_id" invisible="1"/>
+                            <field name="product_id" invisible="1"/>
+                            <field name="variation_value" widget="many2many_tags"/>
+                            <field name="mrp_bom_line_id" invisible="1"/>
+                            <field name="component_bom_id"/>
+                            <field name="component_before_id"/>
+                            <field name="component_after_id"/>
+                            <field name="product_qty_before"/>
+                            <field name="product_qty_after"/>
+                        </tree>
+                    </field>
+                    <div class="oe_row">
+                        <label for="variants_ids" string="Variants"/>
+                        <button name="create_variation_rules" type="object" string="Update" class="btn btn-secondary oe_inline" icon="fa-refresh"/> 
+                    </div>
+                    <field name="variants_ids">
+                        <tree>
+                            <field name="name"/>
+                            <field name="product_template_variant_value_ids" widget="many2many_tags"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='type']" position="after">
+                <field name="is_final_product"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

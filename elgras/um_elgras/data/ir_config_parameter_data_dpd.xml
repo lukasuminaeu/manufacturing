@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!--        Testnet -->
+
+        <record id="dpd_testnet_api_url_base" model="ir.config_parameter">
+            <field name="key">dpd.testnet.api.url.base</field>
+            <field name="value">https://sandbox-esiunta.dpd.lt/api/v1</field>
+        </record>
+
+        <record id="dpd_testnet_api_username" model="ir.config_parameter">
+            <field name="key">dpd.testnet.api.username</field>
+            <field name="value">p.gaizauskas@umina.eu</field>
+        </record>
+
+        <record id="dpd_testnet_api_password" model="ir.config_parameter">
+            <field name="key">dpd.testnet.api.password</field>
+            <field name="value">Ge6weiwi</field>
+        </record>
+
+        <record id="dpd_testnet_bearer_token" model="ir.config_parameter">
+            <field name="key">dpd.testnet.bearer</field>
+            <field name="value">
+                eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjdXN0b21lcl9pZCI6MzI1LCJhZG1pbl9pZCI6bnVsbCwic2lnbmF0dXJlX2lkIjoiZDFlYTQ5N2YtMTdhZi00ZDYyLTkwNjgtMmQ0YzE5OGYyMzBjIiwic2lnbmF0dXJlX25hbWUiOiJUZXN0IDIwMjItMDQtMDUiLCJpc3MiOiJhbWJlci1sdCIsImV4cCI6MTAxNjQ5MTY4NzA1fQ.1tNZAAZ4zsMoGdh1Gxo-yyQ5Q5UZ1BvUGXoxkSMz8_o
+            </field>
+        </record>
+
+        <!--        Mainnet-->
+
+        <record id="dpd_mainnet_api_url_base" model="ir.config_parameter">
+            <field name="key">dpd.mainnet.api.url.base</field>
+            <field name="value">https://esiunta.dpd.lt/api/v1</field>
+        </record>
+        <!--    Url to get parcel status only in production  -->
+        <record id="dpd_mainnet_api_url_parcel_status" model="ir.config_parameter">
+            <field name="key">dpd.mainnet.api.url.parcel.status</field>
+            <field name="value">https://status.dpd.lt/external/tracking</field>
+        </record>
+
+        <record id="dpd_mainnet_api_username" model="ir.config_parameter">
+            <field name="key">dpd.mainnet.api.username</field>
+            <field name="value">Elgras</field>
+        </record>
+
+        <record id="dpd_mainnet_api_password" model="ir.config_parameter">
+            <field name="key">dpd.mainnet.api.password</field>
+            <field name="value">Eegah8iu</field>
+        </record>
+
+        <!--        <record id="dpd_mainnet_bearer_token" model="ir.config_parameter">-->
+        <!--            <field name="key">dpd.mainnet.bearer</field>-->
+        <!--            <field name="value">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjdXN0b21lcl9pZCI6NTQyMywiYWRtaW5faWQiOm51bGwsInNpZ25hdHVyZV9pZCI6IjJiOTRmYjg4LTA3MWUtNGEyNC1iYjhlLTY2MTU0M2Y2YTdkYiIsInNpZ25hdHVyZV9uYW1lIjoiVW5pbWEgMjAyMi0wNC0wNSIsImlzcyI6ImFtYmVyLWx0IiwiZXhwIjoxMDE2NTEwNzQ4Nzh9.vCmyCTClCboFSq9veJa1ausO6ALeCt2bq09XBialGI8</field>-->
+        <!--        </record>-->
+    </data>
+</odoo>

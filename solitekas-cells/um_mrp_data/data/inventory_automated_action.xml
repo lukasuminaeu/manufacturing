@@ -1,0 +1,55 @@
+<data>
+    <odoo>
+        <record model="base.automation" id="automation_action_1">
+            <field name="name">Umina: Scheduled End Date Based On MO Amount</field>
+            <field name="model_id" ref="mrp.model_mrp_production"/>
+            <field name="active" eval="False"/>
+            <field name="trigger">on_create_or_write</field>
+            <field name="trigger_field_ids"
+                   eval="
+                         [(6,0,[
+                            ref('mrp.field_mrp_production__qty_produced'),
+                            ref('mrp.field_mrp_production__date_planned_start'),
+                         ])]"
+            />
+            <field name="state">code</field>
+            <field name="code">
+if record.product_qty and record.date_planned_start and record.state != 'progress':
+
+    # date_start = datetime.datetime.combine(record.date_planned_start, datetime.datetime.min.time()) - datetime.timedelta(minutes=120)
+    date_start = datetime.datetime.combine(record.date_planned_start, datetime.datetime.min.time())
+    record.write({'date_planned_start': date_start})
+    # if there's a remainder, add +1
+    if (record.product_qty % 600) != 0:
+        record.write({'date_planned_finished': date_start + datetime.timedelta(days=(record.product_qty //
+        600)+1) - datetime.timedelta(minutes=240)})
+        # if not, divide by 600 using // to return an int not a float
+    else:
+        record.write({'date_planned_finished': date_start + datetime.timedelta(days=(record.product_qty // 600)) - datetime.timedelta(minutes=240)})
+            </field>
+        </record>
+        <record model="base.automation" id="automation_action_2">
+            <field name="name">Umina: Update PO Scheduled date</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="active" eval="False"/>
+            <field name="trigger">on_write</field>
+            <field name="trigger_field_ids"
+                   eval="
+                         [(6,0,[
+                            ref('stock.field_stock_picking__scheduled_date'),
+                         ])]"
+            />
+            <field name="state">code</field>
+            <field name="code">
+if record.scheduled_date:
+    if record.origin and record.origin[0] == "P":
+        po = env['purchase.order'].search([('name','=',record.origin)],limit=1)
+        if po:
+            po.write({'date_planned': record.scheduled_date})
+            for line in po.order_line:
+                line.write({'date_planned': record.scheduled_date})
+            </field>
+        </record>
+
+    </odoo>
+</data>

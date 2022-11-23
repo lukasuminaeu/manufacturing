@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-extend="mrp_mps">
+        <t t-jquery=".text-right > div" t-operation="prepend">
+            <i class="fa fa-times text-danger o_mrp_mps_cancel_all_in_period" t-att-data-period="period_index"/>
+        </t>
+    </t>
+
+    <t t-extend="mrp_mps_production_schedule">
+
+        <!-- Hide every tbody except parent by standard. Or check if values is stored
+        to show mps row in session. -->
+        <t t-jquery="tbody[class='o_mps_content']" t-operation="attributes">
+            <attribute name="t-attf-style">{{(productionSchedule.is_final_product or productionSchedule.mps_row_show) and 'skip' or 'display: none;'}}</attribute>
+        </t>
+
+        <t t-jquery="tbody" t-operation="attributes">
+            <attribute name="t-att-data-group-id">productionSchedule.parent_id and productionSchedule.parent_id[0] or ''</attribute>
+            <!-- <attribute name="t-att-style">productionSchedule.parent_id and 'background-color: lightgray;' or ''</attribute> -->
+        </t>
+        <t t-jquery="tbody" t-operation="prepend">
+            <tr class="bg-light">
+                <th scope="col"/>
+                <th/>
+                <t t-foreach="productionSchedule.forecast_ids" t-as="forecast">
+                    <th class="text-right pr-4">
+                        <span t-attf-class="{{! forecast.components_not_available and 'o_hidden' or 'text-right alert-danger'}}" t-esc="forecast.components_not_available_message"/>
+                    </th>
+                </t>
+            </tr>
+        </t>
+        <t t-jquery="a.o_mrp_mps_unlink" t-operation="replace">
+            <a href="#" t-attf-class="{{productionSchedule.parent_id and 'o_hidden' or 'fa fa-trash-o text-black o_mrp_mps_unlink'}}" role="img" aria-label="Delete" title="Delete"/>
+        </t>
+        <t t-jquery="a.o_mrp_mps_record_url" t-operation="before">
+            <t t-if="productionSchedule.is_final_product">
+                <t t-if="productionSchedule.mps_row_show">
+                    <a href="#" class="fa fa-minus-square text-black o_mrp_mps_parent_hide" role="img" aria-label="Hide" title="Hide"/>
+                    <a href="#" class="fa fa-plus-square text-black o_mrp_mps_parent_show o_hidden" role="img" aria-label="Show" title="Show"/>
+                </t>
+                <t t-else="">
+                    <a href="#" class="fa fa-minus-square text-black o_mrp_mps_parent_hide o_hidden" role="img" aria-label="Hide" title="Hide"/>
+                    <a href="#" class="fa fa-plus-square text-black o_mrp_mps_parent_show" role="img" aria-label="Show" title="Show"/>
+                </t>
+            </t>
+
+
+            <a href="#" class="fa fa-minus text-black o_mrp_mps_hide" role="img" aria-label="Hide" title="Hide"/>
+            <a href="#" class="fa fa-plus text-black o_mrp_mps_show o_hidden" role="img" aria-label="Show" title="Show"/>
+
+        </t>
+        <t t-jquery='tr[name="to_replenish"]' t-operation="after">
+            <!-- Added -->
+            <tr name="to_replenish_confirmed" t-attf-class="{{! (groups.mrp_mps_show_to_replenish or groups.mrp_mps_show_actual_replenishment) and 'o_hidden' or ''}}">
+                <th scope="row">
+                    <span t-attf-class="{{! groups.mrp_mps_show_actual_replenishment and 'o_hidden' or ''}}"
+                            data-toggle="tooltip" data-placement="bottom"
+                            title="The quantity being replenished, based on the Requests for Quotation and the Manufacturing Orders.">Confirmed Replenishment</span>
+                </th>
+                <th></th>
+                <t t-foreach="productionSchedule.forecast_ids" t-as="forecast">
+                    <th t-attf-class="o_forecast_stock text-right pr-4 {{
+                        forecast.to_replenish and 'o_mrp_mps_to_replenish' or ''
+                      }} {{
+                        forecast.forced_replenish and 'o_mrp_mps_forced_replenish' or ''
+                      }}">
+                        <a href="#"
+                           name="actual_replenishment"
+                           data-action="action_open_actual_replenishment_details"
+                           t-att-data-date_index="forecast_index"
+                           t-att-data-date_start="forecast.date_start"
+                           t-att-data-date_stop="forecast.date_stop"
+                           t-attf-class="o_mrp_mps_open_details {{
+                            ! groups.mrp_mps_show_actual_replenishment and 'o_hidden'
+                          }} {{
+                            forecast.to_replenish and 'o_mrp_mps_to_replenish' or ''
+                          }} {{
+                            forecast.forced_replenish and 'o_mrp_mps_forced_replenish' or ''
+                          }}">
+                            <t t-esc="formatFloat(forecast.incoming_qty_confirmed, false, {'digits': [false, productionSchedule.precision_digits]})"/>
+                        </a>
+                    </th>
+                </t>
+            </tr>
+
+        </t>
+        <t t-jquery='tr[name="safety_stock"]' t-operation="after">
+            <!-- Added -->
+            <tr name="currently_available" t-attf-class="{{! (productionSchedule.is_final_product) and 'o_hidden' or ''}}">
+                <th scope="row">
+                    = <span data-toggle="tooltip" data-placement="bottom" title=".">Currently available / Maximum availability</span>
+                </th>
+                <th class="text-right">
+                    BoM Components:
+                    <t t-esc="productionSchedule.bom_components or 0.0"/>
+                </th>
+                <t t-foreach="productionSchedule.forecast_ids" t-as="forecast">
+                    <th class="text-right pr-4">
+                        <span t-esc="formatFloat(forecast.component_availability + forecast.starting_inventory_qty, false, {'digits': [false, productionSchedule.precision_digits]})"/>
+                        /
+                        <span t-esc="formatFloat(forecast.component_availability + forecast.starting_inventory_qty + forecast.component_replenishment, false, {'digits': [false, productionSchedule.precision_digits]})"/>
+                    </th>
+                </t>
+            </tr>
+        </t>
+
+        <t t-jquery="a.o_mrp_mps_unlink" t-operation="replace">
+            <a href="#" t-attf-class="{{productionSchedule.parent_id and 'o_hidden' or 'fa fa-trash-o text-black o_mrp_mps_unlink'}}" role="img" aria-label="Delete" title="Delete"/>
+        </t>
+
+        <t t-jquery="tbody[class='o_mps_content'] tr[name='demand_forecast'] th[scope='row']" t-operation="replace">
+            <th scope="row">
+                - <span t-attf-class="{{! groups.mrp_mps_show_actual_demand and 'o_hidden' or ''}}" data-toggle="tooltip" data-placement="bottom" title="The confirmed demand, based on the confirmed sales orders.">Actual demand</span>
+                <span t-attf-class="{{! (groups.mrp_mps_show_actual_demand and groups.mrp_mps_show_demand_forecast) and 'o_hidden' or ''}}">/</span>
+                <span t-attf-class="{{! groups.mrp_mps_show_demand_forecast and 'o_hidden' or ''}}" data-toggle="tooltip" data-placement="bottom" title="The forecasted demand. This value has to be entered manually.">Forecasted Demand</span>
+            </th>
+        </t>
+
+    </t>
+
+</templates>
+

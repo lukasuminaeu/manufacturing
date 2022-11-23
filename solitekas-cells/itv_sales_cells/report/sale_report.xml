@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            id="sale.action_report_saleorder"
+            string="Quotation / Order"
+            model="sale.order"
+            report_type="qweb-pdf"
+            paperformat="paperformat_report_solitek_cells"
+            file="sale.report_saleorder"
+            name="sale.report_saleorder"
+            print_report_name="(object.state in ('draft', 'sent') and 'Quotation_%s' % (object.name)) or 'Order_%s' % (object.name)"
+        />
+
+        <report
+            id="sale.action_report_pro_forma_invoice"
+            string="PRO-FORMA Invoice"
+            model="sale.order"
+            report_type="qweb-pdf"
+            paperformat="paperformat_report_solitek_cells"
+            groups="sale.group_proforma_sales"
+            file="sale.report_saleorder_pro_forma"
+            name="sale.report_saleorder_pro_forma"
+            print_report_name="'PRO-FORMA_%s' % (object.name)"
+        />
+    </data>
+</odoo>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_teams_cells_inherit" model="ir.ui.view">
+        <field name="name">crm.team.cells.inherited</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="crm.sales_team_form_view_in_crm"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='right']" position="inside">
+                <field name="pipeline_type" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm_teams_cells_list_inherit" model="ir.ui.view">
+        <field name="name">crm.team.cells.list.inherited</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="pipeline_type" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- <record id="crm_team_salesteams_view_kanban_inherit" model="ir.ui.view">
+        <field name="name">crm.team.kanban.inherited</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_kanban_dashboard"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@t-if='record.unassigned_leads_count.raw_value']" position="replace">
+                <div class="row" t-if="record.unassigned_leads_count.raw_value">
+                    <a name="action_cells_primary_channel_button" type="object" context="{'no_filter': 1}">
+                        <field name="unassigned_leads_count"/>
+                        <t t-if="record.unassigned_leads_count.raw_value == 1">Unassigned Lead</t>
+                        <t t-else="">Unassigned Leads</t>
+                    </a>
+                </div>
+            </xpath>
+
+            <xpath expr="//div[@t-if='record.opportunities_count.raw_value']" position="replace">
+                <div class="row" t-if="record.opportunities_count.raw_value">
+                    <div class="col-8">
+                        <field name="pipeline_type" invisible="1"/>
+                        <a name="action_cells_primary_channel_button" type="object" context="{'no_filter': 1}">
+                            <field name="opportunities_count"/>
+                            <t t-if="record.opportunities_count.raw_value == 1">Open Opportunity</t>
+                            <t t-else="">Open Opportunities</t>
+                        </a>
+                    </div>
+                    <div class="col-4 text-right">
+                        <field name="opportunities_amount" widget="monetary"/>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record> -->
+
+    <record id="crm_team_salesteams_view_kanban_cells_inherit" model="ir.ui.view">
+        <field name="name">crm.team.kanban.cells.inherit</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_kanban_dashboard"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//div[@name='to_replace_in_sale_crm']" position="replace">
+                    <div class="col-5 o_kanban_primary_left" name="to_replace_in_sale_crm">
+                        <button type="object" class="btn btn-primary" name="action_cells_primary_channel_button"><field name="dashboard_button_name"/></button>
+                    </div>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="view_crm_lead2opportunity_partner_cells_inherit" model="ir.ui.view">
+            <field name="name">crm.lead2opportunity.cells.inherit</field>
+            <field name="model">crm.lead2opportunity.partner</field>
+            <field name="inherit_id" ref="crm.view_crm_lead2opportunity_partner"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//group//field[@name='team_id']" position="attributes">
+                        <attribute name="domain">[('use_leads', '=', False)]</attribute>
+                    </xpath>
+<!--                    <xpath expr="//group//field[@name='user_id']" position="attributes">-->
+<!--                        <attribute name="domain">[('use_leads', '=', False)]</attribute>-->
+<!--                    </xpath>-->
+                </data>
+            </field>
+        </record>
+
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Platform fields in Quotations-->
+    <record id="inherit_sale_order_partner_field" model="ir.ui.view">
+        <field name="name">inherit.sale.order.form.partner.field</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="extension_platform_id" string="Platforma"/>
+                <field name="extension_platform_order_number" string="Užsakymo numeris"/>
+                <field name="is_production"  groups="base.group_no_one"/>
+
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- Platform fields in Invoices-->
+    <record id="inherit_account_move_partner_field" model="ir.ui.view">
+        <field name="name">inherit.account.move.form.partner.field</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_reference']" position="after">
+                <field name="extension_refer_platform" string="Platforma"/>
+                <field name="extension_refer_extension_platform_order_number" string="Order Reference"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!--   ADD SEARCH FIELD -->
+
+    <!-- Search field in  Quotations in Tree view -->
+    <record id="inherit_sale_order_partner_field_tree_view" model="ir.ui.view">
+        <field name="name">inherit.sale.order.form.partner.field.tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="extension_platform_order_number" string="Užsakymo numeris"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--    Search option -->
+    <record id="sale_order_view_search_inherit_quotation_field_order_number" model="ir.ui.view">
+        <field name="name">sale.order.search.inherit.quotation.order.number</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search//field[@name='analytic_account_id']" position="after">
+                <field name="extension_platform_order_number" string="Užsakymo numeris"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="ow_sale_order_paid_ribbon" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/div[@name='button_box']" position="after">
+                <widget name="web_ribbon" title="TESTINĖ APLINKA" bg_color="bg-danger" attrs="{'invisible': [('is_production', '==', True)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

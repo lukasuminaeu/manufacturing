@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="automation_rule_on_create_record" model="base.automation">
+        <field name="name">Move leads to quotations</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="trigger">on_write</field>
+        <field name="active" eval="True"/>
+        <field name="state">code</field>
+        <field name="filter_domain">[["state","=","sent"]]</field>
+        <field name="code">
+model.on_sent_move_leads(record)
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="crm_team_view_form_inherit" model="ir.ui.view">
+        <field name="name">crm.team.form</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='company_id']" position="after">
+<!--                <field name="country_id" options="{'no_create': True, 'no_open': True}"/>-->
+                <field name="country_ids" widget="many2many_tags" options="{'no_create': True, 'no_open': True}" />
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="quick_create_opportunity_form_inherit" model="ir.ui.view">
+        <field name="name">crm.lead.form.quick_create</field>
+        <field name="model">crm.lead</field>
+        <field name="priority">1001</field>
+        <field name="inherit_id" ref="crm.quick_create_opportunity_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="country_id" options="{'no_create': True, 'no_open': True}" required="1"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

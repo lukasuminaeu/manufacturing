@@ -1,0 +1,22 @@
+<odoo> 
+    <record id="production_packing_zone" model="ir.ui.view">
+        <field name="name">umina.mrp.production.packing.zone</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='miscellaneous']//field[@name='origin']" position="after">
+                <field name='is_final_product'/>
+            </xpath>
+        </field>
+    </record>
+    <record id="location_packing_zone" model="ir.ui.view">
+        <field name="name">umina.location.packing.zone</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='scrap_location']" position="after">
+                <field name='is_picking_zone'/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

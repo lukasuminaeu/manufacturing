@@ -1,0 +1,161 @@
+<odoo>
+    <data >
+    <!-- FINAL EL -->
+        <!-- <function name='_create_res_user_xml' model='res.users'>
+            <value>Final EL</value>
+            <value>final_el</value>
+            <value eval="ref('um_mrp_data.um_mrp_workorder_todo')"/>
+            <value>inbox</value>
+            <value eval="ref('um_mrp_data.final_el_workcenter')"/>
+        </function> -->
+
+
+    <!-- Flasher -->
+    <function name='_create_res_user_xml' model='res.users'>
+        <value>Flasher</value>
+        <value>flasher</value>
+        <value eval="ref('um_mrp_data.um_mrp_workorder_action_tablet_flasher')"/>
+        <value>inbox</value>
+        <value eval="ref('um_mrp_data.flasher_workcenter')"/>
+        <value>it@bodgroup.com</value>
+    </function>
+
+
+    <!-- HiPoT -->
+        <!-- <function name='_create_res_user_xml' model='res.users'>
+            <value>HiPoT</value>
+            <value>hipot</value>
+            <value eval="ref('um_mrp_data.um_mrp_workorder_todo')"/>
+            <value>inbox</value>
+            <value eval="ref('um_mrp_data.hipot_workcenter')"/>
+        </function> -->
+
+        <!-- Backend 2 -->
+        <function name='_create_res_user_xml' model='res.users'>
+            <value>Backend2</value>
+            <value>backend2</value>
+            <value eval="ref('um_mrp_data.um_mrp_workorder_action_tablet_backend2')"/>
+            <value>inbox</value>
+            <value eval="ref('um_mrp_data.backend2_workcenter')"/>
+            <value>it@bodgroup.com</value>
+        </function>
+
+
+    <!-- Backend -->
+        <function name='_create_res_user_xml' model='res.users'>
+            <value>Backend</value>
+            <value>backend</value>
+            <value eval="ref('um_mrp_data.um_mrp_workorder_action_tablet_backend')"/>
+            <value>inbox</value>
+            <value eval="ref('um_mrp_data.backend_workcenter')"/>
+            <value>it@bodgroup.com</value>
+        </function>
+
+
+    <!-- Vizualinė patikra -->
+        <function name='_create_res_user_xml' model='res.users'>
+            <value>Vizualinė Patikra</value>
+            <value>vizualine_patikra</value>
+            <value eval="ref('um_mrp_data.um_mrp_workorder_action_tablet_vizualine_patikra')"/>
+            <value>inbox</value>
+            <value eval="ref('um_mrp_data.vizualine_patikra_workcenter')"/>
+            <value>it@bodgroup.com</value>
+        </function>
+
+
+    <!-- Laminavimas 1 -->
+        <function name='_create_res_user_xml' model='res.users'>
+            <value>Laminavimas 1</value>
+            <value>laminavimas_1</value>
+            <value eval="ref('um_mrp_data.um_mrp_workorder_action_tablet_laminavimas')"/>
+            <value>inbox</value>
+            <value eval="ref('um_mrp_data.laminavimas_workcenter')"/>
+            <value>it@bodgroup.com</value>
+        </function>
+
+    <!-- Laminavimas 2 -->
+        <function name='_create_res_user_xml' model='res.users'>
+            <value>Laminavimas 2</value>
+            <value>laminavimas_2</value>
+            <value eval="ref('um_mrp_data.um_mrp_workorder_action_tablet_laminavimas_2')"/>
+            <value>inbox</value>
+            <value eval="ref('um_mrp_data.laminavimas_2_workcenter')"/>
+            <value>it@bodgroup.com</value>
+        </function>
+
+    <!-- EL -->
+        <function name='_create_res_user_xml' model='res.users'>
+            <value>EL</value>
+            <value>el</value>
+            <value eval="ref('um_mrp_data.um_mrp_workorder_action_tablet_el')"/>
+            <value>inbox</value>
+            <value eval="ref('um_mrp_data.el_workcenter')"/>
+            <value>it@bodgroup.com</value>
+        </function>
+
+
+    <!-- Galinio stiklo/plėvelės -->
+        <function name='_create_res_user_xml' model='res.users'>
+            <value>Galinio stiklo/plėvelės</value>
+            <value>galinis_stiklas</value>
+            <value eval="ref('um_mrp_data.um_mrp_workorder_action_tablet_galinio_st_plev')"/>
+            <value>inbox</value>
+            <value eval="ref('um_mrp_data.galinio_st_plev_workcenter')"/>
+            <value>it@bodgroup.com</value>
+        </function>
+
+
+    <!-- Surinkimas 2 -->
+        <function name='_create_res_user_xml' model='res.users'>
+            <value>Surinkimas 2</value>
+            <value>surinkimas_2</value>
+            <value eval="ref('um_mrp_data.um_mrp_workorder_action_tablet_surinkimas_alternative')"/>
+            <value>inbox</value>
+            <value eval="ref('um_mrp_data.surinkimas_alternative_workcenter')"/>
+            <value>it@bodgroup.com</value>
+        </function>
+
+
+    <!-- Surinkimas 1 -->
+        <function name='_create_res_user_xml' model='res.users'>
+            <value>Surinkimas 1</value>
+            <value>surinkimas_1</value>
+            <value eval="ref('um_mrp_data.um_mrp_workorder_action_tablet_surinkimas')"/>
+            <value>inbox</value>
+            <value eval="ref('um_mrp_data.surinkimas_workcenter')"/>
+            <value>it@bodgroup.com</value>
+        </function>
+
+
+    <!-- Stringer 2 -->
+        <function name='_create_res_user_xml' model='res.users'>
+            <value>Stringer 2</value>
+            <value>stringer_2</value>
+            <value eval="ref('um_mrp_data.um_mrp_workorder_action_tablet_stringer_alternative')"/>
+            <value>inbox</value>
+            <value eval="ref('um_mrp_data.stringer_alternative_workcenter')"/>
+            <value>it@bodgroup.com</value>
+        </function>
+
+
+    <!-- Stringer 1 -->
+        <function name='_create_res_user_xml' model='res.users'>
+            <value>Stringer 1</value>
+            <value>stringer_1</value>
+            <value eval="ref('um_mrp_data.um_mrp_workorder_action_tablet_stringer')"/>
+            <value>inbox</value>
+            <value eval="ref('um_mrp_data.stringer_workcenter')"/>
+            <value>it@bodgroup.com</value>
+        </function>
+
+    <!-- Priekinio stiklo/plėvelės -->
+        <function name='_create_res_user_xml' model='res.users'>
+            <value>Priekinio stiklo/plėvelės</value>
+            <value>pr_stiklo_plevele</value>
+            <value eval="ref('um_mrp_data.um_mrp_workorder_action_tablet_pr_stiklo_plevele')"/>
+            <value>inbox</value>
+            <value eval="ref('um_mrp_data.pr_stiklo_plevele_workcenter')"/>
+            <value>it@bodgroup.com</value>
+        </function>
+    </data>
+</odoo>

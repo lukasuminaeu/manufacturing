@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="um_mrp_workorder.mrp_production_form_view" model="ir.ui.view">
+        <field name="name">um_mrp_workorder.mrp.production.form</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_assign']" position="attributes">
+                <attribute name="context">{'button_click': True}</attribute>
+            </xpath>
+
+            <!-- <button name="action_assign" attrs="{'invisible': ['|', ('state', 'in', ('draft', 'done', 'cancel')), ('reserve_visible', '=', False)]}" string="Check availability" type="object" data-hotkey="q"/> -->
+        </field>
+    </record>
+
+</odoo>

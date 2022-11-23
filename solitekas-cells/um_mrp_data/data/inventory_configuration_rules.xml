@@ -1,0 +1,378 @@
+<odoo>
+    <data>
+
+        <!-- Turn off standard manufacturing rule (source: empty <- dest: WH/STOCK) with operation type "Manufacturing"-->
+        <!-- We have a manufacturing rule of our own with operation type ref('inventory_rules_append_manufacture_mps'); see below -->
+        <function name="write" model="stock.rule">
+            <function name="search" model="stock.rule">
+                <value eval="[('route_id','=',ref('mrp.route_warehouse0_manufacture')),('picking_type_id.name','ilike','Manufacturing')]"/>
+            </function>
+            <value eval="{'active': False}"/>
+        </function>
+
+        <!-- Manufacture <- WH/Stock -->
+        <!-- MPS requires a rule where location_id is WH/STOCK -->
+        <record model="stock.rule" id="inventory_rules_append_manufacture_mps">
+            <field name="name">STC: Stock (Production From MPS)</field>
+            <field name="action">manufacture</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref=""/>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="mrp.route_warehouse0_manufacture"/>
+        </record>
+
+        <!-- We also override Delivery Orders rule to not create automatic manufacturing orders -->
+        <!-- <function name="write" model="stock.rule">
+            <function name="search" model="stock.rule">
+                <value eval="[('picking_type_id','=',ref('stock.picking_type_out')),('location_id','=',ref('stock.stock_location_customers'))]"/>
+            </function>
+            <value eval="{'procure_method': 'make_to_stock'}"/>
+        </function> -->
+
+        <!-- PUSH RULES: BZ -> VBZ -->
+        <record model="stock.rule" id="inventory_rules_11">
+            <field name="name">1</field>
+            <field name="action">push</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_buferine_zona"/>
+            <field name="location_src_id" ref="work_location_pr_stiklo_plevele"/>
+            <field name="location_id" ref="work_location_2"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="push_to_vbz"/>
+            <field name="auto">transparent</field>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_12">
+            <field name="name">2</field>
+            <field name="action">push</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_buferine_zona"/>
+            <field name="location_src_id" ref="work_location_stringer1"/>
+            <field name="location_id" ref="work_location_2"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="push_to_vbz"/>
+            <field name="auto">transparent</field>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_13">
+            <field name="name">3</field>
+            <field name="action">push</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_buferine_zona"/>
+            <field name="location_src_id" ref="work_location_stringer2"/>
+            <field name="location_id" ref="work_location_2"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="push_to_vbz"/>
+            <field name="auto">transparent</field>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_14">
+            <field name="name">4</field>
+            <field name="action">push</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_buferine_zona"/>
+            <field name="location_src_id" ref="work_location_surinkimas1"/>
+            <field name="location_id" ref="work_location_2"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="push_to_vbz"/>
+            <field name="auto">transparent</field>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_15">
+            <field name="name">5</field>
+            <field name="action">push</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_buferine_zona"/>
+            <field name="location_src_id" ref="work_location_surinkimas2"/>
+            <field name="location_id" ref="work_location_2"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="push_to_vbz"/>
+            <field name="auto">transparent</field>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_16">
+            <field name="name">6</field>
+            <field name="action">push</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_buferine_zona"/>
+            <field name="location_src_id" ref="work_location_galinio_st_plev"/>
+            <field name="location_id" ref="work_location_2"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="push_to_vbz"/>
+            <field name="auto">transparent</field>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_17">
+            <field name="name">7</field>
+            <field name="action">push</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_buferine_zona"/>
+            <field name="location_src_id" ref="work_location_el"/>
+            <field name="location_id" ref="work_location_2"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="push_to_vbz"/>
+            <field name="auto">transparent</field>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_18">
+            <field name="name">8</field>
+            <field name="action">push</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_buferine_zona"/>
+            <field name="location_src_id" ref="work_location_laminavimas"/>
+            <field name="location_id" ref="work_location_2"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="push_to_vbz"/>
+            <field name="auto">transparent</field>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_19">
+            <field name="name">9</field>
+            <field name="action">push</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_buferine_zona"/>
+            <field name="location_src_id" ref="work_location_vizual_patikra"/>
+            <field name="location_id" ref="work_location_2"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="push_to_vbz"/>
+            <field name="auto">transparent</field>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_20">
+            <field name="name">10</field>
+            <field name="action">push</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_buferine_zona"/>
+            <field name="location_src_id" ref="work_location_backend"/>
+            <field name="location_id" ref="work_location_2"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="push_to_vbz"/>
+            <field name="auto">transparent</field>
+        </record>
+
+        <record model="stock.rule" id="inventory_rules_21">
+            <field name="name">11</field>
+            <field name="action">push</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_buferine_zona"/>
+            <field name="location_src_id" ref="work_location_backend2"/>
+            <field name="location_id" ref="work_location_2"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="push_to_vbz"/>
+            <field name="auto">transparent</field>
+        </record>
+
+        <record model="stock.rule" id="inventory_rules_22">
+            <field name="name">12</field>
+            <field name="action">push</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_buferine_zona"/>
+            <field name="location_src_id" ref="work_location_flasher"/>
+            <field name="location_id" ref="work_location_2"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="push_to_vbz"/>
+            <field name="auto">transparent</field>
+        </record>
+
+
+        <!-- PULL RULES: VBZ <- Įrenginyje -->
+        <record model="stock.rule" id="inventory_rules_36">
+            <field name="name">1</field>
+            <field name="action">pull</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref="work_location_2"/>
+            <field name="location_id" ref="work_location_14"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="stock.route_warehouse0_mto"/>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_23">
+            <field name="name">2</field>
+            <field name="action">pull</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref="work_location_2"/>
+            <field name="location_id" ref="work_location_15"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="stock.route_warehouse0_mto"/>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_24">
+            <field name="name">3</field>
+            <field name="action">pull</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref="work_location_2"/>
+            <field name="location_id" ref="work_location_16"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="stock.route_warehouse0_mto"/>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_25">
+            <field name="name">4</field>
+            <field name="action">pull</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref="work_location_2"/>
+            <field name="location_id" ref="work_location_17"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="stock.route_warehouse0_mto"/>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_26">
+            <field name="name">5</field>
+            <field name="action">pull</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref="work_location_2"/>
+            <field name="location_id" ref="work_location_18"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="stock.route_warehouse0_mto"/>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_27">
+            <field name="name">6</field>
+            <field name="action">pull</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref="work_location_2"/>
+            <field name="location_id" ref="work_location_19"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="stock.route_warehouse0_mto"/>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_28">
+            <field name="name">7</field>
+            <field name="action">pull</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref="work_location_2"/>
+            <field name="location_id" ref="work_location_20"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="stock.route_warehouse0_mto"/>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_29">
+            <field name="name">8</field>
+            <field name="action">pull</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref="work_location_2"/>
+            <field name="location_id" ref="work_location_21"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="stock.route_warehouse0_mto"/>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_30">
+            <field name="name">9</field>
+            <field name="action">pull</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref="work_location_2"/>
+            <field name="location_id" ref="work_location_23"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="stock.route_warehouse0_mto"/>
+        </record>
+
+
+        <record model="stock.rule" id="inventory_rules_31">
+            <field name="name">10</field>
+            <field name="action">pull</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref="work_location_2"/>
+            <field name="location_id" ref="work_location_24"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="stock.route_warehouse0_mto"/>
+        </record>
+
+
+        <!-- <record model="stock.rule" id="inventory_rules_32">
+            <field name="name">11</field>
+            <field name="action">pull</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref="work_location_2"/>
+            <field name="location_id" ref="work_location_25"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="stock.route_warehouse0_mto"/>
+        </record> -->
+
+        <record model="stock.rule" id="inventory_rules_33">
+            <field name="name">12</field>
+            <field name="action">pull</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref="work_location_2"/>
+            <field name="location_id" ref="work_location_26"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="stock.route_warehouse0_mto"/>
+        </record>
+
+        <!-- <record model="stock.rule" id="inventory_rules_34">
+            <field name="name">13</field>
+            <field name="action">pull</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref="work_location_2"/>
+            <field name="location_id" ref="work_location_27"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="stock.route_warehouse0_mto"/>
+        </record> -->
+
+        <record model="stock.rule" id="inventory_rules_35">
+            <field name="name">14</field>
+            <field name="action">pull</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref="work_location_2"/>
+            <field name="location_id" ref="work_location_28"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="stock.route_warehouse0_mto"/>
+        </record>
+
+        <!-- Manufacture <- VBZ -->
+        <record model="stock.rule" id="inventory_rules_append_manufacture">
+            <field name="name">STC: Stock (Production)</field>
+            <field name="action">manufacture</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_virtual"/>
+            <field name="location_src_id" ref=""/>
+            <field name="location_id" ref="work_location_2"/>
+            <field name="procure_method">mts_else_mto</field>
+            <field name="route_id" ref="mrp.route_warehouse0_manufacture"/>
+        </record>
+
+        <!-- PUSH RULE: WH/Stock -> WH/Packing Zone -->
+        <record model="stock.rule" id="push_from_stock_to_packing">
+            <field name="name">STC: Push from Stock to Packing</field>
+            <field name="action">push</field>
+            <field name="warehouse_id" ref="stock.warehouse0"/>
+            <field name="picking_type_id" ref="operation_type_auto_pervezimas_packing_zone"/>
+            <field name="location_src_id" ref="stock_location_partner_production_gamyba"/>
+            <field name="location_id" ref="stock.location_pack_zone"/>
+            <field name="auto">transparent</field>
+            <field name="route_id" ref="push_to_packing_zone"/>
+        </record>
+    </data>
+</odoo>

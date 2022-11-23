@@ -1,0 +1,115 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Had to use @api.model because um_mrp_data has no reference to product.template (only product.product) -->
+        <!-- FINAL PRODUCT BOM -->
+        <!-- <function model="mrp.bom" name="_create_bill_of_materials_xml">
+            <value eval="ref('um_mrp_data.final_bifacial')"/>
+            <value>Final EL</value>
+            <value eval="ref('um_mrp_data.flasher_bifacial')"/>
+            <value>asap</value>
+            <value eval="ref('um_mrp_data.c_flasher_bifacial')"/>
+            <value eval="1"/>
+        </function> -->
+        <!-- FLASHER BOM -->
+        <function model="mrp.bom" name="_create_bill_of_materials_xml">
+            <value eval="ref('um_mrp_data.flasher_bifacial')"/>
+            <value>Flasher</value>
+            <value eval="ref('um_mrp_data.backend2_bifacial')"/>
+            <value>asap</value>
+            <value eval="ref('um_mrp_data.c_flasher_bifacial')"/>
+            <value eval="1"/>
+        </function>
+        <!-- HiPoT BOM -->
+        <!-- <function model="mrp.bom" name="_create_bill_of_materials_xml">
+            <value eval="ref('um_mrp_data.hipot_bifacial')"/>
+            <value>HiPoT</value>
+            <value eval="ref('um_mrp_data.backend2_bifacial')"/>
+            <value>asap</value>
+            <value eval="ref('um_mrp_data.c_flasher_bifacial')"/>
+            <value eval="1"/>
+        </function> -->
+        <!-- Backend BOM -->
+        <function model="mrp.bom" name="_create_bill_of_materials_xml">
+            <value eval="ref('um_mrp_data.backend_bifacial')"/>
+            <value>Backend</value>
+            <value eval="ref('um_mrp_data.vizualine_patikra_bifacial')"/>
+            <value>asap</value>
+            <value eval="ref('um_mrp_data.c_flasher_bifacial')"/>
+            <value eval="1"/>
+        </function>
+
+        <!-- Backend2 BOM -->
+        <function model="mrp.bom" name="_create_bill_of_materials_xml">
+            <value eval="ref('um_mrp_data.backend2_bifacial')"/>
+            <value>Backend2</value>
+            <value eval="ref('um_mrp_data.backend_bifacial')"/>
+            <value>asap</value>
+            <value eval="ref('um_mrp_data.c_flasher_bifacial')"/>
+            <value eval="1"/>
+        </function>
+
+        <!-- Vizualinė Patikra BOM -->
+        <function model="mrp.bom" name="_create_bill_of_materials_xml">
+            <value eval="ref('um_mrp_data.vizualine_patikra_bifacial')"/>
+            <value>Vizualinė Patikra</value>
+            <value eval="ref('um_mrp_data.laminavimas_bifacial')"/>
+            <value>asap</value>
+            <value eval="ref('um_mrp_data.c_flasher_bifacial')"/>
+            <value eval="1"/>
+        </function>
+        <!-- Laminavimas BOM -->
+        <function model="mrp.bom" name="_create_bill_of_materials_xml">
+            <value eval="ref('um_mrp_data.laminavimas_bifacial')"/>
+            <value>Laminavimas</value>
+            <value eval="ref('um_mrp_data.el_bifacial')"/>
+            <value>asap</value>
+            <value eval="ref('um_mrp_data.c_flasher_bifacial')"/>
+            <value eval="1"/>
+        </function>
+        <!-- EL BOM -->
+        <function model="mrp.bom" name="_create_bill_of_materials_xml">
+            <value eval="ref('um_mrp_data.el_bifacial')"/>
+            <value>EL</value>
+            <value eval="ref('um_mrp_data.galinio_st_plev_bifacial')"/>
+            <value>asap</value>
+            <value eval="ref('um_mrp_data.c_flasher_bifacial')"/>
+            <value eval="1"/>
+        </function>
+        <!-- Galinio stiklo/plėvelės BOM -->
+        <function model="mrp.bom" name="_create_bill_of_materials_xml">
+            <value eval="ref('um_mrp_data.galinio_st_plev_bifacial')"/>
+            <value>Galinio stiklo/plėvelės</value>
+            <value eval="ref('um_mrp_data.surinkimas_bifacial')"/>
+            <value>asap</value>
+            <value eval="ref('um_mrp_data.c_flasher_bifacial')"/>
+            <value eval="1"/>
+        </function>
+        <!-- SURINKIMAS BOM -->
+        <function model="mrp.bom" name="_create_bill_of_materials_xml">
+            <value eval="ref('um_mrp_data.surinkimas_bifacial')"/>
+            <value>SURINKIMAS</value>
+            <value eval="ref('um_mrp_data.stringer_bifacial')"/>
+            <value>asap</value>
+            <value eval="ref('um_mrp_data.c_flasher_bifacial')"/>
+            <value eval="1"/>
+        </function>
+        <!-- STRINGER BOM -->
+        <function model="mrp.bom" name="_create_bill_of_materials_xml">
+            <value eval="ref('um_mrp_data.stringer_bifacial')"/>
+            <value>STRINGER</value>
+            <value eval="ref('um_mrp_data.priekinis_stiklas_bifacial')"/>
+            <value>asap</value>
+            <value eval="ref('um_mrp_data.c_flasher_bifacial')"/>
+            <value eval="1"/>
+        </function>
+        <!-- Priekinis stiklas/plėvelė BOM -->
+        <function model="mrp.bom" name="_create_bill_of_materials_xml">
+            <value eval="ref('um_mrp_data.priekinis_stiklas_bifacial')"/>
+            <value>Priekinis stiklas/plėvelė</value>
+            <value eval="0"/>
+            <value>asap</value>
+            <value eval="ref('um_mrp_data.c_flasher_bifacial')"/>
+            <value eval="1"/>
+        </function>
+    </data>
+</odoo>

@@ -1,0 +1,88 @@
+<odoo>
+    <data>
+        <!-- Final EL Operation -->
+        <!-- <function model="mrp.routing.workcenter" name="_create_workcenter_xml">
+            <value>Final EL</value>
+            <value>12</value>
+            <value eval="ref('um_mrp_data.final_bifacial')"/>
+            <value eval="ref('um_mrp_data.final_el_workcenter')"/>
+        </function> -->
+        <!-- Flasher Operation -->
+        <function model="mrp.routing.workcenter" name="_create_workcenter_xml">
+            <value>Flasher</value>
+            <value>10</value>
+            <value eval="ref('um_mrp_data.flasher_bifacial')"/>
+            <value eval="ref('um_mrp_data.flasher_workcenter')"/>
+        </function>
+        <!-- HiPoT Operation -->
+        <!-- <function model="mrp.routing.workcenter" name="_create_workcenter_xml">
+            <value>HiPoT</value>
+            <value>10</value>
+            <value eval="ref('um_mrp_data.hipot_bifacial')"/>
+            <value eval="ref('um_mrp_data.hipot_workcenter')"/>
+        </function> -->
+        <!-- Backend2 Operation -->
+        <function model="mrp.routing.workcenter" name="_create_workcenter_xml">
+            <value>Backend2</value>
+            <value>9</value>
+            <value eval="ref('um_mrp_data.backend2_bifacial')"/>
+            <value eval="ref('um_mrp_data.backend2_workcenter')"/>
+        </function>
+        <!-- Backend Operation -->
+        <function model="mrp.routing.workcenter" name="_create_workcenter_xml">
+            <value>Backend</value>
+            <value>8</value>
+            <value eval="ref('um_mrp_data.backend_bifacial')"/>
+            <value eval="ref('um_mrp_data.backend_workcenter')"/>
+        </function>
+        <!-- Vizualinė Patikra Operation -->
+        <function model="mrp.routing.workcenter" name="_create_workcenter_xml">
+            <value>Vizualinė Patikra</value>
+            <value>7</value>
+            <value eval="ref('um_mrp_data.vizualine_patikra_bifacial')"/>
+            <value eval="ref('um_mrp_data.vizualine_patikra_workcenter')"/>
+        </function>
+        <!-- Laminavimas Operation -->
+        <function model="mrp.routing.workcenter" name="_create_workcenter_xml">
+            <value>Laminavimas</value>
+            <value>6</value>
+            <value eval="ref('um_mrp_data.laminavimas_bifacial')"/>
+            <value eval="ref('um_mrp_data.laminavimas_workcenter')"/>
+        </function>
+        <!-- EL Operation -->
+        <function model="mrp.routing.workcenter" name="_create_workcenter_xml">
+            <value>EL</value>
+            <value>5</value>
+            <value eval="ref('um_mrp_data.el_bifacial')"/>
+            <value eval="ref('um_mrp_data.el_workcenter')"/>
+        </function>
+        <!-- Galinio stiklo/plėvelės Operation -->
+        <function model="mrp.routing.workcenter" name="_create_workcenter_xml">
+            <value>Galinio stiklo/plėvelės uždėjimas</value>
+            <value>4</value>
+            <value eval="ref('um_mrp_data.galinio_st_plev_bifacial')"/>
+            <value eval="ref('um_mrp_data.galinio_st_plev_workcenter')"/>
+        </function>
+        <!-- Surinkimas Operation -->
+        <function model="mrp.routing.workcenter" name="_create_workcenter_xml">
+            <value>Surinkimas</value>
+            <value>3</value>
+            <value eval="ref('um_mrp_data.surinkimas_bifacial')"/>
+            <value eval="ref('um_mrp_data.surinkimas_workcenter')"/>
+        </function>
+        <!-- Stringer Operation -->
+        <function model="mrp.routing.workcenter" name="_create_workcenter_xml">
+            <value>Stringer</value>
+            <value>2</value>
+            <value eval="ref('um_mrp_data.stringer_bifacial')"/>
+            <value eval="ref('um_mrp_data.stringer_workcenter')"/>
+        </function>
+        <!-- Priekinio stiklo/plėvelės Operation -->
+        <function model="mrp.routing.workcenter" name="_create_workcenter_xml">
+            <value>Priekinio stiklo/plėvelės uždėjimas</value>
+            <value>1</value>
+            <value eval="ref('um_mrp_data.priekinis_stiklas_bifacial')"/>
+            <value eval="ref('um_mrp_data.pr_stiklo_plevele_workcenter')"/>
+        </function>
+    </data>
+</odoo>

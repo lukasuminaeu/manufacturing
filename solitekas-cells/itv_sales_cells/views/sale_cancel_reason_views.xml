@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--sale.cancel.reason views-->
+        <record id="sale_cancel_reason_view_search" model="ir.ui.view">
+            <field name="name">sale.cancel.reason.view.search</field>
+            <field name="model">sale.cancel.reason</field>
+            <field name="arch" type="xml">
+                <search string="Search Reasons">
+                    <filter string="Include archived" name="archived" domain="['|', ('active', '=', True), ('active', '=', False)]"/>
+                    <separator/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="sale_cancel_reason_view_form" model="ir.ui.view">
+            <field name="name">sale.cancel.reason.form</field>
+            <field name="model">sale.cancel.reason</field>
+            <field name="arch" type="xml">
+                <form string="Channel">
+                    <sheet>
+                        <widget name="web_ribbon" text="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name"/>
+                            </div>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                            <field name="active" invisible="1"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sale_cancel_reason_view_tree" model="ir.ui.view">
+            <field name="name">sale.cancel.reason.tree</field>
+            <field name="model">sale.cancel.reason</field>
+            <field name="arch" type="xml">
+                <tree string="Channel" editable="bottom">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sale_cancel_reason_action" model="ir.actions.act_window">
+            <field name="name">Cancel Reasons</field>
+            <field name="res_model">sale.cancel.reason</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Define a new cancel reason
+              </p><p>
+                Use cancel reasons to explain why an Quotation/Order is canceled.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_sale_cancel_reason" action="sale_cancel_reason_action" parent="sale.menu_sale_config" sequence="4"/>
+
+</odoo>

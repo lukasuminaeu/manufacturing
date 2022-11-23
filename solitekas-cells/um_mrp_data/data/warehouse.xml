@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <!-- Normally, operation types (as well as warehouses, locations etc.) are noupdate='1' data
+        which is why we first need to find external identifier records and make them updateable again-->
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module','=','stock'),('name','=','warehouse0')]"/>
+            </function>
+            <value eval="{'noupdate': False}"/>
+        </function>
+        <record id="stock.warehouse0" model="stock.warehouse">
+            <field name="name">Soli Tek Cells</field>
+            <field name="code">STC</field>
+        </record>
+    </data>
+</odoo>

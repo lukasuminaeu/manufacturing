@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-inherit="stock_barcode.LineComponent" t-inherit-mode="extension" owl="1">
+        <xpath expr="//button[hasclass('o_edit')]" position="before">
+            <button name="printPackageSlip" t-if="line.result_package_id" t-on-click="printPackageSlip"
+                class="o_line_button o_print_package_slip btn btn-primary ml-2 ml-sm-4">
+                Print Package Slip
+            </button>
+            <span class="o_line_lot_name" t-esc="suggestedPackageQty"/>
+        </xpath>
+
+        <!-- <xpath expr="//div[@name='quantity']//span[@t-if='qtyDemand']" position="after">
+            <span t-if="qtyDemand" class="test111" t-esc="line.product_uom_qty"/>
+        </xpath> -->
+
+        <!-- <xpath expr="//div[@name='quantity']//span[@t-if='qtyDemand']" position="attributes">
+            <attribute name="style">display: none;</attribute>
+        </xpath> -->
+        
+    </t>
+
+</templates>

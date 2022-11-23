@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- <record id="mrp_workcenter_view_inherit" model="ir.ui.view">
+        <field name="name">mrp.workcenter.form</field>
+        <field name="model">mrp.workcenter</field>
+        <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//group[@name='costing']" position="after">
+                <group string="Warehouse Location" name="wh_location">
+                    <field name="location_id" required="1" options="{'no_create': True}"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record> -->
+
+</odoo>

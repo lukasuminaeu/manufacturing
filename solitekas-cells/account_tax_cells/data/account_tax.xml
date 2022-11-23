@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+
+        
+        <record id="tax_49" model="account.tax">
+            <field name="name">49 str. 1 d.</field>
+            <field name="tax_paragraph">The VAT tax of 0% is charged for the goods according t the 1 part of 49 paragraph of VAT law (Reverse charge)</field>
+            <field name="amount">0</field>
+        </record>
+        
+        <record id="tax_41" model="account.tax">
+            <field name="name">41 str. 1 d.</field>
+            <field name="tax_paragraph">The VAT tax of 0% is charged for the goods according t the 1 part of 41 paragraph of VAT law</field>
+            <field name="amount">0</field>
+        </record>
+
+
+    </data>
+</odoo>
