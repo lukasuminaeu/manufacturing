@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="item_dried_boards" model="product.product">
+            <field name="name">Išdžiovintos lentos</field>
+            <field name="sale_ok">1</field>
+            <field name="purchase_ok">1</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+        </record>
+        <record id="item_dried_boards_calibrated" model="product.product">
+            <field name="name">Kalibruotos lentos</field>
+            <field name="sale_ok">1</field>
+            <field name="purchase_ok">1</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+        </record>
+    </data>
+</odoo>

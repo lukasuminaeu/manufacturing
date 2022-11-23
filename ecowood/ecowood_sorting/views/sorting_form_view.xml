@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sorting_main_view" model="ir.ui.view">
+        <field name="name">sorting.main.form</field>
+        <field name="model">sorting.model</field>
+        <field name="arch" type="xml">
+            <form string="Lots/Serial Numbers" delete="false" duplicate="false" create="true">
+                <header>
+
+
+                    <field name="state"  widget="statusbar" statusbar_visible="ready,in_progress,done"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '!=', False)]}"/>
+                    <div class="o_field_widget ">
+                        <field name="timer_start" widget="timer_timer"
+                               class="text-secondary mr-auto h2 font-weight-bold"/>
+                    </div>
+                    <div groups="base.group_no_one">
+                        <field name="active"/>
+                        <p>is timer running:
+                            <field name="is_timer_running"/>
+                            display_timer_pause:
+                            <field name="display_timer_pause"/>
+                            display_timer_resume:
+                            <field name="display_timer_resume"/>
+                            display_timer_start_primary:
+                            <field name="display_timer_start_primary"/>
+                            display_timer_stop:
+                            <field name="display_timer_stop"/>
+                            <field name="timer_pause"/>
+
+                        </p>
+                        <div class="oe_button_box" style="text-align: left" name="button_box">
+                            <button class="btn-secondary" name="action_transfer_sorted" type="object"
+                                    string="Patvirtinti Padėjimą"
+                                    data-hotkey="p" title="Patvirtinti Padėjimą" icon="fa-globe"/>
+                            <br/>
+                            <button class="btn-primary o_fsm_stop" name="stop_timer" type="object"
+                                    string="Stop/Sustabdyti"
+                                    data-hotkey="s" title="Sustabdyti" icon="fa-clock-o"/>
+                            <button class="btn-primary o_fsm_stop" name="continue_timer" type="object"
+                                    string="Resume Timer"
+                                    data-hotkey="r" title="Resume Timer" icon="fa-clock-o"/>
+                            <button class="btn-primary o_fsm_stop" name="end_timer" type="object" string="End"
+                                    data-hotkey="e" title="Sustabdyti" icon="fa-clock-o"/>
+                        </div>
+
+                    </div>
+                    <div class="oe_title">
+                        <label for="serial_number"/>
+                        <h1>
+                            <field name="serial_number" placeholder="e.g. LOT/0001/20121" readonly="True"/>
+                        </h1>
+                    </div>
+                    <group name="main_group">
+                        <group>
+                            <field name="product" readonly="True"
+                                   help="Product this lot/serial number contains. You cannot change it anymore if it has already been moved."/>
+                            <field name="created_on" readonly="1"/>
+                            <field name="start_time" readonly="1"/>
+                            <field name="stop_time" readonly="1"/>
+                            <field name="end_time" readonly="1"/>
+                        </group>
+
+                        <group>
+                            <field name="size" readonly="1"/>
+                            <field name="width" readonly="1"/>
+                            <field name="length1" readonly="1"/>
+                            <field name="quantity" readonly="1"/>
+                            <field name="type_of" readonly="1"/>
+                            <field name="square_meters" readonly="1"/>
+                            <field name="fixed_total_price" groups="base.group_no_one" string="Fixed total price ⚙"
+                                   readonly="1"/>
+                            <field name="fixed_average_price" readonly="1" groups="base.group_no_one" string="Average square meter price ⚙"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Paletės istorija" name="pallet_history">
+                            <field name="palette_ids" mode="tree" widget="one2many">
+                                <tree string="Paletės istorija" create="false" delete="false"
+                                      default_order="operation_date">
+                                    <field name="operation_date"/>
+                                    <field name="quantity"/>
+                                    <field name="type"/>
+                                    <field name="size"/>
+                                    <field name="width"/>
+                                    <field name="length1"/>
+                                    <field name="square_meters"/>
+                                    <field name="serial_to" groups="base.group_no_one"/>
+                                    <field name="state" widget="badge" decoration-success="state == 'done'" groups="base.group_no_one"/>
+                                </tree>
+                            </field>
+                            <div class="o_td_label">
+                                <label for="sorted_lamels" string="Bendras išrušiuotų lamelių kiekis:"
+                                />
+                                <field name="sorted_lamels"/>
+                            </div>
+                        </page>
+
+                        <page string="Darbų Istorija" name="job_history">
+                            <field name="work_time_ids" mode="tree" widget="one2many">
+                                <tree create="false" delete="false" string="Darbų Istorija." editable="bottom"
+                                      default_order="work_started">
+                                    <field name="work_started" readonly="True"/>
+                                    <field name="work_ended" readonly="True"/>
+                                    <field name="worker" readonly="True"/>
+                                    <field name="notes"/>
+                                    <field name="work_time" readonly="True" widget="float_time"/>
+                                    <!--                                    <field name="work_time" readonly="True" type="measure" widget="timesheet_uom"/>-->
+                                </tree>
+                            </field>
+                            <div class="oe_subtotal_footer oe_right">
+                                <label class="font-weight-bold" for="effective_hours" string="Visa darbo trukmė:"/>
+                                <field name="effective_hours" widget="float_time"/>
+
+                            </div>
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sorting_main_view_form_action" model="ir.actions.act_window">
+        <field name="name">Sorting Form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sorting.model</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+</odoo>

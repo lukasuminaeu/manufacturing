@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="sorting_model_view_tree" model="ir.ui.view">
+        <field name="name">sorting.model.tree</field>
+        <field name="model">sorting.model</field>
+
+        <field name="arch" type="xml">
+            <tree create="0" delete="0">
+                <field name="serial_number"/>
+
+                <field name="size"/>
+                <field name="width"/>
+                <field name="length1"/>
+
+                <field name="quantity"/>
+                <field name="square_meters"/>
+                <field name="type_of"/>
+
+                <field name="start_time"/>
+                <field name="stop_time"/>
+                <field name="end_time"/>
+                <field name="created_on"/>
+
+                <!--Debug infor for debugging-->
+                <field name="product" groups="base.group_no_one"/>
+                <field name="palette_ids" groups="base.group_no_one"/>
+                <field name="work_time_ids" groups="base.group_no_one"/>
+                <field name="state"  widget="badge" decoration-success="state == 'done'" groups="base.group_no_one"/>
+                <field name="active" groups="base.group_no_one"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="sorting_model_action" model="ir.actions.act_window">
+        <field name="name">Lamelių rūšiavimas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sorting.model</field>
+        <field name="view_mode">tree</field>
+        <field name="target">main</field>
+    </record>
+</odoo>

@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+        <!--        5.0 Sorting-->
+        <record id="operation_type_transfer_to_sorting" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">*TEST* Pervežimas į Rušiavimą</field>
+            <field name="sequence_code">SORT-PERV</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">internal</field>
+            <field name="show_operations" eval="1"/>
+            <field name="use_create_lots" eval="1"/>
+            <field name="use_existing_lots" eval="1"/>
+            <field name="default_location_src_id" ref="um_lots.work_location_warehouse"/>
+            <field name="default_location_dest_id" ref="work_location_sorting_in"/>
+        </record>
+        <record id="operation_type_sorting" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">Rušiavimas</field>
+            <field name="sequence_code">SORT</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">internal</field>
+            <field name="show_operations" eval="1"/>
+            <field name="use_create_lots" eval="1"/>
+            <field name="use_existing_lots" eval="1"/>
+            <field name="default_location_src_id" ref="work_location_sorting_in"/>
+            <field name="default_location_dest_id" ref="work_location_sorting_out"/>
+        </record>
+        <record id="operation_type_sort_ending" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">Rušiavimo užbaigimas</field>
+            <field name="sequence_code">SORT-PAB</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">internal</field>
+            <field name="show_operations" eval="1"/>
+            <field name="use_create_lots" eval="1"/>
+            <field name="use_existing_lots" eval="1"/>
+            <field name="default_location_src_id" ref="work_location_sorting_out"/>
+            <field name="default_location_dest_id" ref="um_lots.work_location_warehouse"/>
+        </record>
+<!--        6.0 -->
+        <record id="operation_type_sort_bought" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">ecowood: Receipts</field>
+            <field name="sequence_code">BUY</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">incoming</field>
+            <field name="show_operations" eval="0"/>
+            <field name="use_create_lots" eval="1"/>
+            <field name="use_existing_lots" eval="1"/>
+            <field name="default_location_dest_id" ref="work_location_sorting_bought"/>
+        </record>
+
+    </data>
+</odoo>

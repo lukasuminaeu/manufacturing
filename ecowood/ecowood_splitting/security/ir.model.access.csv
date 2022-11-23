@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+ecowood_splitting.access_splitting_model,access_splitting_model,ecowood_splitting.model_splitting_model,base.group_user,1,1,1,1
+ecowood_splitting.access_splitting_popup_model,access_splitting_popup_model,ecowood_splitting.model_splitting_popup_model,base.group_user,1,1,1,1

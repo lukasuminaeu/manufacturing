@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_um_lot_label_um_lot_label,um_lot_label.um_lot_label,model_um_lot_label_um_lot_label,base.group_user,1,1,1,1

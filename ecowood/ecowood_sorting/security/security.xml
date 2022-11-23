@@ -1,0 +1,5 @@
+<odoo>
+        <record id="group_dev" model="res.groups" >
+            <field name="name">Development testing</field>
+        </record>
+</odoo>

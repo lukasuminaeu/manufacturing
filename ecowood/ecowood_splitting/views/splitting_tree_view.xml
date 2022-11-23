@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="splitting_model_view_tree" model="ir.ui.view">
+        <field name="name">splitting.model.tree</field>
+        <field name="model">splitting.model</field>
+        <field name="arch" type="xml">
+            <tree create="0" delete="0">
+                <field name="serial_number"/>
+                <field name="type_of"/>
+                <field name="size"/>
+                <field name="width"/>
+                <field name="length1"/>
+                <field name="square_meters"/>
+                <field name="quantity"/>
+                <field name="options"/>
+                <field name="state"  widget="badge" decoration-success="state == 'done'" groups="base.group_no_one"/>
+            </tree>
+        </field>
+    </record>
+    
+
+    <record id="splitting_model_action" model="ir.actions.act_window">
+        <field name="name">Skaldymas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">splitting.model</field>
+        <field name="view_mode">tree</field>
+        <field name="target">main</field>
+    </record>
+</odoo>

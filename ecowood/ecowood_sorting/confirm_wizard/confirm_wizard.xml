@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="confirm_wizard_view" model="ir.ui.view">
+        <field name="name">confirm.wizard.prompt</field>
+        <field name="model">confirm.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Patvirtinti">
+                <p>Ar tikrai norite patvirtinti transakciją?</p>
+                <group>
+                    <field name="source_document" string="Source ID ⚙" groups="base.group_no_one" readonly="1" />
+                </group>
+                <footer>
+                    <button name="click_confirm" string="Patvirtinti" type="object" class="oe_highlight"/>
+                    <button string="Atšaukti" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="wizard_confirm_action" model="ir.actions.act_window">
+        <field name="name">Patvirtinti</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">confirm.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="um_lots.view_stock_quant_tree">
+        <field name="name">um_lots.stock.quant.tree</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lot_id']" position="after">
+                <field name="thickness"/>
+                <field name="width"/>
+                <field name="length1"/>
+                <field name="volume"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="um_lots.view_stock_quant_tree_inventory_editable">
+        <field name="name">um_lots.stock.quant</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree_inventory_editable"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lot_id']" position="after">
+                <field name="average_price" widget="monetary"/>
+                <field name="thickness"/>
+                <field name="width"/>
+                <field name="length1" />
+                <field name="volume"/>
+                <field name="calibration_spoilage"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

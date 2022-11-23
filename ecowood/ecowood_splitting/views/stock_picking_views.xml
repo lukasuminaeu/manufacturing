@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_stock_picking_form_inherit" model="ir.ui.view">
+        <field name="name">view.stock.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='volume']" position="after">
+                <field name="is_operation_type_skaldymas" invisible="1"/>
+                <field name="options" attrs="{'invisible':[('is_operation_type_skaldymas', '!=', True)], 'required':[('is_operation_type_skaldymas', '=', True)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_operation_splitting_option"
+        name="Skaldymas"
+        parent="stock.menu_stock_warehouse_mgmt"
+        action="splitting_model_action"
+        sequence="7"/>
+</odoo>

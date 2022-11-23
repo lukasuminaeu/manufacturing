@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+
+        <function name="write" model="ir.model.data">
+            <function name="search" model="ir.model.data">
+                <value eval="[('module','=','stock'),('name','=','warehouse0')]"/>
+            </function>
+            <value eval="{'noupdate': False}"/>
+        </function>
+
+        <record id="stock.warehouse0" model="stock.warehouse">
+            <field name="name">Ecowood</field>
+            <field name="code">WH</field>
+        </record>
+    </data>
+</odoo>

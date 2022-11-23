@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="debug_barcode_wizard_action" model="ir.actions.act_window">
+        <field name="name">Debug Barcode Send</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">debug.barcode.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+            id="debug_menu"
+            name="Debug"
+            parent="stock.menu_stock_root"
+            sequence="101"
+            groups="base.group_no_one"
+    />
+
+    <menuitem
+            id="debug_model_menu"
+            name="Wizard detailed operations"
+            parent="debug_menu"
+            action="detailed_operation_wizard_action"
+            sequence="101"
+
+    />
+
+    <menuitem
+            id="debug_barcode_entry_menu"
+            name="Barcode entry"
+            parent="debug_menu"
+            action="debug_barcode_wizard_action"
+            sequence="102"
+
+    />
+
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <!--        # 6.1-->
+    <record model="ir.ui.view" id="um_lots.view_stock_quant_tree">
+        <field name="name">um_lots.stock.quant.tree</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='lot_id']"
+                   position="after">
+                <field name="type"/>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="after">
+<!--                TODO: Add visibility only in PAB/00xxx -->
+                <field name="unsorted_lot_id" string="From Unsorted Lot ⚙:" readonly="1" groups="base.group_no_one"/>
+                <field name="average_price" string="Average price ⚙:" readonly="1" groups="base.group_no_one"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

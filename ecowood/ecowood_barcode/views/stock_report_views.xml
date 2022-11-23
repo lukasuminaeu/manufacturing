@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_picking_type_label" model="ir.actions.report">
+        <field name="name">Ecowood Barcodes (PDF)</field>
+        <field name="model">stock.picking.type</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ecowood_barcode.ecowood_report_picking_type_label</field>
+        <field name="report_file">ecowood_barcode.ecowood_report_picking_type_label</field>
+        <field name="print_report_name">'Operation-types - %s' % object.name</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking_type"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="ecowood_report_picking_type_label">
+        <t t-set="title">Operation Types</t>
+        <t t-call="ecowood_barcode.ecowood_report_generic_barcode"/>
+    </template>
+
+    <template id="ecowood_report_generic_barcode">
+        <t t-call="web.html_container">
+
+            <table>
+                <tr>
+                    <td>
+
+                        <p> Rusiavimas </p>
+
+                        <span t-raw="'PATVIRTINTI PADEJIMA '" t-options="{'widget': 'barcode', 'humanreadable': 1, 'width': 400, 'height': 100}"></span>
+                        <span t-raw="'SUSTABDYTI'" t-options="{'widget': 'barcode', 'humanreadable': 1, 'width': 400, 'height': 100}"></span>
+                        <span t-raw="'UZDARYTI'" t-options="{'widget': 'barcode', 'humanreadable': 1, 'width': 400, 'height': 100}"></span>
+
+
+                        <span t-raw="'add1'" t-options="{'widget': 'barcode', 'humanreadable': 1, 'width': 400, 'height': 100}"></span>
+                        <span t-raw="'add2'" t-options="{'widget': 'barcode', 'humanreadable': 1, 'width': 400, 'height': 100}"></span>
+                        <span t-raw="'add5'" t-options="{'widget': 'barcode', 'humanreadable': 1, 'width': 400, 'height': 100}"></span>
+
+
+                        <p> Kalibravimas </p>
+                        <span t-raw="'KALIBRAVIMO PABAIGA'" t-options="{'widget': 'barcode', 'humanreadable': 1, 'width': 400, 'height': 100}"></span>
+                        <span t-raw="'O-CMD.CONFIRM'" t-options="{'widget': 'barcode', 'humanreadable': 1, 'width': 400, 'height': 100}"></span>
+                    </td>
+                </tr>
+            </table>
+        </t>
+    </template>
+       
+</odoo>

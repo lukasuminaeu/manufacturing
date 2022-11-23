@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="action_picking_tree_all_inherit" model="ir.actions.act_window">
+        <field name="name">Kalibravimas</field>
+        <field name="res_model">stock.picking</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain" eval="[
+          ('state', 'not in', ['done', 'cancel']),
+          '|',
+          ('picking_type_id', '=', ref('um_lots.operation_type_calibration')),
+          ('picking_type_id', '=', ref('um_lots.operation_type_calibration_ending')),
+        ]"></field>
+        <field name="context">{'contact_display': 'partner_address',
+                               'search_default_product': 1, 'calibration_hide_field': 1}
+        </field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No transfer found. Let's create one!
+            </p>
+            <p>
+                Transfers allow you to move products from one location to another.
+            </p>
+        </field>
+    </record>
+
+    <!--    <record id="action_picking_tree_view_tree" model="ir.ui.view">-->
+    <!--        <field name="name">_view_tree</field>-->
+    <!--        <field name="model">stock.picking</field>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <tree string="_tree">-->
+    <!--                <field name="name"/>-->
+    <!--            </tree>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+    <record id="view_stock_picking_form_inherit" model="ir.ui.view">
+        <field name="name">view.stock.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+
+
+            <!--            <xpath expr="//tree//field[@name='priority']" position="after">-->
+            <!--                <field name="calibration_start_id" invisible="1"/>-->
+            <!--                <field name="calibration_end_id" invisible="1"/>-->
+
+            <!--            </xpath>-->
+
+
+            <xpath expr="//tree//field[@name='product_id']" position="after">
+                <field name="lot_id"/>
+            </xpath>
+
+            <xpath expr="//tree//field[@name='product_uom_qty']" position="before">
+                <field name="thickness"/>
+                <field name="width"/>
+                <field name="length1"/>
+                <field name="volume"/>
+            </xpath>
+
+            <xpath expr="//tree//field[@name='product_uom_qty']" position="after">
+                <field name="quantity_squared_of"/>
+
+            </xpath>
+
+
+            <!-- remove prom Operations view in transfers -->
+            <xpath expr="//field[@name='product_packaging_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='product_uom']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!--            Rename fields -->
+            <xpath expr="//tree//field[@name='product_uom_qty']" position="attributes">
+                <attribute name="string">Kiekis (vnt.)</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="calibration_window_group_by_inherit" model="ir.ui.view">
+        <field name="name">calibration.window.group.by.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search//group/filter[@name='picking_type']" position="after">
+                <filter string="Product" name="product" domain="[]" context="{'group_by': 'product_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="um_lots.vpicktree" model="ir.ui.view">
+        <field name="name">um_lots.stock.picking.tree</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='name']" position="after">
+                <field name="picking_type_id"/>
+            </xpath>
+
+            <xpath expr="//tree//field[@name='location_dest_id']" position="after">
+                <field name="product_uom_qty"/>
+                <field name="lot_id"/>
+                <field name="thickness"/>
+                <field name="width"/>
+                <field name="length1"/>
+                <field name="volume"/>
+                <field name="calibration_spoilage" string="Brokas"/>
+
+                <field name="start_time"/>
+                <field name="end_time"/>
+            </xpath>
+
+            <!--            Add creation date-->
+            <xpath expr="//field[@name='end_time']" position="after">
+                <field name="date" optional="show"/>
+            </xpath>
+
+            <!-- Hide unnecessary elements -->
+            <xpath expr="//tree//field[@name='location_id']" position="attributes">
+                <attribute name="invisible">context.get('calibration_hide_field')</attribute>
+            </xpath>
+            <xpath expr="//tree//field[@name='location_dest_id']" position="attributes">
+                <attribute name="invisible">context.get('calibration_hide_field')</attribute>
+            </xpath>
+            <xpath expr="//tree//field[@name='partner_id']" position="attributes">
+                <attribute name="invisible">context.get('calibration_hide_field')</attribute>
+            </xpath>
+            <xpath expr="//tree//field[@name='origin']" position="attributes">
+                <attribute name="invisible">context.get('calibration_hide_field')</attribute>
+            </xpath>
+            <xpath expr="//tree//field[@name='scheduled_date']" position="attributes">
+                <attribute name="invisible">context.get('calibration_hide_field')</attribute>
+            </xpath>
+            <xpath expr="//tree//field[@name='name']" position="attributes">
+                <attribute name="invisible">context.get('calibration_hide_field')</attribute>
+            </xpath>
+            <!--            Rename fields -->
+            <xpath expr="//tree//field[@name='product_uom_qty']" position="attributes">
+                <attribute name="string">Kiekis (vnt.)</attribute>
+            </xpath>
+            <xpath expr="//tree//field[@name='lot_id']" position="attributes">
+                <attribute name="string">Serijinis numeris</attribute>
+            </xpath>
+            <!--            Movie field-->
+            <xpath expr="//field[@name='priority']" position="after">
+                <xpath expr="//field[@name='lot_id']" position="move"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <menuitem
+            id="menu_operations_calibration"
+            name="Kalibravimas"
+            parent="stock.menu_stock_warehouse_mgmt"
+            action="action_picking_tree_all_inherit"
+            sequence="7"/>
+</odoo>

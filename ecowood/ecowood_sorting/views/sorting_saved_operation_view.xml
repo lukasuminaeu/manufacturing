@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sorting_operations_saved_view" model="ir.ui.view">
+        <field name="name">sorting.operations.saved</field>
+        <field name="model">sorting.saved.operations</field>
+        <field name="arch" type="xml">
+            <form>
+                <group attrs="{'invisible': [('state', '=', 'done')]}">
+                    <group>
+                        <field name="type" readonly="True"/>
+                        <field name="size" readonly="True"/>
+                        <field name="width" readonly="True"/>
+                        <field name="width" readonly="True"/>
+                        <field name="length1" readonly="True"/>
+                        <br/>
+                        <field name="quantity"/>
+                        <field name="state" groups="base.group_no_one"/>
+                    </group>
+                </group>
+                <group attrs="{'invisible': [('state', '!=', 'done')]}">
+                    <group>
+                        <p>Status: Done</p>
+                    </group>
+                </group>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="sorting_operations_saved_view_form_action" model="ir.actions.act_window">
+        <field name="name">Sorting Form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sorting.saved.operations</field>
+        <field name="view_mode">form,view</field>
+        <field name="target">current</field>
+    </record>
+
+</odoo>

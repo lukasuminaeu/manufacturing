@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="debug_barcode_view" model="ir.ui.view">
+        <field name="name">debug.barcode.wizard</field>
+        <field name="model">debug.barcode.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Išrušiuotos lamelės">
+                <sheet>
+                    <group>
+                        <field name="name" default="IN00002"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="debug_call_barcode" string="Send" type="object" class="oe_highlight"/>
+                    <button name="debug_create_calibration_item" string="Add Calibration Item" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>

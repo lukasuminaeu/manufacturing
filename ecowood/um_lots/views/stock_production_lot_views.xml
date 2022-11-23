@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_stock_production_lot_inherit_tree" model="ir.ui.view">
+        <field name="name">view.stock.production.lot.inherit.tree</field>
+        <field name="model">stock.production.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_tree"/>
+        <field name="arch" type="xml">
+            <!--            Display additional fields is tree view -->
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="pock_number" optional="show"/>
+                <field name="delivery_date" optional="show"/>
+                <field name="supplier" optional="show"/>
+                <field name="account_number" optional="show"/>
+
+                <field name="palette_price" optional="show"/>
+                <field name="average_price" optional="show"/>
+                <field name="volume_price" optional="show"/>
+
+                <field name="quantity_squared" optional="show"/>
+                <field name="volume" optional="show"/>
+                <field name="type_of" optional="show"/>
+                <field name="group" optional="show"/>
+
+                <field name="thickness" optional="show"/>
+                <field name="width" optional="show"/>
+                <field name="length1" optional="show"/>
+                <field name="calibration_spoilage" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="view_stock_production_lot_inherit" model="ir.ui.view">
+        <field name="name">view.stock.production.lot.inherit</field>
+        <field name="model">stock.production.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_form"/>
+        <field name="arch" type="xml">
+
+
+            <!--            Add elements directly after product-->
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="pock_number"/>
+                <br/>
+                <field name="delivery_date"/>
+                <field name="supplier"/>
+                <field name="account_number"/>
+                <br/>
+                <br/>
+            </xpath>
+
+
+            <xpath expr="//form[1]/sheet[1]/group[@name='main_group']/group[2]" position="inside">
+                <label for="product_qty" attrs="{'invisible': [('display_complete', '=', False)]}"
+                       string="Kiekis (vnt)"/>
+                <div class="o_row" attrs="{'invisible': [('display_complete', '=', False)]}">
+                    <field name="product_qty"/>
+                    <field name="product_uom_id" groups="uom.group_uom"/>
+                </div>
+
+                <field name="quantity_squared" string="Kiekis (m²)"/>
+                <field name="volume"/>
+                <field name="type_of"/>
+                <br/>
+                <field name="group"/>
+
+                <field name="thickness"/>
+                <field name="width"/>
+                <field name="length1"/>
+                <field name="calibration_spoilage" />
+                
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/group[@name='main_group']/group[1]" position="inside">
+                <br/>
+                <field name="palette_price" widget="monetary"
+                       attrs="{'invisible': [('is_unsorted','!=', True)]}" string="Paletės vertė"/>
+                <field name="palette_price_sorted" widget="monetary"
+                       attrs="{'invisible': [('is_sorted','!=', True)]}" string="Paletės vertė"/>
+                <field name="average_price" widget="monetary"/>
+                <field name="volume_price"/>
+
+                <field name="currency_id" invisible="1"/>
+                <field name="is_sorted_and_unsorted" invisible="1"/>
+                <field name="is_sorted" invisible="1"/>
+                <field name="is_unsorted" invisible="1"/>
+                <field name="count_stop" string="Stop at: 🔧" groups="ecowood_sorting.group_dev"/>
+            </xpath>
+
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Transferred Elements" name="quant_ids"
+                      attrs="{'invisible': [('is_sorted_and_unsorted','!=', True)]}">
+                    <field name="transferred_stock_move_ids" editable="bottom">
+                        <tree editable="bottom">
+                            <field name="id"/>
+                            <field name="name"/>
+                            <field name="create_date"/>
+                            <field name="product_uom_qty" string="Quantity" sum="Total qty"/>
+                            <field name="calibration_spoilage" invisible="1"/>
+                            <field name="unsorted_lot_id" string="Sent from:"/>
+                            <field name="transferred_square_meters" string="Kiekis m²"  sum="Total qty"/>
+                            <field name="square_meters_price" string="Kiekis m² kaina" sum="Total qty"/>
+                            <field name="average_price" string="Average m² price"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+
+
+            <!--    Modify serial lot-->
+            <xpath expr="//field[@name='ref']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <!--            Change product_qty name-->
+            <xpath expr="//form[1]/sheet[1]/group[@name='main_group']/group[1]/label[1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/group[@name='main_group']/group[1]/div[1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+
+</odoo>

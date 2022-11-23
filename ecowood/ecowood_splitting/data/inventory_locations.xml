@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+        <record id="work_location_splitting" model="stock.location">
+            <field name="name">Skaldymas</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+
+        <record id="work_location_splitting_in" model="stock.location">
+            <field name="name">Skaldymas/IN</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+
+        <record id="work_location_splitting_out" model="stock.location">
+            <field name="name">Skaldymas/OUT</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+<!--        5.0 Sorting-->
+        <record id="work_location_sorting" model="stock.location">
+            <field name="name">Rušiavimas</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+
+        <record id="work_location_sorting_in" model="stock.location">
+            <field name="name">Rušiavimas/IN</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+
+        <record id="work_location_sorting_out" model="stock.location">
+            <field name="name">Rušiavimas/OUT</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+<!--        6.0 -->
+        <record id="work_location_sorting_bought" model="stock.location">
+            <field name="name">Nerušiuotos Pirktos</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+        <record id="operation_type_send_to_calibration" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">Pervežimas į kalibravimą</field>
+            <field name="sequence_code">KAL-PERV</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">internal</field>
+            <field name="show_operations" eval="1"/>
+            <field name="use_create_lots" eval="1"/>
+            <field name="use_existing_lots" eval="1"/>
+            <field name="default_location_src_id" ref="work_location_warehouse"/>
+            <field name="default_location_dest_id" ref="work_location_calibration_in"/>
+        </record>
+        <record id="operation_type_calibration" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">Kalibravimas</field>
+            <field name="sequence_code">KAL</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">internal</field>
+            <field name="show_operations" eval="1"/>
+            <field name="use_create_lots" eval="1"/>
+            <field name="use_existing_lots" eval="1"/>
+            <field name="default_location_src_id" ref="work_location_calibration_in"/>
+            <field name="default_location_dest_id" ref="work_location_calibration_out"/>
+        </record>
+        <record id="operation_type_calibration_ending" model="stock.picking.type">
+            <field name="warehouse_id" ref="stock.warehouse0"></field>
+            <field name="name">Kalibravimo užbaigimas</field>
+            <field name="sequence_code">KAL-PAB</field>
+            <field name="reservation_method">at_confirm</field>
+            <field name="code">internal</field>
+            <field name="show_operations" eval="1"/>
+            <field name="use_create_lots" eval="1"/>
+            <field name="use_existing_lots" eval="1"/>
+            <field name="default_location_src_id" ref="work_location_calibration_out"/>
+            <field name="default_location_dest_id" ref="work_location_warehouse"/>
+        </record>
+
+
+    </data>
+</odoo>

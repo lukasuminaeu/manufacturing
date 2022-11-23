@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sorting_operations_saved_view" model="ir.ui.view">
+        <field name="name">sorting.saved.time</field>
+        <field name="model">sorting.saved.operations</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="type"/>
+                        <field name="size"/>
+                        <field name="width"/>
+                        <field name="width"/>
+                        <field name="length1"/>
+                        <br/>
+                        <field name="quantity"/>
+                        <field name="palette_history_id" groups="base.group_no_one"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="sorting_operations_saved_view_form_action" model="ir.actions.act_window">
+        <field name="name">Sorting Form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sorting.saved.time</field>
+        <field name="view_mode">form,view</field>
+        <field name="target">current</field>
+    </record>
+
+</odoo>

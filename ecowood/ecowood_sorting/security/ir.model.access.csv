@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+ecowood_sorting.access_sorting_wizard,access_sorting_wizard,ecowood_sorting.model_sorting_wizard,base.group_user,1,1,1,1
+ecowood_sorting.access_sorting_model,access_sorting_model,ecowood_sorting.model_sorting_model,base.group_user,1,1,1,1
+ecowood_sorting.access_sorting_saved_operations,access_sorting_saved_operations,ecowood_sorting.model_sorting_saved_operations,base.group_user,1,1,1,1
+ecowood_sorting.access_sorting_saved_time,access_sorting_saved_time,ecowood_sorting.model_sorting_saved_time,base.group_user,1,1,1,1
+
+ecowood_sorting.access_debug_barcode_wizard,access_debug_barcode_wizard,ecowood_sorting.model_debug_barcode_wizard,base.group_user,1,1,1,1
+
+ecowood_sorting.access_detailed_operation_wizard,access_detailed_operation_wizard,ecowood_sorting.model_detailed_operation_wizard,base.group_user,1,0,0,0
+ecowood_sorting.access_sorting_popup_model,access_sorting_popup_model,ecowood_sorting.model_sorting_popup_model,base.group_user,1,1,1,1
+ecowood_sorting.access_confirm_wizard,access_confirm_wizard,ecowood_sorting.model_confirm_wizard,base.group_user,1,1,1,1

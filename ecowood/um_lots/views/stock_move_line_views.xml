@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="stock_move_line_barcode_inherit" model="ir.ui.view">
+        <field name="name">stock.move.line.barcode.inherit</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock_barcode.stock_move_line_product_selector" />
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]/div[2]" position="after">
+                <div class="row">
+                    <div class="col-6 my-2 d-flex align-items-baseline">
+                        <i class="fa fa-fw fa-lg fa-cube mr-3" title="Brokas"/>
+                        <field name="calibration_spoilage" class="w-50 w-md-100 text-right" options="{'type': 'number'}" placeholder="Brokas"/>
+                    </div>
+                </div>
+
+            </xpath>
+
+<!--            <xpath expr="//form//field[@name='qty_done']" position="attributes">-->
+<!--                <attribute name="readonly">1</attribute>-->
+<!--            </xpath>-->
+        </field>
+    </record>
+
+    <record id="um_lots_view_stock_move_line_detailed_operation_tree" model="ir.ui.view">
+        <field name="name">um_lots.stock.move.line.barcode</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_stock_move_line_detailed_operation_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='lot_id']" position="before">
+                <field name="calibration_spoilage" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

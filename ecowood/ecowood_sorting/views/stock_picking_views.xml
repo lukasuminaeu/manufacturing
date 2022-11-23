@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+        <menuitem
+            id="menu_operation_sorting_optionas"
+            name="Lamelių Rūšiavimass"
+            parent="stock.menu_stock_warehouse_mgmt"
+            action="sorting_model_action"
+            sequence="7"/>
+</odoo>

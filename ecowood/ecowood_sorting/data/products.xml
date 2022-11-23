@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="item_unsorted_lamels" model="product.product">
+            <field name="name">Nerušiuotos lamelės</field>
+            <field name="sale_ok">1</field>
+            <field name="purchase_ok">1</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+        </record>
+        <record id="item_sorted_lamels" model="product.product">
+            <field name="name">Lamelės</field>
+            <field name="sale_ok">1</field>
+            <field name="purchase_ok">1</field>
+            <field name="detailed_type">product</field>
+            <field name="tracking">lot</field>
+        </record>
+    </data>
+</odoo>

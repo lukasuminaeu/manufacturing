@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+
+        <record id="work_location_calibration" model="stock.location">
+            <field name="name">Kalibravimas</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+
+        <record id="work_location_calibration_in" model="stock.location">
+            <field name="name">Kalibravimas/IN</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+
+        <record id="work_location_calibration_out" model="stock.location">
+            <field name="name">Kalibravimas/OUT</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+
+        <record id="work_location_warehouse" model="stock.location">
+            <field name="name">Sandėlys</field>
+            <field name="usage">internal</field>
+            <field name="location_id" ref="stock.stock_location_stock"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="uom.product_uom_cubic_meter" model="uom.uom">
+        <field name="name">m³</field>
+        <field name="category_id" ref="product_uom_categ_vol"/>
+        <field name="factor_inv">1000</field>
+        <field name="uom_type">bigger</field>
+        <field name="rounding">0.00100</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,22 @@
+body {
+	font-family: 'Arial';
+}
+
+#main-table {
+    border-collapse: collapse;
+    width:169mm;
+    /* height:105mm; */
+}
+  
+#main-table td, #main-table th {
+    border: 1px solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+  
+#main-table tr, #main-table th {
+    text-align: center;
+    vertical-align: middle;
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="splitting_popup_view" model="ir.ui.view">
+        <field name="name">Name</field>
+        <field name="model">splitting.popup.model</field>
+        <field name="arch" type="xml">
+            <form string="Išrušiuotos lamelės">
+                <sheet>
+                    <group>
+                        <field name="product" readonly="True"/>
+                        <field name="measurments" readonly="True"/>
+                        <field name="options" readonly="True"/>
+                        <field name="serial" readonly="True"/>
+                    </group>
+                </sheet>
+            </form>
+            <!-- <form>
+                <script>
+                    $(document).ready(function(){
+                    $(".modal-header").hide();
+                    $(".modal-footer").hide();
+                    });
+                </script>
+                 <group col="4" colspan="4"/>
+                        <form string = "Edit" edit="false"/>
+                        <form string = "Save" create="false"/>
+            </form> -->
+        </field>
+    </record>
+</odoo>

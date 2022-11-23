@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="detailed_operation_wizard_view" model="ir.ui.view">
+        <field name="name">sorting.wizard</field>
+        <field name="model">detailed.operation.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Išrušiuotos lamelės">
+                <sheet>
+                    <group>
+                        <field name="product"/>
+                        <field name="demand"/>
+                        <field name="quantity_done"/>
+                        <field name="move_line"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_send" string="Send" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="detailed_operation_wizard_action" model="ir.actions.act_window">
+        <field name="name">Detailed operations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">detailed.operation.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
